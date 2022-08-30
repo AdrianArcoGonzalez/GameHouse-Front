@@ -8,7 +8,7 @@ interface RegisterCardProps {
 const RegisterCard = ({ user }: RegisterCardProps): JSX.Element => {
   const { birthdate, email, location, name, username } = user;
   return (
-    <RegisterCardStyled>
+    <RegisterCardStyled data-testid="cardRegister">
       <span className="card__title">GameHouse</span>
       <div className="card__user">
         <ul className="card__left-side">
