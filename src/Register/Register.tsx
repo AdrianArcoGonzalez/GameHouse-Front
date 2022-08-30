@@ -25,12 +25,12 @@ export const initialState: FormState = {
   image: "",
 };
 const Register = (): JSX.Element => {
-  const [user, setUser] = useState(initialState);
+  const [userRegister, setUser] = useState(initialState);
 
   return (
     <RegisterStyled>
-      <RegisterCard user={user} />
-      <RegisterForm setUser={setUser} user={user} />
+      <RegisterCard user={userRegister} />
+      <RegisterForm setUser={setUser} userRegister={userRegister} />
     </RegisterStyled>
   );
 };
