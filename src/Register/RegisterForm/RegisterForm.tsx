@@ -16,14 +16,14 @@ const RegisterForm = ({
   const onChangeField = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUser({
       ...userRegister,
-      [event.target.name]: event.target.value,
+      [event.target.id]: event.target.value,
     });
   };
 
   const onChangeFile = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUser({
       ...userRegister,
-      [event.target.name]: event.target.value,
+      [event.target.id]: event.target.value,
     });
     formData.append("image", event.target.files![0]);
   };
@@ -39,107 +39,107 @@ const RegisterForm = ({
     userRegister.email === initialState.email ||
     userRegister.birthdate === initialState.birthdate ||
     userRegister.location === initialState.location ||
-    userRegister.image === initialState.image ||
     userRegister.username === initialState.username ||
     userRegister.password === initialState.password ||
-    userRegister.password !== userRegister.repeatPassword;
+    userRegister.repeatPassword === initialState.repeatPassword ||
+    userRegister.image === initialState.image;
 
   return (
     <RegisterFormStyled noValidate autoComplete="off" onSubmit={handleSubmit}>
       <label htmlFor="name" className="form__input-container">
         Name
-        <input
-          value={userRegister.name}
-          onChange={onChangeField}
-          type="text"
-          name="name"
-          placeholder="name"
-          className="form__input-element"
-        />
       </label>
+      <input
+        value={userRegister.name}
+        onChange={onChangeField}
+        type="text"
+        id="name"
+        placeholder="name"
+        className="form__input-element"
+      />
 
       <label htmlFor="email" className="form__input-container">
         Email
-        <input
-          value={userRegister.email}
-          onChange={onChangeField}
-          type="email"
-          placeholder="john@gmail.com"
-          name="email"
-          className="form__input-element"
-        />
       </label>
-
+      <input
+        value={userRegister.email}
+        onChange={onChangeField}
+        id="email"
+        type="email"
+        placeholder="john@gmail.com"
+        className="form__input-element"
+      />
       <label htmlFor="birthdate" className="form__input-container">
         Birthdate
-        <input
-          value={userRegister.birthdate}
-          onChange={onChangeField}
-          type="date"
-          placeholder="20/02/2020"
-          name="birthdate"
-          className="form__input-element"
-        />
       </label>
+      <input
+        id="birthdate"
+        value={userRegister.birthdate}
+        onChange={onChangeField}
+        type="date"
+        placeholder="20/02/2020"
+        className="form__input-element"
+      />
 
       <label htmlFor="location" className="form__input-container">
         Location
-        <input
-          value={userRegister.location}
-          onChange={onChangeField}
-          type="text"
-          name="location"
-          className="form__input-element"
-          placeholder="Barcelona"
-        />
       </label>
+      <input
+        id="location"
+        value={userRegister.location}
+        onChange={onChangeField}
+        type="text"
+        className="form__input-element"
+        placeholder="Barcelona"
+      />
 
       <label htmlFor="image" className="form__input-container">
         Image
-        <input
-          onChange={onChangeFile}
-          type="file"
-          name="image"
-          value={userRegister.image}
-          className="form__input-element"
-        />
       </label>
+      <input
+        id="image"
+        onChange={onChangeFile}
+        type="file"
+        value={userRegister.image}
+        className="form__input-element"
+      />
 
       <label htmlFor="username" className="form__input-container">
         Username
-        <input
-          value={userRegister.username}
-          onChange={onChangeField}
-          type="text"
-          name="username"
-          className="form__input-element"
-          placeholder="Gamer123"
-        />
       </label>
+      <input
+        id="username"
+        value={userRegister.username}
+        onChange={onChangeField}
+        type="text"
+        className="form__input-element"
+        placeholder="Gamer123"
+      />
 
       <label htmlFor="password" className="form__input-container">
         Password
-        <input
-          value={userRegister.password}
-          onChange={onChangeField}
-          type="password"
-          name="password"
-          className="form__input-element"
-          placeholder="********"
-        />
       </label>
+      <input
+        id="password"
+        value={userRegister.password}
+        onChange={onChangeField}
+        type="password"
+        className="form__input-element"
+        placeholder="********"
+      />
 
       <label htmlFor="repeatPassword" className="form__input-container">
         Repeat Password
-        <input
-          value={userRegister.repeatPassword}
-          onChange={onChangeField}
-          type="password"
-          name="repeatPassword"
-          className="form__input-element"
-          placeholder="********"
-        />
       </label>
+      <input
+        id="repeatPassword"
+        value={userRegister.repeatPassword}
+        onChange={onChangeField}
+        type="password"
+        className="form__input-element"
+        placeholder="********"
+      />
+
       <button type="submit" disabled={hasEmptyFields}>
         Register
       </button>

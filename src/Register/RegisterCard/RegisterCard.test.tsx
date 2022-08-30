@@ -15,7 +15,7 @@ describe("Given a RegisterCard component", () => {
       repeatPassword: "123456",
     };
 
-    test("Then it should the tittle of the card", () => {
+    test("Then it should show the tittle of the card", () => {
       const titleCard = "GameHouse";
 
       render(<RegisterCard user={user} />);
