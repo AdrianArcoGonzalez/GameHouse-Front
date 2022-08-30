@@ -12,18 +12,10 @@ const RegisterCard = ({ user }: RegisterCardProps): JSX.Element => {
       <span className="card__title">GameHouse</span>
       <div className="card__user">
         <ul className="card__left-side">
-          <li className="left-side__info-element" placeholder="John Philips">
-            {name}
-          </li>
-          <li className="left-side__info-element" placeholder="john@gmail.com">
-            {email}
-          </li>
-          <li className="left-side__info-element" placeholder="1985-10-24">
-            {birthdate}
-          </li>
-          <li className="left-side__info-element" placeholder="New York">
-            {location}
-          </li>
+          <li className="left-side__info-element">{name}</li>
+          <li className="left-side__info-element">{email}</li>
+          <li className="left-side__info-element">{birthdate}</li>
+          <li className="left-side__info-element">{location}</li>
         </ul>
         <div className="card__right-side">
           <img
@@ -33,9 +25,7 @@ const RegisterCard = ({ user }: RegisterCardProps): JSX.Element => {
             height="100px"
             width="100px"
           />
-          <span className="card__right-side--username" placeholder="Gamer123">
-            {username}
-          </span>
+          <span className="card__right-side--username">{username}</span>
         </div>
       </div>
     </RegisterCardStyled>
