@@ -29,8 +29,11 @@ const Register = (): JSX.Element => {
 
   return (
     <RegisterStyled>
-      <RegisterCard user={userRegister} />
-      <RegisterForm setUser={setUser} userRegister={userRegister} />
+      <h2 className="register-title">Sign Up</h2>
+      <div className="register-container">
+        <RegisterCard user={userRegister} />
+        <RegisterForm setUser={setUser} userRegister={userRegister} />
+      </div>
     </RegisterStyled>
   );
 };

@@ -26,7 +26,8 @@ describe("Given a RegisterCard component", () => {
 
     test("And it should show a list with all the user data", () => {
       render(<RegisterCard user={user} />);
-      const listItem = screen.getAllByRole("listitem");
+
+      const listItem = screen.getAllByRole("listitem", { hidden: true });
 
       expect(listItem[0]).toHaveTextContent(user.name);
       expect(listItem[1]).toHaveTextContent(user.email);
@@ -36,7 +37,7 @@ describe("Given a RegisterCard component", () => {
 
     test("And it should show an image", () => {
       render(<RegisterCard user={user} />);
-      const image = screen.getByRole("img");
+      const image = screen.getByRole("img", { hidden: true });
 
       expect(image).toBeInTheDocument();
     });
