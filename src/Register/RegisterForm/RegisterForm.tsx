@@ -28,7 +28,8 @@ const RegisterForm = ({
     formData.append("image", event.target.files![0]);
   };
 
-  const handleSubmit = async (event: SyntheticEvent) => {
+  const handleSubmit = (event: SyntheticEvent) => {
+    debugger;
     event.preventDefault();
     formData.append("user", JSON.stringify(userRegister));
     setUser(initialState);
@@ -45,7 +46,12 @@ const RegisterForm = ({
     userRegister.image === initialState.image;
 
   return (
-    <RegisterFormStyled noValidate autoComplete="off" onSubmit={handleSubmit}>
+    <RegisterFormStyled
+      noValidate
+      autoComplete="off"
+      onSubmit={handleSubmit}
+      data-testid="formRegister"
+    >
       <label htmlFor="name" className="form__input-container">
         Name
       </label>

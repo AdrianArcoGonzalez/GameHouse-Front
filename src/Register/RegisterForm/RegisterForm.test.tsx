@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import RegisterForm from "./RegisterForm";
 
@@ -64,7 +64,7 @@ describe("Given a registerForm component", () => {
 
   describe("When it's instantiated with empty fields", () => {
     test("Then the button should be dissabled", () => {
-      const mockEmptyState = {
+      const mockAlmostEmptyState = {
         name: "a",
         birthdate: "a",
         email: "a",
@@ -75,11 +75,48 @@ describe("Given a registerForm component", () => {
         repeatPassword: "",
       };
       render(
-        <RegisterForm setUser={mockSetstate} userRegister={mockEmptyState} />
+        <RegisterForm
+          setUser={mockSetstate}
+          userRegister={mockAlmostEmptyState}
+        />
       );
       const button = screen.getByRole("button");
 
       expect(button).toBeDisabled();
+    });
+
+    test("And when it's submited then it should call the method setState", async () => {
+      const mockedFile = new File([""], "");
+      const fileInputText = "Image";
+      const mockFullState = {
+        name: "Peter",
+        birthdate: "10/12/1995",
+        email: "peter@gmail.es",
+        location: "New York",
+        image: "",
+        username: "peter123",
+        password: "123456",
+        repeatPassword: "123456",
+      };
+      const mockSubmit = jest.fn();
+
+      render(
+        <RegisterForm setUser={mockSetstate} userRegister={mockFullState} />
+      );
+
+      const form = screen.getByTestId("formRegister");
+      form.onsubmit = mockSubmit;
+      const fileInput = screen.getByLabelText(fileInputText);
+      const button = screen.getByRole("button", {
+        name: "Register",
+      });
+
+      await userEvent.upload(fileInput, mockedFile);
+      fireEvent.submit(button);
+
+      await waitFor(() => {
+        expect(mockSubmit).toHaveBeenCalled();
+      });
     });
   });
 
@@ -123,9 +160,11 @@ describe("Given a registerForm component", () => {
         };
         const fileInputText = "Image";
         const userFile = new File([""], "");
+
         render(
           <RegisterForm setUser={mockSetstate} userRegister={mockEmptyState} />
         );
+
         const fileInput = screen.getByLabelText(fileInputText);
         userEvent.upload(fileInput, userFile);
 
