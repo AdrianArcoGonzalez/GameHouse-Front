@@ -146,7 +146,7 @@ const RegisterForm = ({
         placeholder="********"
       />
 
-      <button type="submit" disabled={hasEmptyFields}>
+      <button className="form-button" type="submit" disabled={hasEmptyFields}>
         Register
       </button>
     </RegisterFormStyled>
