@@ -11,19 +11,20 @@ export interface FormState {
   username: string;
   password: string;
   repeatPassword: string;
+  image: string;
 }
 
+export const initialState: FormState = {
+  name: "",
+  email: "",
+  birthdate: "",
+  location: "",
+  username: "",
+  password: "",
+  repeatPassword: "",
+  image: "",
+};
 const Register = (): JSX.Element => {
-  const initialState: FormState = {
-    name: "",
-    email: "",
-    birthdate: "",
-    location: "",
-    username: "",
-    password: "",
-    repeatPassword: "",
-  };
-
   const [user, setUser] = useState(initialState);
 
   return (
