@@ -21,6 +21,10 @@ const RegisterForm = ({
   };
 
   const onChangeFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUser({
+      ...userRegister,
+      [event.target.name]: event.target.value,
+    });
     formData.append("image", event.target.files![0]);
   };
 
@@ -29,6 +33,16 @@ const RegisterForm = ({
     formData.append("user", JSON.stringify(userRegister));
     setUser(initialState);
   };
+
+  const hasEmptyFields =
+    userRegister.name === initialState.name ||
+    userRegister.email === initialState.email ||
+    userRegister.birthdate === initialState.birthdate ||
+    userRegister.location === initialState.location ||
+    userRegister.image === initialState.image ||
+    userRegister.username === initialState.username ||
+    userRegister.password === initialState.password ||
+    userRegister.password !== userRegister.repeatPassword;
 
   return (
     <RegisterFormStyled noValidate autoComplete="off" onSubmit={handleSubmit}>
@@ -126,7 +140,9 @@ const RegisterForm = ({
           placeholder="********"
         />
       </label>
-      <button type="submit">Register</button>
+      <button type="submit" disabled={hasEmptyFields}>
+        Register
+      </button>
     </RegisterFormStyled>
   );
 };
