@@ -108,5 +108,31 @@ describe("Given a registerForm component", () => {
         expect(mockSetstate).toHaveBeenCalled();
       });
     });
+
+    describe("When the user select one file", () => {
+      test("Then it should call the setState function", async () => {
+        const mockEmptyState = {
+          name: "",
+          birthdate: "",
+          email: "",
+          location: "",
+          image: "",
+          username: "",
+          password: "",
+          repeatPassword: "",
+        };
+        const fileInputText = "Image";
+        const userFile = new File([""], "");
+        render(
+          <RegisterForm setUser={mockSetstate} userRegister={mockEmptyState} />
+        );
+        const fileInput = screen.getByLabelText(fileInputText);
+        userEvent.upload(fileInput, userFile);
+
+        await waitFor(() => {
+          expect(mockSetstate).toHaveBeenCalled();
+        });
+      });
+    });
   });
 });
