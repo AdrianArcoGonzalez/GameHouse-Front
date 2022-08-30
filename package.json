@@ -48,7 +48,7 @@
     ]
   },
   "devDependencies": {
-    "husky": "^8.0.0",
-    "@testing-library/user-event": "^14.4.3"
+    "@testing-library/user-event": "^14.4.3",
+    "husky": "^8.0.0"
   }
 }
