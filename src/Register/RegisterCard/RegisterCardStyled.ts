@@ -9,7 +9,7 @@ const RegisterCardStyled = styled.div`
   display: flex;
   align-items: flex-start;
   color: white;
-  background-image: url("/images/backgroundCard.svg");
+  background-image: url("/images/backgroundCard.png");
   background-repeat: no-repeat;
   background-size: cover;
   font-family: "Roboto";
