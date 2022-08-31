@@ -1,6 +1,6 @@
 import { SyntheticEvent } from "react";
 import useUsersApi from "../../hooks/useUsersApi";
-import { FormState, initialState } from "../Register";
+import { FormState, initialState } from "../Register/Register";
 import RegisterFormStyled from "./RegisterFormStyled";
 
 interface RegisterFormProps {
@@ -24,11 +24,6 @@ const RegisterForm = ({
 
   const onChangeFile = (event: React.ChangeEvent<HTMLInputElement>) => {
     formData.append("image", event.target.files![0]);
-
-    setUser({
-      ...userRegister,
-      [event.target.id]: event.target.files![0],
-    });
   };
 
   const handleSubmit = async (event: SyntheticEvent) => {

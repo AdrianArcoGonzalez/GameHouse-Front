@@ -1,6 +1,6 @@
 import { useState } from "react";
-import RegisterCard from "./RegisterCard/RegisterCard";
-import RegisterForm from "./RegisterForm/RegisterForm";
+import RegisterCard from "../RegisterCard/RegisterCard";
+import RegisterForm from "../RegisterForm/RegisterForm";
 import RegisterStyled from "./RegisterStyled";
 
 export interface FormState {

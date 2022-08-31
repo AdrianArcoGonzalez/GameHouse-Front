@@ -1,4 +1,4 @@
-import Register from "./Register/Register";
+import Register from "./Register/Register/Register";
 
 const App = (): JSX.Element => {
   return (

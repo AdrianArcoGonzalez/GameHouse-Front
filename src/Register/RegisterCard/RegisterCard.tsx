@@ -1,4 +1,4 @@
-import { FormState } from "../Register";
+import { FormState } from "../Register/Register";
 import RegisterCardStyled from "./RegisterCardStyled";
 
 interface RegisterCardProps {

@@ -2,7 +2,6 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import RegisterForm from "./RegisterForm";
 
-const mockSetstate = jest.fn();
 const mockState = {
   name: "Peter",
   birthdate: "10/12/1995",
@@ -13,6 +12,7 @@ const mockState = {
   password: "123456",
   repeatPassword: "123456",
 };
+const mockSetstate = jest.fn();
 jest.mock("react", () => ({
   ...jest.requireActual("react"),
   useState: () => [mockState, mockSetstate],
@@ -85,7 +85,14 @@ describe("Given a registerForm component", () => {
       expect(button).toBeDisabled();
     });
 
-    test("And when it's submited then it should call the method setState", async () => {
+    test("And when it's submited then it should call the submit method from the form", async () => {
+      const mockuseUserApi = jest.fn();
+
+      jest.mock("../../hooks/useUsersApi", () => ({
+        ...jest.requireActual("../../hooks/useUsersApi"),
+        useUsersApi: () => mockuseUserApi,
+      }));
+
       const mockedFile = new File([""], "");
       const fileInputText = "Image";
       const mockFullState = {
@@ -118,6 +125,36 @@ describe("Given a registerForm component", () => {
         expect(mockSubmit).toHaveBeenCalled();
       });
     });
+    test("And it should call the method setState", async () => {
+      const mockedFile = new File([""], "");
+      const fileInputText = "Image";
+      const mockFullState = {
+        name: "Peter",
+        birthdate: "10/12/1995",
+        email: "peter@gmail.es",
+        location: "New York",
+        image: "",
+        username: "peter123",
+        password: "123456",
+        repeatPassword: "123456",
+      };
+
+      render(
+        <RegisterForm setUser={mockSetstate} userRegister={mockFullState} />
+      );
+
+      const fileInput = screen.getByLabelText(fileInputText);
+      const button = screen.getByRole("button", {
+        name: "Register",
+      });
+
+      await userEvent.upload(fileInput, mockedFile);
+      fireEvent.submit(button);
+
+      await waitFor(() => {
+        expect(mockSetstate).toHaveBeenCalled();
+      });
+    });
   });
 
   describe("When the user write on an input", () => {
@@ -133,44 +170,16 @@ describe("Given a registerForm component", () => {
         repeatPassword: "",
       };
       const userWrite = "hi";
-      const repeatPassword = "Repeat Password";
+      const name = "Name";
 
       render(
         <RegisterForm setUser={mockSetstate} userRegister={mockEmptyState} />
       );
-      const input = screen.getByLabelText(repeatPassword);
+      const input = screen.getByLabelText(name);
       userEvent.type(input, userWrite);
 
       await waitFor(() => {
         expect(mockSetstate).toHaveBeenCalled();
-      });
-    });
-
-    describe("When the user select one file", () => {
-      test("Then it should call the setState function", async () => {
-        const mockEmptyState = {
-          name: "",
-          birthdate: "",
-          email: "",
-          location: "",
-          image: "",
-          username: "",
-          password: "",
-          repeatPassword: "",
-        };
-        const fileInputText = "Image";
-        const userFile = new File([""], "");
-
-        render(
-          <RegisterForm setUser={mockSetstate} userRegister={mockEmptyState} />
-        );
-
-        const fileInput = screen.getByLabelText(fileInputText);
-        userEvent.upload(fileInput, userFile);
-
-        await waitFor(() => {
-          expect(mockSetstate).toHaveBeenCalled();
-        });
       });
     });
   });
