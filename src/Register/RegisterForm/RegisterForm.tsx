@@ -7,14 +7,13 @@ interface RegisterFormProps {
   userRegister: FormState;
   setUser: (user: FormState) => void;
 }
+const formData = new FormData();
 
 const RegisterForm = ({
   userRegister,
   setUser,
 }: RegisterFormProps): JSX.Element => {
   const { registerUser } = useUsersApi();
-
-  const formData = new FormData();
 
   const onChangeField = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUser({
@@ -24,11 +23,12 @@ const RegisterForm = ({
   };
 
   const onChangeFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+    formData.append("image", event.target.files![0]);
+
     setUser({
       ...userRegister,
-      [event.target.id]: event.target.value,
+      [event.target.id]: event.target.files![0],
     });
-    formData.append("image", event.target.files![0]);
   };
 
   const handleSubmit = async (event: SyntheticEvent) => {
@@ -45,8 +45,7 @@ const RegisterForm = ({
     userRegister.location === initialState.location ||
     userRegister.username === initialState.username ||
     userRegister.password === initialState.password ||
-    userRegister.repeatPassword === initialState.repeatPassword ||
-    userRegister.image === initialState.image;
+    userRegister.repeatPassword === initialState.repeatPassword;
 
   return (
     <RegisterFormStyled
