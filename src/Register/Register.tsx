@@ -24,6 +24,7 @@ export const initialState: FormState = {
   repeatPassword: "",
   image: "",
 };
+
 const Register = (): JSX.Element => {
   const [userRegister, setUser] = useState(initialState);
 
