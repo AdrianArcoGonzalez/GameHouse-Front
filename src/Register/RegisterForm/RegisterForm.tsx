@@ -1,4 +1,5 @@
 import { SyntheticEvent } from "react";
+import useUsersApi from "../../hooks/useUsersApi";
 import { FormState, initialState } from "../Register";
 import RegisterFormStyled from "./RegisterFormStyled";
 
@@ -11,6 +12,8 @@ const RegisterForm = ({
   userRegister,
   setUser,
 }: RegisterFormProps): JSX.Element => {
+  const { registerUser } = useUsersApi();
+
   const formData = new FormData();
 
   const onChangeField = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,10 +31,10 @@ const RegisterForm = ({
     formData.append("image", event.target.files![0]);
   };
 
-  const handleSubmit = (event: SyntheticEvent) => {
-    debugger;
+  const handleSubmit = async (event: SyntheticEvent) => {
     event.preventDefault();
     formData.append("user", JSON.stringify(userRegister));
+    await registerUser(formData);
     setUser(initialState);
   };
 
