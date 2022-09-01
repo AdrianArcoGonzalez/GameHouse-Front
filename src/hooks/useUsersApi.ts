@@ -5,14 +5,16 @@ const useUsersApi = () => {
 
   const registerUser = async (formData: FormData) => {
     try {
-      const response = await axios({
-        method: "post",
-        url: `${backUrl}games/users/register`,
-        data: formData,
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      const response = await axios.post(
+        `${backUrl}games/users/register/`,
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
 
       const data = response;
+
       return data;
     } catch (error) {}
   };

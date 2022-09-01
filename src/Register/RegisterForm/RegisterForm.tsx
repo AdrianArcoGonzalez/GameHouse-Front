@@ -1,20 +1,19 @@
 import { SyntheticEvent } from "react";
 import useUsersApi from "../../hooks/useUsersApi";
-import { FormState, initialState } from "../Register";
+import { FormState, initialState } from "../Register/Register";
 import RegisterFormStyled from "./RegisterFormStyled";
 
 interface RegisterFormProps {
   userRegister: FormState;
   setUser: (user: FormState) => void;
 }
+const formData = new FormData();
 
 const RegisterForm = ({
   userRegister,
   setUser,
 }: RegisterFormProps): JSX.Element => {
   const { registerUser } = useUsersApi();
-
-  const formData = new FormData();
 
   const onChangeField = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUser({
@@ -24,10 +23,6 @@ const RegisterForm = ({
   };
 
   const onChangeFile = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUser({
-      ...userRegister,
-      [event.target.id]: event.target.value,
-    });
     formData.append("image", event.target.files![0]);
   };
 
@@ -45,8 +40,7 @@ const RegisterForm = ({
     userRegister.location === initialState.location ||
     userRegister.username === initialState.username ||
     userRegister.password === initialState.password ||
-    userRegister.repeatPassword === initialState.repeatPassword ||
-    userRegister.image === initialState.image;
+    userRegister.repeatPassword === initialState.repeatPassword;
 
   return (
     <RegisterFormStyled

@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
-import { FormState } from "../Register";
+import { FormState } from "../Register/Register";
+
 import RegisterCard from "./RegisterCard";
 
 describe("Given a RegisterCard component", () => {
