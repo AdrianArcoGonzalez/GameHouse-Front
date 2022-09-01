@@ -88,8 +88,8 @@ describe("Given a registerForm component", () => {
     test("And when it's submited then it should call the submit method from the form", async () => {
       const mockuseUserApi = jest.fn();
 
-      jest.mock("../../hooks/useUsersApi", () => ({
-        ...jest.requireActual("../../hooks/useUsersApi"),
+      jest.mock("../../../hooks/useUsersApi", () => ({
+        ...jest.requireActual("../../../hooks/useUsersApi"),
         useUsersApi: () => mockuseUserApi,
       }));
 

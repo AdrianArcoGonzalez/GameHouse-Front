@@ -1,5 +1,5 @@
 import { renderHook } from "@testing-library/react";
-import { FormState } from "../Register/Register/Register";
+import { FormState } from "../components/Register/Register/Register";
 import useUsersApi from "./useUsersApi";
 
 const fakeUser: FormState = {

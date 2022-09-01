@@ -1,5 +1,5 @@
 import { SyntheticEvent } from "react";
-import useUsersApi from "../../hooks/useUsersApi";
+import useUsersApi from "../../../hooks/useUsersApi";
 import { FormState, initialState } from "../Register/Register";
 import RegisterFormStyled from "./RegisterFormStyled";
 
