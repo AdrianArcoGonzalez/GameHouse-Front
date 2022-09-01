@@ -10,11 +10,15 @@ const Header = (): JSX.Element => {
     <HeaderStyled>
       <h1 className="header__title">GameHouse</h1>
       <nav className="navigation">
-        <div className="burguer-menu" onClick={openCloseMenu}>
+        <div
+          className="burguer-menu"
+          data-testid="burguer"
+          onClick={openCloseMenu}
+        >
           <div className="burguer-menu__line"></div>
         </div>
 
-        {menuVisible ? (
+        {menuVisible && (
           <section className="burguer-menu__menu">
             <ul>
               <li className="burguer-menu__menu--item">Home</li>
@@ -24,8 +28,6 @@ const Header = (): JSX.Element => {
               <li className="burguer-menu__menu--item">Sign Up</li>
             </ul>
           </section>
-        ) : (
-          <></>
         )}
       </nav>
     </HeaderStyled>
