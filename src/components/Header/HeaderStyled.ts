@@ -11,13 +11,20 @@ const HeaderStyled = styled.header`
   padding: 10px;
   justify-content: space-between;
   background-color: rgba(0, 0, 0, 0.4);
+
   .header__title {
     color: #2f78ed;
     margin-left: 5px;
+    @media (min-width: 850px) {
+      margin-left: 40px;
+    }
   }
 
   .burguer-menu {
     margin-right: 8px;
+    @media (min-width: 850px) {
+      margin-right: 40px;
+    }
     &__line {
       background-color: white;
       height: 5px;
