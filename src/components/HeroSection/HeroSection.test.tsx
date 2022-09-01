@@ -12,7 +12,7 @@ describe("Given a HeroSection component", () => {
 
     test("And it should show a especific text", () => {
       const text =
-        "Become a soldier of the GameHouse Army. Make your own reviews and receive feedback from other soldiers.";
+        "Become a soldier of the GameHouse Army. Make your own reviews and receive feedback from other soldiers!";
 
       render(<HeroSection />);
       const paragraph = screen.getByText(text);
