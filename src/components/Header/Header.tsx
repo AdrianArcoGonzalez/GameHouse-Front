@@ -1,31 +1,34 @@
-import { SyntheticEvent, useState } from "react";
-
+import { useState } from "react";
+import HeaderStyled from "./HeaderStyled";
 const Header = (): JSX.Element => {
-  const initialState: boolean = true;
-  const [menuState, setMenuState] = useState(initialState);
+  const [menuVisible, setMenuVisible] = useState(false);
 
-  const openCloseMenu = (event: SyntheticEvent) => {
-    setMenuState(!menuState);
+  const openCloseMenu = () => {
+    setMenuVisible(!menuVisible);
   };
   return (
-    <section className="hero-section">
-      <header className="header">
-        <h1 className="header__title">GameHouse</h1>
-        <nav className="header__menu" onClick={openCloseMenu}>
-          X
-          <ul className={`menu__list${menuState ? "open" : "close"}`}>
-            <li className="menu__list--item">Home</li>
-            <li className="menu__list--item">My collection</li>
-            <li className="menu__list--item">Games</li>
-            <li className="menu__list--item">Sign Up</li>
-            <li className="menu__list--item">Sign in</li>
-          </ul>
-        </nav>
-      </header>
-      <div className="hero-section__sentence-container">
-        <span className="sentence-container--sentence"></span>
-      </div>
-    </section>
+    <HeaderStyled>
+      <h1 className="header__title">GameHouse</h1>
+      <nav className="navigation">
+        <div className="burguer-menu" onClick={openCloseMenu}>
+          <div className="burguer-menu__line"></div>
+        </div>
+
+        {menuVisible ? (
+          <section className="burguer-menu__menu">
+            <ul>
+              <li className="burguer-menu__menu--item">Home</li>
+              <li className="burguer-menu__menu--item">My Collection</li>
+              <li className="burguer-menu__menu--item">Games</li>
+              <li className="burguer-menu__menu--item">Sign In</li>
+              <li className="burguer-menu__menu--item">Sign Up</li>
+            </ul>
+          </section>
+        ) : (
+          <></>
+        )}
+      </nav>
+    </HeaderStyled>
   );
 };
 

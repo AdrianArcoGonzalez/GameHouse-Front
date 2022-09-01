@@ -9,6 +9,8 @@ const RegisterStyled = styled.section`
   justify-content: center;
   width: 90%;
   margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
   flex-direction: column;
   color: white;
 
