@@ -7,10 +7,10 @@ const HeaderStyled = styled.header`
   top: 0;
   font-family: "Roboto";
   width: 100%;
-  height: 40px;
+  height: 50px;
   padding: 10px;
   justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.6);
 
   .header__title {
     color: #2f78ed;
@@ -33,7 +33,7 @@ const HeaderStyled = styled.header`
     }
     &__line::after {
       position: absolute;
-      bottom: 4px;
+      bottom: 10px;
       content: "";
       background-color: white;
       height: 5px;
@@ -43,7 +43,7 @@ const HeaderStyled = styled.header`
     &__line::before {
       content: "";
       position: absolute;
-      top: 5px;
+      top: 10px;
       background-color: white;
       height: 5px;
       width: 30px;
@@ -57,6 +57,7 @@ const HeaderStyled = styled.header`
       right: 30px;
       color: white;
       background-color: #141215;
+
       &--item {
         text-align: center;
         border: 1px solid white;
