@@ -71,7 +71,10 @@ const HeaderStyled = styled.header`
       }
     }
   }
-
+  .menu__link {
+    text-decoration: none;
+    color: inherit;
+  }
   @keyframes move-in {
     from {
       transform: translateX(50px);
