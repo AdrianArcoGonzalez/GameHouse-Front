@@ -1,13 +1,8 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import Header from "./Header";
-
-const mockLocation = jest.fn();
-jest.mock("react-router-dom", () => ({
-  ...jest.requireActual("react-router-dom"),
-  useLocation: () => mockLocation,
-}));
 
 describe("Given a Header component", () => {
   describe("When it's instantiated", () => {
@@ -47,6 +42,22 @@ describe("Given a Header component", () => {
       const navigation = screen.getByRole("navigation");
 
       expect(navigation).toBeInTheDocument();
+    });
+    test("And if the user click on the menu then it should call the setState", async () => {
+      const id = "burguer";
+
+      const usestate = jest.spyOn(React, "useState");
+      render(
+        <BrowserRouter>
+          <Header />
+        </BrowserRouter>
+      );
+      const burguer = screen.getByTestId(id);
+      await userEvent.click(burguer);
+
+      await waitFor(() => {
+        expect(usestate).toHaveBeenCalled();
+      });
     });
   });
 });

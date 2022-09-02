@@ -5,6 +5,7 @@ const Header = (): JSX.Element => {
   const [menuVisible, setMenuVisible] = useState(false);
 
   const openCloseMenu = () => {
+    debugger;
     setMenuVisible(!menuVisible);
   };
   return (
