@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Header from "../Header/Header";
 import HeroSection from "../HeroSection/HeroSection";
 import RegisterPage from "../../pages/RegisterPage";
+
 const App = (): JSX.Element => {
   return (
     <>

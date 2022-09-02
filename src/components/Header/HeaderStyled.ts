@@ -63,6 +63,12 @@ const HeaderStyled = styled.header`
         border: 1px solid white;
         padding: 15px;
       }
+      &--item:hover {
+        background-color: #504e52;
+      }
+      &--item:active {
+        background-color: #504e52;
+      }
     }
   }
 
