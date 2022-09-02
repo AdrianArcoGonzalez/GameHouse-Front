@@ -1,13 +1,15 @@
 import HeroSectionStyled from "./HeroSectionStyled";
+interface HeroSectionProps {
+  text: string;
+  srcImage: string;
+}
 
-const HeroSection = (): JSX.Element => {
+const HeroSection = ({ text, srcImage }: HeroSectionProps): JSX.Element => {
   return (
     <HeroSectionStyled data-testid="section">
+      <img src={srcImage} alt="backgroundImage" className="hero__image" />
       <div className="hero-container">
-        <p className="hero-container__sentence">
-          Become a soldier of the GameHouse Army. Make your own reviews and
-          receive feedback from other soldiers!
-        </p>
+        <p className="hero-container__sentence">{text}</p>
       </div>
     </HeroSectionStyled>
   );

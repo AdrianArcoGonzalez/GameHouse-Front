@@ -5,16 +5,23 @@ const HeroSectionStyled = styled.section`
   font-size: 1.5rem;
   width: 100%;
   height: 250px;
-  background-image: url("./images/form-background.png");
-  background-repeat: no-repeat;
-  background-size: cover;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   @media (min-width: 850px) {
     height: 400px;
   }
+
+  .hero__image {
+    object-position: top;
+    position: relative;
+    max-width: 100%;
+    width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
   .hero-container {
+    position: absolute;
     padding: 10px;
     width: 200px;
     margin-left: 10px;

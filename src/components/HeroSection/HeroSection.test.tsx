@@ -4,7 +4,7 @@ import HeroSection from "./HeroSection";
 describe("Given a HeroSection component", () => {
   describe("When it instantiated", () => {
     test("Then it should show a section element", () => {
-      render(<HeroSection />);
+      render(<HeroSection text={""} srcImage={""} />);
       const section = screen.getByTestId("section");
 
       expect(section).toBeInTheDocument();
@@ -14,7 +14,7 @@ describe("Given a HeroSection component", () => {
       const text =
         "Become a soldier of the GameHouse Army. Make your own reviews and receive feedback from other soldiers!";
 
-      render(<HeroSection />);
+      render(<HeroSection text={text} srcImage={""} />);
       const paragraph = screen.getByText(text);
 
       expect(paragraph).toBeInTheDocument();
