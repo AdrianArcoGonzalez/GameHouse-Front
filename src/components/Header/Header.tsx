@@ -28,17 +28,17 @@ const Header = (): JSX.Element => {
                 </NavLink>
               </li>
               <li className="burguer-menu__menu--item">
-                <NavLink to="/home" className="menu__link">
+                <NavLink to="/mycollection" className="menu__link">
                   My Collection
                 </NavLink>
               </li>
               <li className="burguer-menu__menu--item">
-                <NavLink to="/home" className="menu__link">
+                <NavLink to="/games" className="menu__link">
                   Games
                 </NavLink>
               </li>
               <li className="burguer-menu__menu--item">
-                <NavLink to="/home" className="menu__link">
+                <NavLink to="/login" className="menu__link">
                   Sign In
                 </NavLink>
               </li>

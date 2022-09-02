@@ -26,17 +26,18 @@ const Footer = (): JSX.Element => {
           <FontAwesomeIcon icon={faMobileScreen} />
         </span>
       </div>
+
       <div className="footer__links">
         <NavLink to="/home" className="footer__link">
           Home
         </NavLink>
-        <NavLink to="/home" className="footer__link">
+        <NavLink to="/mycollection" className="footer__link">
           My Collection
         </NavLink>
-        <NavLink to="/home" className="footer__link">
+        <NavLink to="/games" className="footer__link">
           Games
         </NavLink>
-        <NavLink to="/home" className="footer__link">
+        <NavLink to="/login" className="footer__link">
           Sign In
         </NavLink>
         <NavLink to="/register" className="footer__link">

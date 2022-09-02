@@ -11,6 +11,7 @@ const HeaderStyled = styled.header`
   padding: 10px;
   justify-content: space-between;
   background-color: rgba(0, 0, 0, 0.6);
+  z-index: 10;
 
   .header__title {
     color: #2f78ed;
