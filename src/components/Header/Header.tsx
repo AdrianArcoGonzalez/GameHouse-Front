@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import HeaderStyled from "./HeaderStyled";
 const Header = (): JSX.Element => {
   const [menuVisible, setMenuVisible] = useState(false);
@@ -21,11 +22,31 @@ const Header = (): JSX.Element => {
         {menuVisible && (
           <section className="burguer-menu__menu">
             <ul>
-              <li className="burguer-menu__menu--item">Home</li>
-              <li className="burguer-menu__menu--item">My Collection</li>
-              <li className="burguer-menu__menu--item">Games</li>
-              <li className="burguer-menu__menu--item">Sign In</li>
-              <li className="burguer-menu__menu--item">Sign Up</li>
+              <li className="burguer-menu__menu--item">
+                <NavLink to="/home" className="menu__link">
+                  Home
+                </NavLink>
+              </li>
+              <li className="burguer-menu__menu--item">
+                <NavLink to="/mycollection" className="menu__link">
+                  My Collection
+                </NavLink>
+              </li>
+              <li className="burguer-menu__menu--item">
+                <NavLink to="/games" className="menu__link">
+                  Games
+                </NavLink>
+              </li>
+              <li className="burguer-menu__menu--item">
+                <NavLink to="/login" className="menu__link">
+                  Sign In
+                </NavLink>
+              </li>
+              <li className="burguer-menu__menu--item">
+                <NavLink to="/register" className="menu__link">
+                  Sign Up
+                </NavLink>
+              </li>
             </ul>
           </section>
         )}

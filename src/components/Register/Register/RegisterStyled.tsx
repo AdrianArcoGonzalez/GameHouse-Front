@@ -16,7 +16,7 @@ const RegisterStyled = styled.section`
 
   .register-title {
     border-bottom: 2px white solid;
-    width: 80%;
+    width: 85%;
     text-align: center;
     padding: 10px;
   }

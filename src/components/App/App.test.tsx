@@ -10,11 +10,11 @@ describe("Given an App component", () => {
           <App />
         </BrowserRouter>
       );
-      const heading = screen.getByRole("heading", {
+      const heading = screen.getAllByRole("heading", {
         name: "GameHouse",
       });
 
-      expect(heading).toBeInTheDocument();
+      expect(heading[0]).toBeInTheDocument();
     });
 
     test("And it should show a text", () => {
