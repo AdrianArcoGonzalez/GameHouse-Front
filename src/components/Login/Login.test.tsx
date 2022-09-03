@@ -1,7 +1,8 @@
-import { render, screen, cleanup } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
+import { Wrapper } from "../../utils/Wrapper";
 import Login from "./Login";
 
 describe("Given a Login component", () => {
@@ -10,7 +11,8 @@ describe("Given a Login component", () => {
       render(
         <BrowserRouter>
           <Login />
-        </BrowserRouter>
+        </BrowserRouter>,
+        { wrapper: Wrapper }
       );
       const header = screen.getByRole("heading");
 
@@ -23,7 +25,8 @@ describe("Given a Login component", () => {
       render(
         <BrowserRouter>
           <Login />
-        </BrowserRouter>
+        </BrowserRouter>,
+        { wrapper: Wrapper }
       );
       const usernameInput = screen.getByLabelText(labeUser);
 
@@ -36,7 +39,8 @@ describe("Given a Login component", () => {
       render(
         <BrowserRouter>
           <Login />
-        </BrowserRouter>
+        </BrowserRouter>,
+        { wrapper: Wrapper }
       );
       const passwordInput = screen.getByLabelText(labelPassword);
 
@@ -49,7 +53,8 @@ describe("Given a Login component", () => {
       render(
         <BrowserRouter>
           <Login />
-        </BrowserRouter>
+        </BrowserRouter>,
+        { wrapper: Wrapper }
       );
       const buttonLogin = screen.getByRole("button");
 
@@ -62,7 +67,8 @@ describe("Given a Login component", () => {
       render(
         <BrowserRouter>
           <Login />
-        </BrowserRouter>
+        </BrowserRouter>,
+        { wrapper: Wrapper }
       );
       const textOnScreen = screen.getByText(text);
 
@@ -76,7 +82,8 @@ describe("Given a Login component", () => {
       render(
         <BrowserRouter>
           <Login />
-        </BrowserRouter>
+        </BrowserRouter>,
+        { wrapper: Wrapper }
       );
       const usernameInput = screen.getByLabelText(labelUsername);
       await userEvent.type(usernameInput, userWrite);
@@ -94,7 +101,8 @@ describe("Given a Login component", () => {
       render(
         <BrowserRouter>
           <Login />
-        </BrowserRouter>
+        </BrowserRouter>,
+        { wrapper: Wrapper }
       );
 
       const inputUsername = screen.getByLabelText(usernameLabel);

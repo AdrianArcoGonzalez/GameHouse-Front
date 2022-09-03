@@ -1,7 +1,37 @@
 import { renderHook } from "@testing-library/react";
 import { FormState } from "../components/Register/Register/Register";
-import { Wrapper } from "../utils/Wrapper";
+import { store } from "../store/store";
 import useUsersApi from "./useUsersApi";
+import { Provider } from "react-redux";
+
+const mockDispatch = jest.fn();
+jest.mock("react-redux", () => ({
+  ...jest.requireActual("react-redux"),
+  useDispatch: () => mockDispatch,
+}));
+
+// const mockLocalStorage = (() => {
+//   return {
+//     getItem(key: string) {
+//       jest.fn();
+//     },
+//     setItem()=mockSetItem
+//       const  = jest.fn();
+
+//   };
+// })();
+
+// Object.defineProperty(window, "localStorage", {
+//   value: mockLocalStorage,
+// });
+
+interface WrapperProps {
+  children: JSX.Element | JSX.Element[];
+}
+
+const Wrapper = ({ children }: WrapperProps): JSX.Element => {
+  return <Provider store={store}>{children}</Provider>;
+};
 
 describe("Given a useUserApi custom hook", () => {
   describe("When it's invoked with his method registerUser and a formdata item with the correct data", () => {
@@ -41,6 +71,27 @@ describe("Given a useUserApi custom hook", () => {
   });
 
   describe("When it's invoked with a correct userLogin data", () => {
-    test("Then it should response with a 200 and a token", () => {});
+    test("Then it should call the dispatch the method set of local storage", async () => {
+      const mockToken = {
+        username: "admin",
+        id: "imTheId",
+        token: "imTheToken",
+      };
+      jest.mock("../utils/auth", () => () => mockToken);
+      jest.spyOn(Object.getPrototypeOf(window.localStorage), "setItem");
+      Object.setPrototypeOf(window.localStorage.setItem, jest.fn());
+
+      const userLogin = { username: "admin", password: "admin" };
+
+      const {
+        result: {
+          current: { loginUser },
+        },
+      } = renderHook(useUsersApi, { wrapper: Wrapper });
+      await loginUser(userLogin);
+
+      expect(mockDispatch).toHaveBeenCalled();
+      expect(window.localStorage.setItem).toHaveBeenCalled();
+    });
   });
 });
