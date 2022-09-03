@@ -82,7 +82,7 @@ Array [
       </div>
       <form
         autoComplete="off"
-        className="sc-dkzDqf iAGa-Di"
+        className="sc-dkzDqf ljxxHU"
         data-testid="formRegister"
         noValidate={true}
         onSubmit={[Function]}
