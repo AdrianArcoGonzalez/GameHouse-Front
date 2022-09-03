@@ -3,11 +3,8 @@ const url = process.env.REACT_APP_URL_BACK;
 
 export const handlers = [
   rest.post(`${url}games/users/login`, async (req, res, ctx) => {
-    const { password } = await req.json();
-    const status = password === "" ? 400 : 200;
-
     return res(
-      ctx.status(status),
+      ctx.status(200),
       ctx.json({
         user: {
           token:

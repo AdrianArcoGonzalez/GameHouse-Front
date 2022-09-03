@@ -8,11 +8,14 @@ const LoginStyled = styled.form`
   color: white;
   background-color: #1e1c1f;
   font-family: "Roboto";
-  width: 80%;
+  width: 90%;
   border-radius: 20px;
   margin: 0 auto;
   padding: 30px;
-
+  @media (min-width: 850px) {
+    margin-top: 50px;
+    margin-bottom: 40px;
+  }
   .login__title {
     border-bottom: 2px white solid;
     width: 80%;

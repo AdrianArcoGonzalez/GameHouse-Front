@@ -3,7 +3,7 @@
 exports[`Given a Register Page component When it's instantiated Then it should render the Register page 1`] = `
 Array [
   <section
-    className="sc-bczRLJ DXVGo"
+    className="sc-bczRLJ ggGwXn"
     data-testid="section"
   >
     <img
