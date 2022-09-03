@@ -30,10 +30,11 @@ const useUsersApi = () => {
       );
 
       const { data } = response;
-      const userInfo = decodeToken(data.user.token);
+      const user = decodeToken(data.user.token);
+      const loginUser = { ...user, isLogged: true };
 
-      dispatch(logInUserActionCreator(userInfo));
-      localStorage.setItem("token", userInfo.token);
+      dispatch(logInUserActionCreator(loginUser));
+      localStorage.setItem("token", user.token);
     } catch (error) {}
   };
   return { registerUser, loginUser };

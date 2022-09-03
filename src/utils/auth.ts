@@ -3,14 +3,14 @@ import jwt from "jwt-decode";
 const decodeToken = (token: string) => {
   const payloadToken: {
     id: string;
-    userName: string;
+    username: string;
     iat: number;
   } = jwt(token);
 
   const user = {
     token: token,
     id: payloadToken.id,
-    userName: payloadToken.userName,
+    username: payloadToken.username,
   };
   return user;
 };

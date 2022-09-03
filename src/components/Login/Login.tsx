@@ -41,6 +41,7 @@ const Login = (): JSX.Element => {
       </label>
       <input
         type="text"
+        value={user.username}
         id="username"
         placeholder="Username"
         className="form__input-element"
@@ -52,6 +53,7 @@ const Login = (): JSX.Element => {
       </label>
       <input
         id="password"
+        value={user.password}
         type="password"
         placeholder="*******"
         className="form__input-element"

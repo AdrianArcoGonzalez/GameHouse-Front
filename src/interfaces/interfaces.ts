@@ -5,7 +5,7 @@ export interface LoginUser {
 
 export interface User {
   username: string;
+  id: string;
   token: string;
   isLogged: boolean;
-  id: string;
 }

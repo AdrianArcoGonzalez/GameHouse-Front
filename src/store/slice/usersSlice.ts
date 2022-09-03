@@ -1,7 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { User } from "../../interfaces/interfaces";
 
-const initialStateUser: User = {
+interface InitialStateUser {
+  id: string;
+  username: string;
+  token: string;
+  isLogged: boolean;
+}
+const initialStateUser: InitialStateUser = {
   id: "",
   username: "",
   token: "",
