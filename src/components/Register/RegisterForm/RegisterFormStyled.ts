@@ -43,6 +43,7 @@ const RegisterFormStyled = styled.form`
     padding: 5px;
     margin-top: 10px;
     border: 1px solid white;
+    cursor: pointer;
   }
   .form-button:hover {
     background-color: #002d75;

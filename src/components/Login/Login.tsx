@@ -1,18 +1,36 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import LoginStyled from "./LoginStyled";
 
 const Login = (): JSX.Element => {
+  const initialState = {
+    username: "",
+    password: "",
+  };
+  const [user, setUser] = useState(initialState);
+
+  const onChangeField = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUser({
+      ...user,
+      [event.target.id]: event.target.value,
+    });
+  };
+  const hasEmptyFields =
+    user.username === initialState.username ||
+    user.password === initialState.password;
+
   return (
     <LoginStyled noValidate autoComplete="off">
       <h2 className="login__title">Sign In</h2>
       <label htmlFor="username" className="form__input-container">
-        Name
+        Username
       </label>
       <input
         type="text"
         id="username"
         placeholder="Username"
         className="form__input-element"
+        onChange={onChangeField}
       />
 
       <label htmlFor="password" className="form__input-container">
@@ -23,8 +41,9 @@ const Login = (): JSX.Element => {
         type="password"
         placeholder="*******"
         className="form__input-element"
+        onChange={onChangeField}
       />
-      <button type="submit" className="form-button">
+      <button type="submit" className="form-button" disabled={hasEmptyFields}>
         Sign in
       </button>
 

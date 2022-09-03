@@ -22,7 +22,7 @@ const LoginStyled = styled.form`
   }
   .form {
     &__input-container {
-      padding: 10px;
+      padding: 15px;
     }
     &__input-element {
       font-family: inherit;
@@ -37,20 +37,22 @@ const LoginStyled = styled.form`
       background-color: #2f78ed;
       color: white;
       padding: 5px;
-      margin-top: 10px;
       border: 1px solid white;
-      margin-top: 20px;
+      margin-top: 30px;
+      cursor: pointer;
+    }
+    &-button:hover {
+      background-color: #002d75;
+      font-weight: bold;
     }
     &__info {
-      padding: 10px;
+      padding: 30px;
     }
   }
   .info__link {
     text-decoration: none;
     color: white;
     font-weight: bold;
-  }
-  .info__link:hover {
     cursor: pointer;
   }
 `;
