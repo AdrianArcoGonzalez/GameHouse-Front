@@ -86,8 +86,6 @@ describe("Given a Header component", () => {
 
     test("And it should show a logout button if it's logged in", async () => {
       const textButton = "Logout";
-      jest.spyOn(Object.getPrototypeOf(window.localStorage), "setItem");
-      Object.setPrototypeOf(window.localStorage.setItem, jest.fn());
 
       render(
         <BrowserRouter>
