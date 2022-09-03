@@ -12,7 +12,7 @@ const FooterStyled = styled.footer`
   gap: 20px;
   @media (min-width: 850px) {
     flex-direction: row;
-    gap: 50px;
+    gap: 10px;
   }
   .footer {
     &__title {

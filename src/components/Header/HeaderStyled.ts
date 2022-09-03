@@ -22,9 +22,15 @@ const HeaderStyled = styled.header`
   }
 
   .burguer-menu {
-    margin-right: 8px;
-    @media (min-width: 850px) {
-      margin-right: 40px;
+    &__button {
+      width: 50px;
+      height: 30px;
+      background-color: transparent;
+      border: 0;
+      cursor: pointer;
+      @media (min-width: 850px) {
+        margin-right: 30px;
+      }
     }
     &__line {
       background-color: white;
@@ -35,27 +41,36 @@ const HeaderStyled = styled.header`
     &__line::after {
       position: absolute;
       bottom: 10px;
+      right: 23px;
       content: "";
+
       background-color: white;
       height: 5px;
       width: 30px;
       border-radius: 10px;
+      @media (min-width: 850px) {
+        margin-right: 30px;
+      }
     }
     &__line::before {
       content: "";
       position: absolute;
       top: 10px;
+      right: 23px;
       background-color: white;
       height: 5px;
       width: 30px;
       border-radius: 10px;
+      @media (min-width: 850px) {
+        margin-right: 30px;
+      }
     }
     &__menu {
       animation-name: move-in;
       animation-duration: 0.5s;
       position: absolute;
       top: 45px;
-      right: 30px;
+      right: 40px;
       color: white;
       background-color: #141215;
 
@@ -63,9 +78,11 @@ const HeaderStyled = styled.header`
         text-align: center;
         border: 1px solid white;
         padding: 15px;
+        cursor: pointer;
       }
       &--item:hover {
         background-color: #504e52;
+        font-weight: bold;
       }
       &--item:active {
         background-color: #504e52;

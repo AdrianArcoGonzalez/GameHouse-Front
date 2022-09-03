@@ -5,21 +5,17 @@ const Header = (): JSX.Element => {
   const [menuVisible, setMenuVisible] = useState(false);
 
   const openCloseMenu = () => {
-    debugger;
     setMenuVisible(!menuVisible);
   };
   return (
     <HeaderStyled>
       <h1 className="header__title">GameHouse</h1>
       <nav className="navigation">
-        <div
-          className="burguer-menu"
-          data-testid="burguer"
-          onClick={openCloseMenu}
-        >
-          <div className="burguer-menu__line"></div>
-        </div>
-
+        <button className="burguer-menu__button" onClick={openCloseMenu}>
+          <div className="burguer-menu" data-testid="burguer">
+            <div className="burguer-menu__line"></div>
+          </div>
+        </button>
         {menuVisible && (
           <section className="burguer-menu__menu">
             <ul>
