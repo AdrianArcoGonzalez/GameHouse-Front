@@ -1,5 +1,6 @@
 import axios from "axios";
 import { LoginUser } from "../interfaces/interfaces";
+import decodeToken from "../utils/auth";
 
 const useUsersApi = () => {
   const backUrl = process.env.REACT_APP_URL_BACK;
@@ -18,11 +19,17 @@ const useUsersApi = () => {
     } catch (error) {}
   };
 
-  const loginUser = async (user: LoginUser) => {
+  const loginUser = async (userData: LoginUser) => {
     try {
-      const response = await axios.post(`${backUrl}games/users/login`, user);
+      const response = await axios.post(
+        `${backUrl}games/users/login`,
+        userData
+      );
 
-      return response;
+      const { data } = response as any;
+      const userInfo = decodeToken(data.user.token);
+
+      localStorage.setItem("token", userInfo.token);
     } catch (error) {}
   };
   return { registerUser, loginUser };
