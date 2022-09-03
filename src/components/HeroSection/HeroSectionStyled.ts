@@ -19,6 +19,7 @@ const HeroSectionStyled = styled.section`
     width: 100%;
     max-height: 100%;
     object-fit: cover;
+    object-position: 0%;
   }
   .hero-container {
     position: absolute;

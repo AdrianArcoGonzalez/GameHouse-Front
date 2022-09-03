@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Header from "../Header/Header";
 import RegisterPage from "../../pages/RegisterPage";
 import Footer from "../Footer/Footer";
-import Login from "../Login/Login";
+import LoginPage from "../../pages/LoginPage";
 
 const App = (): JSX.Element => {
   return (
@@ -13,11 +13,10 @@ const App = (): JSX.Element => {
         <Route path="/" element={<Navigate to="/register" />} />
         <Route path="/home" element={<></>} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<></>} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/mycollection" element={<></>} />
         <Route path="/games" element={<></>} />
       </Routes>
-      <Login />
       <Footer />
     </>
   );
