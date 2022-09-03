@@ -1,10 +1,13 @@
 import axios from "axios";
+import { useDispatch } from "react-redux";
 import { LoginUser } from "../interfaces/interfaces";
+import { logInUserActionCreator } from "../store/slice/usersSlice";
 import decodeToken from "../utils/auth";
 
 const useUsersApi = () => {
   const backUrl = process.env.REACT_APP_URL_BACK;
 
+  const dispatch = useDispatch();
   const registerUser = async (formData: FormData) => {
     try {
       const response = await axios.post(
@@ -26,9 +29,10 @@ const useUsersApi = () => {
         userData
       );
 
-      const { data } = response as any;
+      const { data } = response;
       const userInfo = decodeToken(data.user.token);
 
+      dispatch(logInUserActionCreator(userInfo));
       localStorage.setItem("token", userInfo.token);
     } catch (error) {}
   };

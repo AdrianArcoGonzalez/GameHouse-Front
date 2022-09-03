@@ -1,5 +1,6 @@
 import { renderHook } from "@testing-library/react";
 import { FormState } from "../components/Register/Register/Register";
+import { Wrapper } from "../utils/Wrapper";
 import useUsersApi from "./useUsersApi";
 
 describe("Given a useUserApi custom hook", () => {
@@ -30,7 +31,7 @@ describe("Given a useUserApi custom hook", () => {
         result: {
           current: { registerUser },
         },
-      } = renderHook(useUsersApi);
+      } = renderHook(useUsersApi, { wrapper: Wrapper });
 
       const returnRegister = await registerUser(formdataTest);
 

@@ -1,5 +1,6 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { Wrapper } from "../../../utils/Wrapper";
 import RegisterForm from "./RegisterForm";
 
 const mockState = {
@@ -32,7 +33,9 @@ describe("Given a registerForm component", () => {
         "Repeat Password",
       ];
 
-      render(<RegisterForm setUser={mockSetstate} userRegister={mockState} />);
+      render(<RegisterForm setUser={mockSetstate} userRegister={mockState} />, {
+        wrapper: Wrapper,
+      });
       const fieldName = screen.getByLabelText(inputs[0]);
       const fieldEmail = screen.getByLabelText(inputs[1]);
       const fieldBirthday = screen.getByLabelText(inputs[2]);
@@ -55,7 +58,9 @@ describe("Given a registerForm component", () => {
     test("And it should have a button with text content submit", () => {
       const buttonText = "Register";
 
-      render(<RegisterForm setUser={mockSetstate} userRegister={mockState} />);
+      render(<RegisterForm setUser={mockSetstate} userRegister={mockState} />, {
+        wrapper: Wrapper,
+      });
       const button = screen.getByRole("button");
 
       expect(button).toHaveTextContent(buttonText);
@@ -78,7 +83,8 @@ describe("Given a registerForm component", () => {
         <RegisterForm
           setUser={mockSetstate}
           userRegister={mockAlmostEmptyState}
-        />
+        />,
+        { wrapper: Wrapper }
       );
       const button = screen.getByRole("button");
 
@@ -108,7 +114,8 @@ describe("Given a registerForm component", () => {
       const mockSubmit = jest.fn();
 
       render(
-        <RegisterForm setUser={mockSetstate} userRegister={mockFullState} />
+        <RegisterForm setUser={mockSetstate} userRegister={mockFullState} />,
+        { wrapper: Wrapper }
       );
 
       const form = screen.getByTestId("formRegister");
@@ -140,7 +147,8 @@ describe("Given a registerForm component", () => {
       };
 
       render(
-        <RegisterForm setUser={mockSetstate} userRegister={mockFullState} />
+        <RegisterForm setUser={mockSetstate} userRegister={mockFullState} />,
+        { wrapper: Wrapper }
       );
 
       const fileInput = screen.getByLabelText(fileInputText);
@@ -173,7 +181,8 @@ describe("Given a registerForm component", () => {
       const name = "Name";
 
       render(
-        <RegisterForm setUser={mockSetstate} userRegister={mockEmptyState} />
+        <RegisterForm setUser={mockSetstate} userRegister={mockEmptyState} />,
+        { wrapper: Wrapper }
       );
       const input = screen.getByLabelText(name);
       userEvent.type(input, userWrite);

@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
+import { Wrapper } from "../../utils/Wrapper";
 import App from "./App";
 
 describe("Given an App component", () => {
@@ -8,7 +9,8 @@ describe("Given an App component", () => {
       render(
         <BrowserRouter>
           <App />
-        </BrowserRouter>
+        </BrowserRouter>,
+        { wrapper: Wrapper }
       );
       const heading = screen.getAllByRole("heading", {
         name: "GameHouse",
@@ -21,7 +23,8 @@ describe("Given an App component", () => {
       render(
         <BrowserRouter>
           <App />
-        </BrowserRouter>
+        </BrowserRouter>,
+        { wrapper: Wrapper }
       );
       const paragraph = screen.getByTestId("section");
 
