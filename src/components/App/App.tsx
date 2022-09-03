@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Header from "../Header/Header";
 import RegisterPage from "../../pages/RegisterPage";
 import Footer from "../Footer/Footer";
+import Login from "../Login/Login";
 
 const App = (): JSX.Element => {
   return (
@@ -16,6 +17,7 @@ const App = (): JSX.Element => {
         <Route path="/mycollection" element={<></>} />
         <Route path="/games" element={<></>} />
       </Routes>
+      <Login />
       <Footer />
     </>
   );
