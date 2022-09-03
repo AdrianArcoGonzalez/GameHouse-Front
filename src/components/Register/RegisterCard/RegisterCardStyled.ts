@@ -6,11 +6,12 @@ const RegisterCardStyled = styled.div`
   @media (min-width: 850px) {
     display: flex;
     flex: 2;
+    height: 600px;
     .card {
       flex-direction: column;
       align-items: flex-start;
-      width: 450px;
-      height: 250px;
+      width: 480px;
+      height: 280px;
       background-color: grey;
       border-radius: 20px;
       color: white;
@@ -20,7 +21,9 @@ const RegisterCardStyled = styled.div`
       font-family: "Roboto";
       border: 1px solid white;
       padding: 30px;
-      margin: 0 auto;
+      position: sticky;
+      top: 250px;
+      margin-left: 85px;
       text-transform: uppercase;
 
       &__title {
