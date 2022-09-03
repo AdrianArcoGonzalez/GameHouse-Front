@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { SyntheticEvent, useState } from "react";
 import { NavLink } from "react-router-dom";
 import LoginStyled from "./LoginStyled";
 
@@ -7,6 +7,7 @@ const Login = (): JSX.Element => {
     username: "",
     password: "",
   };
+  debugger;
   const [user, setUser] = useState(initialState);
 
   const onChangeField = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,8 +20,18 @@ const Login = (): JSX.Element => {
     user.username === initialState.username ||
     user.password === initialState.password;
 
+  const handleSubmit = (event: SyntheticEvent) => {
+    event.preventDefault();
+    setUser(initialState);
+  };
+
   return (
-    <LoginStyled noValidate autoComplete="off">
+    <LoginStyled
+      noValidate
+      autoComplete="off"
+      onSubmit={handleSubmit}
+      data-testid="form"
+    >
       <h2 className="login__title">Sign In</h2>
       <label htmlFor="username" className="form__input-container">
         Username
@@ -44,7 +55,7 @@ const Login = (): JSX.Element => {
         onChange={onChangeField}
       />
       <button type="submit" className="form-button" disabled={hasEmptyFields}>
-        Sign in
+        Sign In
       </button>
 
       <span className="form__info">
