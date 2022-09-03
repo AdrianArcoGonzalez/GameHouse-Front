@@ -1,13 +1,15 @@
 import { SyntheticEvent, useState } from "react";
 import { NavLink } from "react-router-dom";
+import useUsersApi from "../../hooks/useUsersApi";
 import LoginStyled from "./LoginStyled";
 
 const Login = (): JSX.Element => {
+  const { loginUser } = useUsersApi();
   const initialState = {
     username: "",
     password: "",
   };
-  debugger;
+
   const [user, setUser] = useState(initialState);
 
   const onChangeField = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,8 +22,9 @@ const Login = (): JSX.Element => {
     user.username === initialState.username ||
     user.password === initialState.password;
 
-  const handleSubmit = (event: SyntheticEvent) => {
+  const handleSubmit = async (event: SyntheticEvent) => {
     event.preventDefault();
+    await loginUser(user);
     setUser(initialState);
   };
 
@@ -38,6 +41,7 @@ const Login = (): JSX.Element => {
       </label>
       <input
         type="text"
+        value={user.username}
         id="username"
         placeholder="Username"
         className="form__input-element"
@@ -49,6 +53,7 @@ const Login = (): JSX.Element => {
       </label>
       <input
         id="password"
+        value={user.password}
         type="password"
         placeholder="*******"
         className="form__input-element"
