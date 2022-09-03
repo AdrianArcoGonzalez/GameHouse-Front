@@ -23,7 +23,11 @@ const Header = (): JSX.Element => {
     <HeaderStyled>
       <h1 className="header__title">GameHouse</h1>
       <nav className="navigation">
-        {isLogged && <button onClick={logout}>Logout</button>}
+        {isLogged && (
+          <button onClick={logout} className="logout-button">
+            Logout
+          </button>
+        )}
         <button className="burguer-menu__button" onClick={openCloseMenu}>
           <div className="burguer-menu" data-testid="burguer">
             <div className="burguer-menu__line"></div>
