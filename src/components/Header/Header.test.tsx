@@ -44,15 +44,13 @@ describe("Given a Header component", () => {
       expect(navigation).toBeInTheDocument();
     });
     test("And if the user click on the menu then it should call the setState", async () => {
-      const id = "burguer";
-
       const usestate = jest.spyOn(React, "useState");
       render(
         <BrowserRouter>
           <Header />
         </BrowserRouter>
       );
-      const burguer = screen.getByTestId(id);
+      const burguer = screen.getByRole("button");
       await userEvent.click(burguer);
 
       await waitFor(() => {
