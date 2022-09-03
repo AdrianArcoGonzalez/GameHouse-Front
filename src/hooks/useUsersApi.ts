@@ -1,4 +1,5 @@
 import axios from "axios";
+import { LoginUser } from "../interfaces/interfaces";
 
 const useUsersApi = () => {
   const backUrl = process.env.REACT_APP_URL_BACK;
@@ -13,12 +14,18 @@ const useUsersApi = () => {
         }
       );
 
-      const data = response;
-
-      return data;
+      return response;
     } catch (error) {}
   };
-  return { registerUser };
+
+  const loginUser = async (user: LoginUser) => {
+    try {
+      const response = await axios.post(`${backUrl}games/users/login`, user);
+
+      return response;
+    } catch (error) {}
+  };
+  return { registerUser, loginUser };
 };
 
 export default useUsersApi;
