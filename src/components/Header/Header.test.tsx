@@ -4,9 +4,30 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { Wrapper } from "../../utils/Wrapper";
 import Header from "./Header";
+import * as reactRedux from "react-redux";
+import mockStore from "../../mocks/mockStore";
+
+const mockDispatch = jest.fn();
+jest.mock("react-redux", () => ({
+  ...jest.requireActual("react-redux"),
+  useDispatch: () => mockDispatch,
+}));
+
+export interface WrapperProps {
+  children: JSX.Element | JSX.Element[];
+}
+
+export const WrapperFakeStore = ({ children }: WrapperProps): JSX.Element => {
+  return (
+    <reactRedux.Provider store={mockStore}>{children}</reactRedux.Provider>
+  );
+};
 
 describe("Given a Header component", () => {
   describe("When it's instantiated", () => {
+    beforeEach(() => {
+      jest.restoreAllMocks();
+    });
     test("Then it should show a heading with GameHouse text", () => {
       const text = "GameHouse";
       render(
@@ -61,6 +82,24 @@ describe("Given a Header component", () => {
       await waitFor(() => {
         expect(usestate).toHaveBeenCalled();
       });
+    });
+
+    test("And it should show a logout button if it's logged in", async () => {
+      const textButton = "Logout";
+      jest.spyOn(Object.getPrototypeOf(window.localStorage), "setItem");
+      Object.setPrototypeOf(window.localStorage.setItem, jest.fn());
+
+      render(
+        <BrowserRouter>
+          <Header />
+        </BrowserRouter>,
+        { wrapper: WrapperFakeStore }
+      );
+      const logoutButton = screen.getByText(textButton);
+      await userEvent.click(logoutButton);
+
+      expect(mockDispatch).toHaveBeenCalled();
+      expect(logoutButton).toBeInTheDocument();
     });
   });
 });

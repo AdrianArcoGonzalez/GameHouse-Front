@@ -1,12 +1,13 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { useAppSelector } from "../../store/hooks";
 import { logOutUserActionCreator } from "../../store/slice/usersSlice";
 import { RootState } from "../../store/store";
 import HeaderStyled from "./HeaderStyled";
 const Header = (): JSX.Element => {
   const isLogged = useAppSelector((state: RootState) => state.user.isLogged);
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch();
   const [menuVisible, setMenuVisible] = useState(false);
 
   const logout = () => {
