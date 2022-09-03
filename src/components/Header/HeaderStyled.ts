@@ -101,6 +101,18 @@ const HeaderStyled = styled.header`
       transform: translate(0);
     }
   }
+  .logout-button {
+    font-family: inherit;
+    border: 0;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    margin-right: 30px;
+  }
+  .logout-button:hover {
+    font-weight: bold;
+    border-bottom: 1px solid white;
+  }
 `;
 
 export default HeaderStyled;

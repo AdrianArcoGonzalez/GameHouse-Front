@@ -23,7 +23,6 @@ const RegisterCardStyled = styled.div`
       padding: 30px;
       position: sticky;
       top: 250px;
-      margin-left: 85px;
       text-transform: uppercase;
 
       &__title {

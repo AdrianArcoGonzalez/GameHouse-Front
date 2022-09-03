@@ -16,7 +16,7 @@ const RegisterStyled = styled.section`
 
   .register-title {
     border-bottom: 2px white solid;
-    width: 83.5%;
+    width: 90%;
     text-align: center;
     padding: 10px;
   }
@@ -24,7 +24,7 @@ const RegisterStyled = styled.section`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 90%;
   }
 `;
 
