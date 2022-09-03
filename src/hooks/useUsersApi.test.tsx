@@ -10,21 +10,6 @@ jest.mock("react-redux", () => ({
   useDispatch: () => mockDispatch,
 }));
 
-// const mockLocalStorage = (() => {
-//   return {
-//     getItem(key: string) {
-//       jest.fn();
-//     },
-//     setItem()=mockSetItem
-//       const  = jest.fn();
-
-//   };
-// })();
-
-// Object.defineProperty(window, "localStorage", {
-//   value: mockLocalStorage,
-// });
-
 interface WrapperProps {
   children: JSX.Element | JSX.Element[];
 }

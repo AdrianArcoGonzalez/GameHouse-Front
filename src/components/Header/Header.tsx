@@ -1,8 +1,19 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { useAppSelector } from "../../store/hooks";
+import { logOutUserActionCreator } from "../../store/slice/usersSlice";
+import { RootState } from "../../store/store";
 import HeaderStyled from "./HeaderStyled";
 const Header = (): JSX.Element => {
+  const isLogged = useAppSelector((state: RootState) => state.user.isLogged);
+  const dispatch = useDispatch();
   const [menuVisible, setMenuVisible] = useState(false);
+
+  const logout = () => {
+    dispatch(logOutUserActionCreator());
+    localStorage.clear();
+  };
 
   const openCloseMenu = () => {
     setMenuVisible(!menuVisible);
@@ -12,6 +23,7 @@ const Header = (): JSX.Element => {
     <HeaderStyled>
       <h1 className="header__title">GameHouse</h1>
       <nav className="navigation">
+        {isLogged && <button onClick={logout}>Logout</button>}
         <button className="burguer-menu__button" onClick={openCloseMenu}>
           <div className="burguer-menu" data-testid="burguer">
             <div className="burguer-menu__line"></div>
