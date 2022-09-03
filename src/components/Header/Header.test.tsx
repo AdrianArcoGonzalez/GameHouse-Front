@@ -2,6 +2,7 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
+import { Wrapper } from "../../utils/Wrapper";
 import Header from "./Header";
 
 describe("Given a Header component", () => {
@@ -11,7 +12,8 @@ describe("Given a Header component", () => {
       render(
         <BrowserRouter>
           <Header />
-        </BrowserRouter>
+        </BrowserRouter>,
+        { wrapper: Wrapper }
       );
       const heading = screen.getAllByRole("heading", {
         name: text,
@@ -26,7 +28,8 @@ describe("Given a Header component", () => {
       render(
         <BrowserRouter>
           <Header />
-        </BrowserRouter>
+        </BrowserRouter>,
+        { wrapper: Wrapper }
       );
       const burguerMenu = screen.getByTestId(id);
 
@@ -37,7 +40,8 @@ describe("Given a Header component", () => {
       render(
         <BrowserRouter>
           <Header />
-        </BrowserRouter>
+        </BrowserRouter>,
+        { wrapper: Wrapper }
       );
       const navigation = screen.getByRole("navigation");
 
@@ -48,7 +52,8 @@ describe("Given a Header component", () => {
       render(
         <BrowserRouter>
           <Header />
-        </BrowserRouter>
+        </BrowserRouter>,
+        { wrapper: Wrapper }
       );
       const burguer = screen.getByRole("button");
       await userEvent.click(burguer);
