@@ -18,6 +18,7 @@ const useUsersApi = () => {
           headers: { "Content-Type": "multipart/form-data" },
         }
       );
+
       succesModal("Hero registered!");
       return response;
     } catch (error) {
