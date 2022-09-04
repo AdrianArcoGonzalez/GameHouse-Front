@@ -23,7 +23,7 @@ const JoinUsStyled = styled.section`
       left: 5%;
       @media (min-width: 850px) {
         top: 15%;
-        left: 15%;
+        left: 22%;
         height: fit-content;
         width: fit-content;
       }

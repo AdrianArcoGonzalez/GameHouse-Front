@@ -4,6 +4,7 @@ import RegisterPage from "../../pages/RegisterPage";
 import Footer from "../Footer/Footer";
 import LoginPage from "../../pages/LoginPage";
 import HomePage from "../../pages/HomePage";
+import NotFoundPage from "../../pages/NotFoundPage";
 
 const App = (): JSX.Element => {
   return (
@@ -16,6 +17,7 @@ const App = (): JSX.Element => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/mycollection" element={<></>} />
         <Route path="/games" element={<></>} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
 
       <Footer />
