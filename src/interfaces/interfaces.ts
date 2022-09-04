@@ -9,3 +9,15 @@ export interface User {
   token: string;
   isLogged: boolean;
 }
+
+export interface Game {
+  title: string;
+  category: string;
+  company: string;
+  image: string;
+  sinopsis: string;
+  owner: string;
+  likes: number;
+  dislikes: number;
+  reviews?: string[];
+}

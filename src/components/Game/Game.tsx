@@ -8,10 +8,16 @@ interface GameProps {
 const Game = ({ game: { category, image, title } }: GameProps): JSX.Element => {
   return (
     <GameStyled>
-      <img src={image} alt={title} />
-      <div>
-        <span className="game__info">{title}</span>
-        <span className="game__info">Category: {category}</span>
+      <img
+        src={image}
+        alt={title}
+        className="game__image"
+        height="280px"
+        width="200px"
+      />
+      <div className="game-info__container">
+        <span className="game-info__element">{title}</span>
+        <span className="game-info__element-category">{category}</span>
       </div>
     </GameStyled>
   );

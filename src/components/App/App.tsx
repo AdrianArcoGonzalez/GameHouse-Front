@@ -3,7 +3,20 @@ import Header from "../Header/Header";
 import RegisterPage from "../../pages/RegisterPage";
 import Footer from "../Footer/Footer";
 import LoginPage from "../../pages/LoginPage";
+import Game from "../Game/Game";
+import { Game as IGame } from "../../interfaces/interfaces";
 
+const fakeGame: IGame = {
+  title: "Dark Souls",
+  category: "Adventure",
+  image: "/images/singindarksouls.webp",
+  company: "",
+  dislikes: 0,
+  likes: 0,
+  owner: "",
+  sinopsis: "",
+  reviews: [""],
+};
 const App = (): JSX.Element => {
   return (
     <>
@@ -17,6 +30,7 @@ const App = (): JSX.Element => {
         <Route path="/mycollection" element={<></>} />
         <Route path="/games" element={<></>} />
       </Routes>
+      <Game game={fakeGame} />
       <Footer />
     </>
   );
