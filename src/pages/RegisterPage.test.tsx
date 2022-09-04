@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 describe("Given a Register Page component", () => {
   describe("When it's instantiated", () => {
-    test("Then it should render the Register page", () => {
+    test("Then it should match the Register page snapshot", () => {
       const expectedRegisterPage = TestRenderer.create(
         <Wrapper>
           <BrowserRouter>

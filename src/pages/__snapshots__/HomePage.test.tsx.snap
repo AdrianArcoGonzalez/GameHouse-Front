@@ -215,5 +215,40 @@ exports[`Given a Home Page component When it's instantiated Then it should match
       </li>
     </ul>
   </section>
+  <section
+    className="sc-eCYdqJ gCNDwf"
+  >
+    <img
+      alt="Video Game characters riding birds running on a field"
+      className="join-us__image"
+      height="300px"
+      src="/images/joinComunity.jpg"
+      width="320px"
+    />
+    <div
+      className="join-us__info-container"
+    >
+      <h3
+        className="join-us__title"
+      >
+        Join the community!
+      </h3>
+      <p
+        className="join-us__text"
+      >
+        Become a soldier of the GameHouse Army Make your own reviews and give and receive feedback from other soldiers!
+      </p>
+      <button
+        className="join-us__button"
+      >
+        Sign Up
+      </button>
+      <button
+        className="join-us__button"
+      >
+        Sign In
+      </button>
+    </div>
+  </section>
 </div>
 `;
