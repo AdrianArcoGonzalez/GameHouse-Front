@@ -8,7 +8,6 @@ const App = (): JSX.Element => {
   return (
     <>
       <Header />
-
       <Routes>
         <Route path="/" element={<Navigate to="/register" />} />
         <Route path="/home" element={<></>} />

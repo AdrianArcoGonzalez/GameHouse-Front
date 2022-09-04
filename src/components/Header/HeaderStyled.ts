@@ -41,7 +41,7 @@ const HeaderStyled = styled.header`
     &__line::after {
       position: absolute;
       bottom: 10px;
-      right: 23px;
+      right: 24px;
       content: "";
 
       background-color: white;
@@ -56,7 +56,7 @@ const HeaderStyled = styled.header`
       content: "";
       position: absolute;
       top: 10px;
-      right: 23px;
+      right: 24px;
       background-color: white;
       height: 5px;
       width: 30px;
