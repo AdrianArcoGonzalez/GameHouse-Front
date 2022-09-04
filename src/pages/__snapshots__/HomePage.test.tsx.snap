@@ -8,13 +8,15 @@ exports[`Given a Home Page component When it's instantiated Then it should match
     className="Toastify"
   />
   <section
-    className="sc-bczRLJ ggGwXn"
+    className="sc-bczRLJ dVNtAm"
     data-testid="section"
   >
     <img
       alt="backgroundImage"
       className="hero__image"
+      height="200px"
       src="images/home.webp"
+      width="100vw"
     />
     <div
       className="hero-container"

@@ -6,13 +6,15 @@ Array [
     className="Toastify"
   />,
   <section
-    className="sc-bczRLJ ggGwXn"
+    className="sc-bczRLJ dVNtAm"
     data-testid="section"
   >
     <img
       alt="backgroundImage"
       className="hero__image"
+      height="200px"
       src="images/form-background.png"
+      width="100vw"
     />
     <div
       className="hero-container"
