@@ -7,7 +7,13 @@ interface HeroSectionProps {
 const HeroSection = ({ text, srcImage }: HeroSectionProps): JSX.Element => {
   return (
     <HeroSectionStyled data-testid="section">
-      <img src={srcImage} alt="backgroundImage" className="hero__image" />
+      <img
+        src={srcImage}
+        alt="backgroundImage"
+        className="hero__image"
+        width="100vw"
+        height="200px"
+      />
       <div className="hero-container">
         <p className="hero-container__sentence">{text}</p>
       </div>

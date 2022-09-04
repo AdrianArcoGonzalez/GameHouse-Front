@@ -7,7 +7,7 @@ const GamesStyled = styled.section`
   align-items: center;
   width: 90%;
   margin: 0 auto;
-
+  margin-bottom: 20px;
   .games-list {
     list-style: none;
     display: flex;

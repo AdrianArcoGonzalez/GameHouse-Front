@@ -20,6 +20,9 @@ const HeroSectionStyled = styled.section`
     max-height: 100%;
     object-fit: cover;
     object-position: 0%;
+    @media (min-width: 850px) {
+      height: 400px;
+    }
   }
   .hero-container {
     position: absolute;

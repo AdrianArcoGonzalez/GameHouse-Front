@@ -1,0 +1,219 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given a Home Page component When it's instantiated Then it should match the html from Home page 1`] = `
+<div
+  className="sc-hKMtZM iMoGjk"
+>
+  <div
+    className="Toastify"
+  />
+  <section
+    className="sc-bczRLJ dVNtAm"
+    data-testid="section"
+  >
+    <img
+      alt="backgroundImage"
+      className="hero__image"
+      height="200px"
+      src="images/home.webp"
+      width="100vw"
+    />
+    <div
+      className="hero-container"
+    >
+      <p
+        className="hero-container__sentence"
+      >
+        Cuanto más te acerques a la luz, mayor será tu sombra (Kingdom Hearts)
+      </p>
+    </div>
+  </section>
+  <h2
+    className="games-list__title"
+  >
+    Comunity Games
+  </h2>
+  <section
+    className="sc-dkzDqf iZklhZ"
+  >
+    <ul
+      className="games-list"
+    >
+      <li
+        className="games-list__item"
+      >
+        <article
+          className="sc-gsnTZi jryNu"
+        >
+          <img
+            alt="League of Legends"
+            className="game__image"
+            height="280px"
+            src="images/leagueoflegends.jpg"
+            width="200px"
+          />
+          <div
+            className="game-info__container"
+          >
+            <span
+              className="game-info__element"
+            >
+              League of Legends
+            </span>
+            <span
+              className="game-info__element-category"
+            >
+              MOBA
+            </span>
+          </div>
+        </article>
+      </li>
+      <li
+        className="games-list__item"
+      >
+        <article
+          className="sc-gsnTZi jryNu"
+        >
+          <img
+            alt="The Last of Us"
+            className="game__image"
+            height="280px"
+            src="images/thelastofus.webp"
+            width="200px"
+          />
+          <div
+            className="game-info__container"
+          >
+            <span
+              className="game-info__element"
+            >
+              The Last of Us
+            </span>
+            <span
+              className="game-info__element-category"
+            >
+              Adventure
+            </span>
+          </div>
+        </article>
+      </li>
+      <li
+        className="games-list__item"
+      >
+        <article
+          className="sc-gsnTZi jryNu"
+        >
+          <img
+            alt="Escape from Tarkov"
+            className="game__image"
+            height="280px"
+            src="images/tarkov.jpg"
+            width="200px"
+          />
+          <div
+            className="game-info__container"
+          >
+            <span
+              className="game-info__element"
+            >
+              Escape from Tarkov
+            </span>
+            <span
+              className="game-info__element-category"
+            >
+              Shooter
+            </span>
+          </div>
+        </article>
+      </li>
+      <li
+        className="games-list__item"
+      >
+        <article
+          className="sc-gsnTZi jryNu"
+        >
+          <img
+            alt="League of Legends"
+            className="game__image"
+            height="280px"
+            src="images/leagueoflegends.jpg"
+            width="200px"
+          />
+          <div
+            className="game-info__container"
+          >
+            <span
+              className="game-info__element"
+            >
+              League of Legends
+            </span>
+            <span
+              className="game-info__element-category"
+            >
+              MOBA
+            </span>
+          </div>
+        </article>
+      </li>
+      <li
+        className="games-list__item"
+      >
+        <article
+          className="sc-gsnTZi jryNu"
+        >
+          <img
+            alt="The Last of Us"
+            className="game__image"
+            height="280px"
+            src="images/thelastofus.webp"
+            width="200px"
+          />
+          <div
+            className="game-info__container"
+          >
+            <span
+              className="game-info__element"
+            >
+              The Last of Us
+            </span>
+            <span
+              className="game-info__element-category"
+            >
+              Adventure
+            </span>
+          </div>
+        </article>
+      </li>
+      <li
+        className="games-list__item"
+      >
+        <article
+          className="sc-gsnTZi jryNu"
+        >
+          <img
+            alt="Escape from Tarkov"
+            className="game__image"
+            height="280px"
+            src="images/tarkov.jpg"
+            width="200px"
+          />
+          <div
+            className="game-info__container"
+          >
+            <span
+              className="game-info__element"
+            >
+              Escape from Tarkov
+            </span>
+            <span
+              className="game-info__element-category"
+            >
+              Shooter
+            </span>
+          </div>
+        </article>
+      </li>
+    </ul>
+  </section>
+</div>
+`;
