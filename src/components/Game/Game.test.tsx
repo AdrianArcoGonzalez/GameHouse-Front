@@ -1,22 +1,11 @@
 import { render, screen } from "@testing-library/react";
-import { Game as IGame } from "../../interfaces/interfaces";
+import { mockGame } from "../../mocks/mockGame";
 import Game from "./Game";
-const mockGame: IGame = {
-  category: "Adventure",
-  company: "test",
-  dislikes: 0,
-  likes: 0,
-  image: "imageFake.png",
-  owner: "test",
-  sinopsis: "test",
-  title: "Dark Souls",
-  reviews: [""],
-};
 
 describe("Given a Game component", () => {
   describe("When it's instantiated with a game as props", () => {
     test("Then it should render the image with the src given", () => {
-      const expectedSrc = "http://localhost/imageFake.png";
+      const expectedSrc = `http://localhost/${mockGame.image}`;
       render(<Game game={mockGame} />);
       const image = screen.getByRole("img");
 
