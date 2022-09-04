@@ -107,7 +107,10 @@ const HeaderStyled = styled.header`
     background-color: transparent;
     color: white;
     cursor: pointer;
-    margin-right: 30px;
+    margin-right: 5px;
+    @media (min-width: 850px) {
+      margin-right: 30px;
+    }
   }
   .logout-button:hover {
     font-weight: bold;
