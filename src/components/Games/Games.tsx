@@ -9,11 +9,13 @@ interface GamesProps {
 const Games = ({ games }: GamesProps): JSX.Element => {
   return (
     <GamesStyled>
-      {games.map((game: IGame) => (
-        <li>
-          <Game game={game} key={game.title} />
-        </li>
-      ))}
+      <ul className="games-list">
+        {games.map((game: IGame) => (
+          <li className="games-list__item">
+            <Game game={game} key={game.title} />
+          </li>
+        ))}
+      </ul>
     </GamesStyled>
   );
 };

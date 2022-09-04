@@ -3,6 +3,8 @@ import Header from "../Header/Header";
 import RegisterPage from "../../pages/RegisterPage";
 import Footer from "../Footer/Footer";
 import LoginPage from "../../pages/LoginPage";
+import Games from "../Games/Games";
+import { mockGameArray } from "../../mocks/mockGame";
 
 const App = (): JSX.Element => {
   return (
@@ -16,6 +18,7 @@ const App = (): JSX.Element => {
         <Route path="/mycollection" element={<></>} />
         <Route path="/games" element={<></>} />
       </Routes>
+      <Games games={mockGameArray} />
       <Footer />
     </>
   );
