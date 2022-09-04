@@ -216,7 +216,7 @@ exports[`Given a Home Page component When it's instantiated Then it should match
     </ul>
   </section>
   <section
-    className="sc-eCYdqJ gCNDwf"
+    className="sc-eCYdqJ AJnlP"
   >
     <img
       alt="Video Game characters riding birds running on a field"
@@ -236,17 +236,29 @@ exports[`Given a Home Page component When it's instantiated Then it should match
       <p
         className="join-us__text"
       >
-        Become a soldier of the GameHouse Army Make your own reviews and give and receive feedback from other soldiers!
+        Become a soldier of the GameHouse Army. Make your own reviews and give and receive feedback from other soldiers!
       </p>
       <button
         className="join-us__button"
       >
-        Sign Up
+        <a
+          className="join-us__navigate"
+          href="/register"
+          onClick={[Function]}
+        >
+          Sign Up
+        </a>
       </button>
       <button
         className="join-us__button"
       >
-        Sign In
+        <a
+          className="join-us__navigate"
+          href="/login"
+          onClick={[Function]}
+        >
+          Sign In
+        </a>
       </button>
     </div>
   </section>
