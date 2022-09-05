@@ -13,6 +13,7 @@ jest.mock("react-redux", () => ({
 }));
 
 describe("Given a useGamesApi custom hook", () => {
+  beforeEach(() => jest.restoreAllMocks());
   describe("When it's invoked with getAllGames method", () => {
     test("Then it should dispatch all games received", async () => {
       const {
@@ -31,7 +32,7 @@ describe("Given a useGamesApi custom hook", () => {
     });
 
     test("And if it get an error getting all games it should call the error toast", async () => {
-      axios.get = jest.fn().mockResolvedValue([]);
+      axios.get = jest.fn().mockResolvedValue({ data: { games: [] } });
 
       const {
         result: {
