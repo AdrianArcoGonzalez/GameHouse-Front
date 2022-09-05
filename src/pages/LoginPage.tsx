@@ -5,6 +5,7 @@ import Login from "../components/Login/Login";
 import "react-toastify/dist/ReactToastify.css";
 
 const LoginPage = (): JSX.Element => {
+  window.scroll({ top: 0 });
   return (
     <>
       <ToastContainer />

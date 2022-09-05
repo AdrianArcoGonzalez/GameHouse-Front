@@ -1,150 +1,91 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Given a Home Page component When it's instantiated Then it should match the html from Home page 1`] = `
-Array [
+<div
+  className="sc-hKMtZM iMoGjk"
+>
   <div
-    className="sc-hKMtZM iMoGjk"
-  >
-    <div
-      className="Toastify"
-    />
-    <section
-      className="sc-bczRLJ dVNtAm"
-      data-testid="section"
-    >
-      <img
-        alt="backgroundImage"
-        className="hero__image"
-        height="200px"
-        src="images/home.webp"
-        width="100vw"
-      />
-      <div
-        className="hero-container"
-      >
-        <p
-          className="hero-container__sentence"
-        >
-          Cuanto más te acerques a la luz, mayor será tu sombra (Kingdom Hearts)
-        </p>
-      </div>
-    </section>
-    <h2
-      className="games-list__title"
-    >
-      Comunity Games
-    </h2>
-    <section
-      className="sc-dkzDqf iZklhZ"
-    >
-      <ul
-        className="games-list"
-      />
-    </section>
-    <section
-      className="sc-eCYdqJ dFhFLD"
-    >
-      <img
-        alt="Video Game characters riding birds running on a field"
-        className="join-us__image"
-        height="300px"
-        src="/images/joinComunity.jpg"
-        width="320px"
-      />
-      <div
-        className="join-us__info-container"
-      >
-        <h3
-          className="join-us__title"
-        >
-          Join the community!
-        </h3>
-        <p
-          className="join-us__text"
-        >
-          Become a soldier of the GameHouse Army. Make your own reviews and give and receive feedback from other soldiers!
-        </p>
-        <button
-          className="join-us__button"
-        >
-          <a
-            className="join-us__navigate"
-            href="/register"
-            onClick={[Function]}
-          >
-            Sign Up
-          </a>
-        </button>
-        <button
-          className="join-us__button"
-        >
-          <a
-            className="join-us__navigate"
-            href="/login"
-            onClick={[Function]}
-          >
-            Sign In
-          </a>
-        </button>
-      </div>
-    </section>
-  </div>,
+    className="Toastify"
+  />
   <section
-    className="sc-jSMfEi idrylb"
+    className="sc-bczRLJ dVNtAm"
+    data-testid="section"
   >
     <img
-      alt="League of Legends"
-      className="details__image"
-      height={320}
-      src="images/leagueoflegends.jpg"
-      width={250}
+      alt="backgroundImage"
+      className="hero__image"
+      height="200px"
+      src="images/home.webp"
+      width="100vw"
     />
-    <article
-      className="details__info-container"
+    <div
+      className="hero-container"
+    >
+      <p
+        className="hero-container__sentence"
+      >
+        Cuanto más te acerques a la luz, mayor será tu sombra (Kingdom Hearts)
+      </p>
+    </div>
+  </section>
+  <h2
+    className="games-list__title"
+  >
+    Comunity Games
+  </h2>
+  <section
+    className="sc-dkzDqf iZklhZ"
+  >
+    <ul
+      className="games-list"
+    />
+  </section>
+  <section
+    className="sc-eCYdqJ dFhFLD"
+  >
+    <img
+      alt="Video Game characters riding birds running on a field"
+      className="join-us__image"
+      height="300px"
+      src="/images/joinComunity.jpg"
+      width="320px"
+    />
+    <div
+      className="join-us__info-container"
     >
       <h3
-        className="details__info-element"
+        className="join-us__title"
       >
-         
-        League of Legends
+        Join the community!
       </h3>
       <p
-        className="details__info-element"
+        className="join-us__text"
       >
-         
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam odio ut odit, illo sit eligendi nobis explicabo eos, aliquid qui inventore provident minus impedit consequuntur asperiores iure recusandae culpa quam?
+        Become a soldier of the GameHouse Army. Make your own reviews and give and receive feedback from other soldiers!
       </p>
-      <span
-        className="details__info-element"
+      <button
+        className="join-us__button"
       >
-        <span
-          className="details__info-element--title"
+        <a
+          className="join-us__navigate"
+          href="/register"
+          onClick={[Function]}
         >
-           Category: 
-        </span>
-        MOBA
-      </span>
-      <span
-        className="details__info-element"
+          Sign Up
+        </a>
+      </button>
+      <button
+        className="join-us__button"
       >
-        <span
-          className="details__info-element--title"
+        <a
+          className="join-us__navigate"
+          href="/login"
+          onClick={[Function]}
         >
-          Company: 
-        </span>
-        Riot
-      </span>
-      <span
-        className="details__info-element--owner"
-      >
-        <span
-          className="details__info-element--title"
-        >
-          Created by: 
-        </span>
-        Admin
-      </span>
-    </article>
-  </section>,
-]
+          Sign In
+        </a>
+      </button>
+    </div>
+  </section>
+</div>
 `;

@@ -4,6 +4,7 @@ import HeroSection from "../components/HeroSection/HeroSection";
 import NotFoundPageStyled from "./NotFoundPageStyled";
 
 const NotFoundPage = (): JSX.Element => {
+  window.scroll({ top: 0 });
   return (
     <>
       <HeroSection srcImage="/images/notFound.jpg" text={heroTexts.notFound} />
