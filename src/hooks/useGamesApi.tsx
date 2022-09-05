@@ -8,10 +8,9 @@ const useGamesApi = () => {
     try {
       const response = await axios.get(`${backUrl}games/games/`);
       const { games } = response.data;
-      console.log(games);
+
       if (games.length === 0) {
         errorModal("No games yet!");
-        console.log("no games yet");
         return;
       }
       return games;

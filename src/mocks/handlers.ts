@@ -1,4 +1,5 @@
 import { rest } from "msw";
+import { mockGameArray } from "./mockGame";
 const url = process.env.REACT_APP_URL_BACK;
 
 export const handlers = [
@@ -42,5 +43,9 @@ export const handlers = [
         message: "User created",
       })
     );
+  }),
+
+  rest.get(`${url}games/games`, async (_req, res, ctx) => {
+    return res(ctx.status(200), ctx.json({ games: mockGameArray }));
   }),
 ];
