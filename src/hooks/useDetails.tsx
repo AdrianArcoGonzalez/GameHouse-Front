@@ -1,8 +1,11 @@
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { useAppSelector } from "../store/hooks";
+import { RootState } from "../store/store";
 
 const useDetails = () => {
-  const games = useAppSelector((state) => state.games);
+  debugger;
+  const games = useSelector((state: RootState) => state.games);
+
   let { id } = useParams();
 
   const game = games.find((game) => game.id === id);
