@@ -12,7 +12,9 @@ const useGamesApi = () => {
       if (games.length === 0) {
         errorModal("No games yet!");
         console.log("no games yet");
+        return;
       }
+      return games;
     } catch (error) {}
   }, [backUrl]);
 

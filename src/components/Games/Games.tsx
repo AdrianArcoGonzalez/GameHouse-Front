@@ -1,21 +1,23 @@
 import { useEffect } from "react";
 import useGamesApi from "../../hooks/useGamesApi";
 import { Game as IGame } from "../../interfaces/interfaces";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { getAllGamesActionCreator } from "../../store/slice/gamesSlice";
 import Game from "../Game/Game";
 import GamesStyled from "./GamesStyled";
 
-interface GamesProps {
-  games: IGame[];
-}
-
-const Games = ({ games }: GamesProps): JSX.Element => {
+const Games = (): JSX.Element => {
   const { getAllGames } = useGamesApi();
+  const dispatch = useAppDispatch();
+  const games = useAppSelector((state) => state.games);
 
   useEffect(() => {
     (async () => {
-      await getAllGames();
+      const games = await getAllGames();
+      dispatch(getAllGamesActionCreator(games));
     })();
-  }, [getAllGames]);
+  }, [dispatch, getAllGames]);
+
   return (
     <GamesStyled>
       <ul className="games-list">
