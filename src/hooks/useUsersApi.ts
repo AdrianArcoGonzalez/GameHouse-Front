@@ -43,6 +43,7 @@ const useUsersApi = () => {
       errorModal("User or password not valid!");
     }
   };
+
   return { registerUser, loginUser };
 };
 

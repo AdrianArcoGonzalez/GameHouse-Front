@@ -2,6 +2,7 @@ import { Game } from "../interfaces/interfaces";
 
 export const mockGame: Game = {
   category: "MOBA",
+  id: "46546549874123",
   company: "Riot",
   dislikes: 40,
   likes: 100,
@@ -16,6 +17,7 @@ export const mockGame: Game = {
 
 export const mockGame2: Game = {
   category: "Adventure",
+  id: "654546516510",
   company: "Bethesda",
   dislikes: 40,
   likes: 100,
@@ -29,6 +31,7 @@ export const mockGame2: Game = {
 };
 export const mockGame3: Game = {
   category: "Shooter",
+  id: "6549878978979",
   company: "Bethesda",
   dislikes: 40,
   likes: 100,
@@ -41,11 +44,4 @@ export const mockGame3: Game = {
   reviews: [""],
 };
 
-export const mockGameArray: Game[] = [
-  mockGame,
-  mockGame2,
-  mockGame3,
-  mockGame,
-  mockGame2,
-  mockGame3,
-];
+export const mockGameArray: Game[] = [mockGame, mockGame2, mockGame3];
