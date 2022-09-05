@@ -11,6 +11,7 @@ export interface User {
 }
 
 export interface Game {
+  id: string;
   title: string;
   category: string;
   company: string;

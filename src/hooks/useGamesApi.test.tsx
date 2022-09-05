@@ -1,20 +1,43 @@
 import { renderHook } from "@testing-library/react";
-import { mockGameArray } from "../mocks/mockGame";
+import axios from "axios";
 import { Wrapper } from "../utils/Wrapper";
 import useGamesApi from "./useGamesApi";
+import { toast } from "react-toastify";
+
+jest.mock("react-toastify");
+
+const mockDispatch = jest.fn();
+jest.mock("react-redux", () => ({
+  ...jest.requireActual("react-redux"),
+  useDispatch: () => mockDispatch,
+}));
 
 describe("Given a useGamesApi custom hook", () => {
+  beforeEach(() => jest.restoreAllMocks());
   describe("When it's invoked with getAllGames method", () => {
-    test("Then it should return all games on database", async () => {
-      const fakeGames = mockGameArray;
+    test("Then it should dispatch all games received", async () => {
       const {
         result: {
           current: { getAllGames },
         },
       } = renderHook(useGamesApi, { wrapper: Wrapper });
-      const games = await getAllGames();
+      await getAllGames();
 
-      expect(games).toStrictEqual(fakeGames);
+      expect(mockDispatch).toHaveBeenCalled();
+    });
+
+    test("And if it get an error getting all games it should call the error toast", async () => {
+      axios.get = jest.fn().mockResolvedValue([]);
+
+      const {
+        result: {
+          current: { getAllGames },
+        },
+      } = renderHook(useGamesApi, { wrapper: Wrapper });
+      await getAllGames();
+
+      expect(mockDispatch).not.toBeCalled();
+      expect(toast.error).toHaveBeenCalled();
     });
   });
 });
