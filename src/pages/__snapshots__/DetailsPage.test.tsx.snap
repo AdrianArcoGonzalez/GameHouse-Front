@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given a DetailsPage component When it's instantiated Then it should match the screenshoot 1`] = `
+Array [
+  <section
+    className="sc-gsnTZi cUELPY"
+    data-testid="section"
+  >
+    <img
+      alt="backgroundImage"
+      className="hero__image"
+      height="200px"
+      src="/images/detailsHeader.jpg"
+      width="100vw"
+    />
+    <div
+      className="hero-container"
+    >
+      <p
+        className="hero-container__sentence"
+      >
+        “We look up at the same starts and see such diferent things.”(Jon Snow)
+      </p>
+    </div>
+  </section>,
+  <section
+    className="sc-bczRLJ hpTAxW"
+  >
+    <img
+      alt="League of Legends"
+      className="details__image"
+      height={320}
+      src="images/leagueoflegends.jpg"
+      width={250}
+    />
+    <article
+      className="details__info-container"
+    >
+      <h3
+        className="details__info-element-title"
+      >
+         
+        League of Legends
+      </h3>
+      <p
+        className="details__info-element"
+      >
+         
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam odio ut odit, illo sit eligendi nobis explicabo eos, aliquid qui inventore provident minus impedit consequuntur asperiores iure recusandae culpa quam?
+      </p>
+      <span
+        className="details__info-element"
+      >
+        <span
+          className="details__info-element--title"
+        >
+           Category: 
+        </span>
+        MOBA
+      </span>
+      <span
+        className="details__info-element"
+      >
+        <span
+          className="details__info-element--title"
+        >
+          Company: 
+        </span>
+        Riot
+      </span>
+      <span
+        className="details__info-element--owner"
+      >
+        <span
+          className="details__info-element--title"
+        >
+          Created by: 
+        </span>
+        Admin
+      </span>
+    </article>
+  </section>,
+]
+`;

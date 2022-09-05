@@ -1,5 +1,6 @@
 import { configureStore, createReducer } from "@reduxjs/toolkit";
-import { User } from "../interfaces/interfaces";
+import { Game, User } from "../interfaces/interfaces";
+import { mockGame, mockGame2, mockGame3 } from "./mockGame";
 
 const initialUserState = {
   username: "",
@@ -8,15 +9,22 @@ const initialUserState = {
   token: "",
 };
 
+const initialGameState: Game[] = [mockGame, mockGame2, mockGame3];
+
 const userInitialState = { ...initialUserState, isLogged: true };
+const gameInitialState = { ...initialGameState, mockGame };
 
 const mockUserReducer = createReducer<User>(userInitialState, (builder) => {
   builder.addDefaultCase((state: User) => state);
+});
+const mockGameReducer = createReducer<Game[]>(gameInitialState, (builder) => {
+  builder.addDefaultCase((state: Game[]) => state);
 });
 
 const mockStore = configureStore({
   reducer: {
     user: mockUserReducer,
+    game: mockGameReducer,
   },
 });
 

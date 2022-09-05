@@ -7,7 +7,6 @@ import HomePageStyled from "./HomePageStyled";
 import JoinUs from "../components/JoinUs/JoinUs";
 
 const HomePage = (): JSX.Element => {
-  window.scroll({ top: 0 });
   return (
     <HomePageStyled>
       <ToastContainer />

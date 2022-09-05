@@ -4,7 +4,6 @@ import HeroSection from "../components/HeroSection/HeroSection";
 import Register from "../components/Register/Register/Register";
 
 const RegisterPage = (): JSX.Element => {
-  window.scroll({ top: 0 });
   return (
     <>
       <ToastContainer />

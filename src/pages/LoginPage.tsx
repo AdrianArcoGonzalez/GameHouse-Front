@@ -3,9 +3,12 @@ import heroTexts from "../components/HeroSection/heroData/heroData";
 import HeroSection from "../components/HeroSection/HeroSection";
 import Login from "../components/Login/Login";
 import "react-toastify/dist/ReactToastify.css";
+import { useEffect } from "react";
 
 const LoginPage = (): JSX.Element => {
-  window.scroll({ top: 0 });
+  useEffect(() => {
+    window.scroll({ top: 0 });
+  }, []);
   return (
     <>
       <ToastContainer />
