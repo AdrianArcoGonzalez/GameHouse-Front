@@ -20,6 +20,7 @@ const GameDetailsStyled = styled.section`
     &image {
       margin-top: 20px;
       border: 1px solid white;
+      object-fit: cover;
       @media (min-width: 850px) {
         height: 400px;
         width: 320px;
@@ -42,6 +43,12 @@ const GameDetailsStyled = styled.section`
         display: flex;
         margin: 0;
         flex-direction: column;
+        &-title {
+          @media (min-width: 850px) {
+            font-size: 2rem;
+            padding: 10px;
+          }
+        }
         &--title {
           font-weight: bold;
         }

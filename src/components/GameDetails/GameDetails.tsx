@@ -18,7 +18,7 @@ const GameDetails = ({
         className="details__image"
       />
       <article className="details__info-container">
-        <h3 className="details__info-element"> {title}</h3>
+        <h3 className="details__info-element-title"> {title}</h3>
         <p className="details__info-element"> {sinopsis}</p>
         <span className="details__info-element">
           <span className="details__info-element--title"> Category: </span>
