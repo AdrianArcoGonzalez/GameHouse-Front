@@ -13,7 +13,7 @@ const Games = ({ games }: GamesProps): JSX.Element => {
 
   useEffect(() => {
     (async () => {
-      const games = await getAllGames();
+      await getAllGames();
     })();
   }, [getAllGames]);
   return (
