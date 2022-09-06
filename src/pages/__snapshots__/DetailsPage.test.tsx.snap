@@ -27,10 +27,10 @@ Array [
     className="sc-bczRLJ hpTAxW"
   >
     <img
-      alt="League of Legends"
+      alt=""
       className="details__image"
       height={320}
-      src="images/leagueoflegends.jpg"
+      src=""
       width={250}
     />
     <article
@@ -40,13 +40,11 @@ Array [
         className="details__info-element-title"
       >
          
-        League of Legends
       </h3>
       <p
         className="details__info-element"
       >
          
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam odio ut odit, illo sit eligendi nobis explicabo eos, aliquid qui inventore provident minus impedit consequuntur asperiores iure recusandae culpa quam?
       </p>
       <span
         className="details__info-element"
@@ -56,7 +54,6 @@ Array [
         >
           Category: 
         </span>
-        MOBA
       </span>
       <span
         className="details__info-element"
@@ -66,7 +63,6 @@ Array [
         >
           Company: 
         </span>
-        Riot
       </span>
       <span
         className="details__info-element--owner"
@@ -76,7 +72,6 @@ Array [
         >
           Created by: 
         </span>
-        Admin
       </span>
     </article>
   </section>,

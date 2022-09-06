@@ -4,6 +4,15 @@ import { Wrapper } from "../utils/Wrapper";
 import useGamesApi from "./useGamesApi";
 import { toast } from "react-toastify";
 
+// jest.mock("react-router-dom", () => ({
+//   ...jest.requireActual("react-router-dom"),
+//   useParams: () => ({ id: mockGame.id }),
+// }));
+// jest.mock("react-redux", () => ({
+//   ...jest.requireActual("react-redux"),
+//   useSelector: () => mockGameArray,
+// }));
+
 jest.mock("react-toastify");
 
 const mockDispatch = jest.fn();
