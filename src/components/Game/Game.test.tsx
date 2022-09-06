@@ -1,7 +1,18 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { BrowserRouter } from "react-router-dom";
 import { mockGame } from "../../mocks/mockGame";
 import Game from "./Game";
+
+const mockNavigate = jest.fn();
+//  jest.mock("react-router-dom", () => ({
+//    ...jest.requireActual("react-router-dom"),
+//    navigate: () => mockNavigate,
+//  }));
+jest.mock("react-router-dom", () => ({
+  ...(jest.requireActual("react-router-dom") as any),
+  useNavigate: () => mockNavigate,
+}));
 
 describe("Given a Game component", () => {
   describe("When it's instantiated with a game as props", () => {
@@ -48,6 +59,18 @@ describe("Given a Game component", () => {
       const category = screen.getByText(mockGame.category);
 
       expect(category).toBeInTheDocument();
+    });
+
+    test("And if the user click on the image it should call the handleNavigate", async () => {
+      render(
+        <BrowserRouter>
+          <Game game={mockGame} />
+        </BrowserRouter>
+      );
+      const image = screen.getByRole("img");
+      await userEvent.click(image);
+
+      expect(mockNavigate).toHaveBeenCalled();
     });
   });
 });
