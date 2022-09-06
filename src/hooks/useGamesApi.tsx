@@ -27,8 +27,10 @@ const useGamesApi = () => {
   const getOneGameById = useCallback(
     async (id: string) => {
       try {
-        const { data } = await axios.get(`${backUrl}games/games/${id}`);
-        const game = data.requestedGame[0];
+        debugger;
+        const {
+          data: { game },
+        } = await axios.get(`${backUrl}games/games/${id}`);
         return game;
       } catch (error) {
         errorModal("Cannot show details from this game");

@@ -3,15 +3,7 @@ import axios from "axios";
 import { Wrapper } from "../utils/Wrapper";
 import useGamesApi from "./useGamesApi";
 import { toast } from "react-toastify";
-
-// jest.mock("react-router-dom", () => ({
-//   ...jest.requireActual("react-router-dom"),
-//   useParams: () => ({ id: mockGame.id }),
-// }));
-// jest.mock("react-redux", () => ({
-//   ...jest.requireActual("react-redux"),
-//   useSelector: () => mockGameArray,
-// }));
+import { mockGame } from "../mocks/mockGame";
 
 jest.mock("react-toastify");
 
@@ -22,7 +14,19 @@ jest.mock("react-redux", () => ({
 }));
 
 describe("Given a useGamesApi custom hook", () => {
-  beforeEach(() => jest.restoreAllMocks());
+  describe("When it's invoked with getOneGameById with the correct id", () => {
+    test("Then it should return a game with this id", async () => {
+      const {
+        result: {
+          current: { getOneGameById },
+        },
+      } = renderHook(useGamesApi, { wrapper: Wrapper });
+      const game = await getOneGameById(mockGame.id);
+
+      await expect(game).toStrictEqual(mockGame);
+    });
+  });
+
   describe("When it's invoked with getAllGames method", () => {
     test("Then it should dispatch all games received", async () => {
       const {
