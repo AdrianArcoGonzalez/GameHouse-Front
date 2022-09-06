@@ -5,10 +5,6 @@ import { mockGame } from "../../mocks/mockGame";
 import Game from "./Game";
 
 const mockNavigate = jest.fn();
-//  jest.mock("react-router-dom", () => ({
-//    ...jest.requireActual("react-router-dom"),
-//    navigate: () => mockNavigate,
-//  }));
 jest.mock("react-router-dom", () => ({
   ...(jest.requireActual("react-router-dom") as any),
   useNavigate: () => mockNavigate,

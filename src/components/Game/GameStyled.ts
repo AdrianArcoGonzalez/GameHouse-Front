@@ -8,6 +8,7 @@ const GameStyled = styled.article`
   align-items: center;
   padding: 20px;
   width: fit-content;
+  cursor: pointer;
   :hover {
     .game-info__container {
       display: flex;
