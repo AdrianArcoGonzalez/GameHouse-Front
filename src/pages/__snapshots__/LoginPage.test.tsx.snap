@@ -2,9 +2,6 @@
 
 exports[`Given a Login Page component When it's instantiated Then it should match the the Login page screenshot 1`] = `
 Array [
-  <div
-    className="Toastify"
-  />,
   <section
     className="sc-bczRLJ dVNtAm"
     data-testid="section"

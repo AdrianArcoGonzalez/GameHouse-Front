@@ -4,9 +4,6 @@ exports[`Given a Home Page component When it's instantiated Then it should match
 <div
   className="sc-hKMtZM iMoGjk"
 >
-  <div
-    className="Toastify"
-  />
   <section
     className="sc-bczRLJ dVNtAm"
     data-testid="section"
