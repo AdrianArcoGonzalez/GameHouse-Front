@@ -9,12 +9,10 @@ const useGamesApi = () => {
   const backUrl = process.env.REACT_APP_URL_BACK;
   const getAllGames = useCallback(async () => {
     try {
-      debugger;
       const response = await axios.get(`${backUrl}games/games/`);
       const { games } = response.data;
 
       if (games.length === 0) {
-        debugger;
         throw new Error();
       }
 
