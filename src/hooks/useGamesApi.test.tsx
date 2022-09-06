@@ -12,6 +12,7 @@ jest.mock("react-redux", () => ({
   ...jest.requireActual("react-redux"),
   useDispatch: () => mockDispatch,
 }));
+beforeEach(() => jest.restoreAllMocks());
 
 describe("Given a useGamesApi custom hook", () => {
   describe("When it's invoked with getOneGameById with the correct id", () => {
@@ -57,7 +58,6 @@ describe("Given a useGamesApi custom hook", () => {
 
     test("And if it get an error getting all games it should call the error toast", async () => {
       axios.get = jest.fn().mockResolvedValue({ data: { games: [] } });
-
       const {
         result: {
           current: { getAllGames },
