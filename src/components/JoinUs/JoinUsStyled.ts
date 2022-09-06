@@ -4,12 +4,16 @@ const JoinUsStyled = styled.section`
   font-family: "Roboto";
   color: white;
   width: 100%;
-  position: relative;
+  background-image: url("/images/joinComunity.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   .join-us__ {
-    &image {
-      width: 100vw;
-      object-fit: cover;
-    }
     &info-container {
       display: flex;
       justify-content: center;
@@ -17,13 +21,8 @@ const JoinUsStyled = styled.section`
       flex-direction: column;
       background-color: rgba(0, 0, 0, 0.7);
       width: 90%;
-      position: absolute;
       border-radius: 20px;
-      top: 5%;
-      left: 5%;
       @media (min-width: 850px) {
-        top: 15%;
-        left: 22%;
         height: fit-content;
         width: fit-content;
       }

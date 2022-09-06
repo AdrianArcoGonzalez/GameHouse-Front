@@ -4,13 +4,6 @@ import JoinUsStyled from "./JoinUsStyled";
 const JoinUs = (): JSX.Element => {
   return (
     <JoinUsStyled>
-      <img
-        src="/images/joinComunity.jpg"
-        alt="Video Game characters riding birds running on a field"
-        height="300px"
-        width="320px"
-        className="join-us__image"
-      />
       <div className="join-us__info-container">
         <h3 className="join-us__title">Join the community!</h3>
         <p className="join-us__text">
