@@ -21,7 +21,7 @@ const GameDetails = ({
         <h3 className="details__info-element-title"> {title}</h3>
         <p className="details__info-element"> {sinopsis}</p>
         <span className="details__info-element">
-          <span className="details__info-element--title"> Category: </span>
+          <span className="details__info-element--title">Category: </span>
           {category}
         </span>
         <span className="details__info-element">
