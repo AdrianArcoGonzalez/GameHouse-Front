@@ -46,7 +46,7 @@ const Header = (): JSX.Element => {
               </li>
               <li className="burguer-menu__menu--item">
                 <NavLink
-                  to="/mycollection"
+                  to="/my-collection"
                   className="menu__link"
                   onClick={openCloseMenu}
                 >

@@ -31,7 +31,7 @@ const Footer = (): JSX.Element => {
         <NavLink to="/home" className="footer__link">
           Home
         </NavLink>
-        <NavLink to="/mycollection" className="footer__link">
+        <NavLink to="/my-collection" className="footer__link">
           My Collection
         </NavLink>
         <NavLink to="/games" className="footer__link">
