@@ -26,7 +26,6 @@ const DetailsPage = (): JSX.Element => {
 
   useEffect(() => {
     (async () => {
-      debugger;
       const game = await getOneGameById(id!);
       setGame(game as unknown as Game);
     })();
