@@ -10,13 +10,15 @@ const GameDetails = ({
 }: GameDetailsProps): JSX.Element => {
   return (
     <GameDetailsStyled>
-      <img
-        src={`${image}`}
-        alt={`${title}`}
-        height={320}
-        width={250}
-        className="details__image"
-      />
+      <div className="image-container">
+        <img
+          src={`${image}`}
+          alt={`${title}`}
+          height={320}
+          width={270}
+          className="details__image"
+        />
+      </div>
       <article className="details__info-container">
         <h3 className="details__info-element-title"> {title}</h3>
         <p className="details__info-element"> {sinopsis}</p>

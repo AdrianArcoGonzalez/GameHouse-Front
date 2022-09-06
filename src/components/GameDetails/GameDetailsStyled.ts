@@ -16,15 +16,20 @@ const GameDetailsStyled = styled.section`
     height: 500px;
     flex-direction: row;
   }
+  .image-container {
+    @media (min-width: 850px) {
+      height: 400px;
+      width: 310px;
+      margin: 20px;
+    }
+  }
   .details__ {
     &image {
       margin-top: 20px;
       border: 1px solid white;
-      object-fit: cover;
       @media (min-width: 850px) {
         height: 400px;
-        width: 320px;
-        margin: 20px;
+        width: 310px;
       }
     }
     &info {
@@ -44,9 +49,10 @@ const GameDetailsStyled = styled.section`
         margin: 0;
         flex-direction: column;
         &-title {
+          padding: 10px;
           @media (min-width: 850px) {
-            font-size: 2rem;
             padding: 10px;
+            font-size: 2rem;
           }
         }
         &--title {
@@ -60,7 +66,7 @@ const GameDetailsStyled = styled.section`
             flex-direction: row;
             gap: 5px;
             position: absolute;
-            bottom: -60px;
+            bottom: 30px;
             right: 100px;
           }
         }

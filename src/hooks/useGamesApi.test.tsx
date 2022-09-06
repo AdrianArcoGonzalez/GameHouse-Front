@@ -3,6 +3,7 @@ import axios from "axios";
 import { Wrapper } from "../utils/Wrapper";
 import useGamesApi from "./useGamesApi";
 import { toast } from "react-toastify";
+import { mockGame } from "../mocks/mockGame";
 
 jest.mock("react-toastify");
 
@@ -13,7 +14,30 @@ jest.mock("react-redux", () => ({
 }));
 
 describe("Given a useGamesApi custom hook", () => {
-  beforeEach(() => jest.restoreAllMocks());
+  describe("When it's invoked with getOneGameById with the correct id", () => {
+    test("Then it should return a game with this id", async () => {
+      const {
+        result: {
+          current: { getOneGameById },
+        },
+      } = renderHook(useGamesApi, { wrapper: Wrapper });
+      const game = await getOneGameById(mockGame.id);
+
+      await expect(game).toStrictEqual(mockGame);
+    });
+
+    test("And if can't return a game it should call the error toast", async () => {
+      const {
+        result: {
+          current: { getOneGameById },
+        },
+      } = renderHook(useGamesApi, { wrapper: Wrapper });
+      await getOneGameById("123123123123123123");
+
+      expect(toast.error).toHaveBeenCalled();
+    });
+  });
+
   describe("When it's invoked with getAllGames method", () => {
     test("Then it should dispatch all games received", async () => {
       const {
