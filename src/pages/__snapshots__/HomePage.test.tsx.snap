@@ -41,15 +41,8 @@ exports[`Given a Home Page component When it's instantiated Then it should match
     />
   </section>
   <section
-    className="sc-eCYdqJ dFhFLD"
+    className="sc-eCYdqJ hNBWVG"
   >
-    <img
-      alt="Video Game characters riding birds running on a field"
-      className="join-us__image"
-      height="300px"
-      src="/images/joinComunity.jpg"
-      width="320px"
-    />
     <div
       className="join-us__info-container"
     >

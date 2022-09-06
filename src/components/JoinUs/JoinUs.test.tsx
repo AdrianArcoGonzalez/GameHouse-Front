@@ -4,17 +4,6 @@ import JoinUs from "./JoinUs";
 
 describe("Given a JoinUs component", () => {
   describe("When it's instantiated", () => {
-    test("Then it should show an image", () => {
-      render(
-        <BrowserRouter>
-          <JoinUs />
-        </BrowserRouter>
-      );
-      const image = screen.getByRole("img");
-
-      expect(image).toBeInTheDocument();
-    });
-
     test("And it should show title with the text given", () => {
       render(
         <BrowserRouter>

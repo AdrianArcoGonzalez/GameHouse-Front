@@ -11,19 +11,17 @@ const Game = ({
 }: GameProps): JSX.Element => {
   const navigate = useNavigate();
   const handleNavigate = () => {
-    debugger;
     navigate(`/details/${id}`);
   };
 
   return (
-    <GameStyled>
+    <GameStyled onClick={handleNavigate}>
       <img
         src={image}
         alt={title}
         className="game__image"
         height="280px"
         width="200px"
-        onClick={handleNavigate}
       />
       <div className="game-info__container">
         <span className="game-info__element">{title}</span>

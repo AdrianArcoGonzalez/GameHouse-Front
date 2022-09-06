@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { RootState } from "../store/store";
 
 const useDetails = () => {
-  debugger;
   const games = useSelector((state: RootState) => state.games);
 
   let { id } = useParams();
