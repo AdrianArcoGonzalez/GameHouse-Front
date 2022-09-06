@@ -25,6 +25,17 @@ describe("Given a useGamesApi custom hook", () => {
 
       await expect(game).toStrictEqual(mockGame);
     });
+
+    test("And if can't return a game it should call the error toast", async () => {
+      const {
+        result: {
+          current: { getOneGameById },
+        },
+      } = renderHook(useGamesApi, { wrapper: Wrapper });
+      await getOneGameById("123123123123123123");
+
+      expect(toast.error).toHaveBeenCalled();
+    });
   });
 
   describe("When it's invoked with getAllGames method", () => {
