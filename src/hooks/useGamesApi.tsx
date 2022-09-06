@@ -27,7 +27,6 @@ const useGamesApi = () => {
   const getOneGameById = useCallback(
     async (id: string) => {
       try {
-        debugger;
         const {
           data: { game },
         } = await axios.get(`${backUrl}games/games/${id}`);

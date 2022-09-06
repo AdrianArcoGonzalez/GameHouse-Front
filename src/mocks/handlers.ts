@@ -52,4 +52,8 @@ export const handlers = [
   rest.get(`${url}games/games/46546549874123`, (_req, res, ctx) => {
     return res(ctx.status(200), ctx.json({ game: mockGame }));
   }),
+
+  rest.get(`${url}games/games/123123123123123123`, (_req, res, ctx) => {
+    return res(ctx.status(404), ctx.json(new Error()));
+  }),
 ];
