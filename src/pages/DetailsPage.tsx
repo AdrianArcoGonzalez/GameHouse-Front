@@ -21,12 +21,12 @@ const initialState: Game = {
 
 const DetailsPage = (): JSX.Element => {
   const [game, setGame] = useState(initialState);
-
   const { getOneGameById } = useGamesApi();
   const { id } = useParams();
 
   useEffect(() => {
     (async () => {
+      debugger;
       const game = await getOneGameById(id!);
       setGame(game as unknown as Game);
     })();

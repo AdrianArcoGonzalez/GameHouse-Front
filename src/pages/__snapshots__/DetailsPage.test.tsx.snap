@@ -24,15 +24,19 @@ Array [
     </div>
   </section>,
   <section
-    className="sc-bczRLJ hpTAxW"
+    className="sc-bczRLJ cuPKdA"
   >
-    <img
-      alt=""
-      className="details__image"
-      height={320}
-      src=""
-      width={250}
-    />
+    <div
+      className="image-container"
+    >
+      <img
+        alt=""
+        className="details__image"
+        height={320}
+        src=""
+        width={270}
+      />
+    </div>
     <article
       className="details__info-container"
     >
