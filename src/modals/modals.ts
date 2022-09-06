@@ -19,3 +19,14 @@ export const errorModal = (message: string) =>
     closeButton: false,
     transition: Flip,
   });
+
+export const goodbyeModal = (message: string) => {
+  toast.info(message, {
+    position: "top-center",
+    theme: "light",
+    hideProgressBar: true,
+    closeButton: false,
+    transition: Flip,
+    autoClose: 3000,
+  });
+};

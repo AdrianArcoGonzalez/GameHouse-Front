@@ -2,9 +2,6 @@
 
 exports[`Given a Register Page component When it's instantiated Then it should match the Register page snapshot 1`] = `
 Array [
-  <div
-    className="Toastify"
-  />,
   <section
     className="sc-bczRLJ dVNtAm"
     data-testid="section"

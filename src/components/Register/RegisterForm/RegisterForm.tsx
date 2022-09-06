@@ -7,7 +7,7 @@ interface RegisterFormProps {
   userRegister: FormState;
   setUser: (user: FormState) => void;
 }
-const formData = new FormData();
+let formData = new FormData();
 
 const RegisterForm = ({
   userRegister,
@@ -29,6 +29,7 @@ const RegisterForm = ({
     event.preventDefault();
     formData.append("user", JSON.stringify(userRegister));
     await registerUser(formData);
+    formData = new FormData();
     setUser(initialState);
   };
 

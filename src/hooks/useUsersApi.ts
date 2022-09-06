@@ -20,12 +20,11 @@ const useUsersApi = () => {
           headers: { "Content-Type": "multipart/form-data" },
         }
       );
-
       succesModal("Hero registered!");
       navigate("/login");
       return response;
     } catch (error) {
-      errorModal("Cannot Succes the register");
+      errorModal("User or password not Valid");
     }
   };
 
