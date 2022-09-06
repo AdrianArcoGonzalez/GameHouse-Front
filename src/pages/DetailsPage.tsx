@@ -5,6 +5,7 @@ import useDetails from "../hooks/useDetails";
 
 const DetailsPage = (): JSX.Element => {
   const game = useDetails();
+
   return (
     <>
       <HeroSection
