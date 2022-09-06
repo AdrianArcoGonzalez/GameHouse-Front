@@ -16,7 +16,7 @@ const App = (): JSX.Element => {
         <Route path="/home" element={<HomePage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/mycollection" element={<></>} />
+        <Route path="/my-collection" element={<></>} />
         <Route path="/games" element={<></>} />
         <Route path="/details/:id" element={<DetailsPage />} />
         <Route path="*" element={<NotFoundPage />} />
