@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { LoginUser } from "../interfaces/interfaces";
 import { errorModal, succesModal } from "../modals/modals";
 import { logInUserActionCreator } from "../store/slice/usersSlice";
@@ -9,6 +10,7 @@ const useUsersApi = () => {
   const backUrl = process.env.REACT_APP_URL_BACK;
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const registerUser = async (formData: FormData) => {
     try {
       const response = await axios.post(
@@ -20,6 +22,7 @@ const useUsersApi = () => {
       );
 
       succesModal("Hero registered!");
+      navigate("/login");
       return response;
     } catch (error) {
       errorModal("Cannot Succes the register");
@@ -39,6 +42,7 @@ const useUsersApi = () => {
       succesModal("Welcome Hero!");
       dispatch(logInUserActionCreator(loginUser));
       localStorage.setItem("token", user.token);
+      navigate("/home");
     } catch (error) {
       errorModal("User or password not valid!");
     }

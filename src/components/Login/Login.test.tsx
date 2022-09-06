@@ -9,9 +9,8 @@ describe("Given a Login component", () => {
   describe("When it's instantiated", () => {
     test("Then it should show a heading", () => {
       render(
-        <BrowserRouter>
-          <Login />
-        </BrowserRouter>,
+        <Login />,
+
         { wrapper: Wrapper }
       );
       const header = screen.getByRole("heading");
@@ -22,12 +21,7 @@ describe("Given a Login component", () => {
     test("And it should show the username input", () => {
       const labeUser = "Username";
 
-      render(
-        <BrowserRouter>
-          <Login />
-        </BrowserRouter>,
-        { wrapper: Wrapper }
-      );
+      render(<Login />, { wrapper: Wrapper });
       const usernameInput = screen.getByLabelText(labeUser);
 
       expect(usernameInput).toBeInTheDocument();
@@ -36,12 +30,7 @@ describe("Given a Login component", () => {
     test("And it should show the password input", () => {
       const labelPassword = "Password";
 
-      render(
-        <BrowserRouter>
-          <Login />
-        </BrowserRouter>,
-        { wrapper: Wrapper }
-      );
+      render(<Login />, { wrapper: Wrapper });
       const passwordInput = screen.getByLabelText(labelPassword);
 
       expect(passwordInput).toBeInTheDocument();
@@ -50,12 +39,7 @@ describe("Given a Login component", () => {
     test("And it should show a button with text Sign In", () => {
       const textButton = "Sign In";
 
-      render(
-        <BrowserRouter>
-          <Login />
-        </BrowserRouter>,
-        { wrapper: Wrapper }
-      );
+      render(<Login />, { wrapper: Wrapper });
       const buttonLogin = screen.getByRole("button");
 
       expect((buttonLogin as HTMLButtonElement).textContent).toBe(textButton);
@@ -64,12 +48,7 @@ describe("Given a Login component", () => {
     test("And then it should show a text to send you to sign up", () => {
       const text = "Haven't an account yet? Go to";
 
-      render(
-        <BrowserRouter>
-          <Login />
-        </BrowserRouter>,
-        { wrapper: Wrapper }
-      );
+      render(<Login />, { wrapper: Wrapper });
       const textOnScreen = screen.getByText(text);
 
       expect(textOnScreen).toBeInTheDocument();
@@ -79,12 +58,7 @@ describe("Given a Login component", () => {
       const labelUsername = "Username";
       const userWrite = "adrian123";
 
-      render(
-        <BrowserRouter>
-          <Login />
-        </BrowserRouter>,
-        { wrapper: Wrapper }
-      );
+      render(<Login />, { wrapper: Wrapper });
       const usernameInput = screen.getByLabelText(labelUsername);
       await userEvent.type(usernameInput, userWrite);
       expect(usernameInput).toHaveValue(userWrite);
@@ -98,12 +72,7 @@ describe("Given a Login component", () => {
       const type1 = "adrian";
       const type2 = "123456";
 
-      render(
-        <BrowserRouter>
-          <Login />
-        </BrowserRouter>,
-        { wrapper: Wrapper }
-      );
+      render(<Login />, { wrapper: Wrapper });
 
       const inputUsername = screen.getByLabelText(usernameLabel);
       const inputPassword = screen.getByLabelText(passwordLabel);

@@ -6,12 +6,7 @@ import App from "./App";
 describe("Given an App component", () => {
   describe("When it's instantiated", () => {
     test("Then it should show", () => {
-      render(
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>,
-        { wrapper: Wrapper }
-      );
+      render(<App />, { wrapper: Wrapper });
       const heading = screen.getAllByRole("heading", {
         name: "GameHouse",
       });
@@ -20,12 +15,7 @@ describe("Given an App component", () => {
     });
 
     test("And it should show a text", () => {
-      render(
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>,
-        { wrapper: Wrapper }
-      );
+      render(<App />, { wrapper: Wrapper });
       const paragraph = screen.getByTestId("section");
 
       expect(paragraph).toBeInTheDocument();

@@ -14,7 +14,6 @@ const RegisterForm = ({
   setUser,
 }: RegisterFormProps): JSX.Element => {
   const { registerUser } = useUsersApi();
-
   const onChangeField = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUser({
       ...userRegister,

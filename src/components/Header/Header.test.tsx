@@ -30,12 +30,7 @@ describe("Given a Header component", () => {
     });
     test("Then it should show a heading with GameHouse text", () => {
       const text = "GameHouse";
-      render(
-        <BrowserRouter>
-          <Header />
-        </BrowserRouter>,
-        { wrapper: Wrapper }
-      );
+      render(<Header />, { wrapper: Wrapper });
       const heading = screen.getAllByRole("heading", {
         name: text,
       });
@@ -46,36 +41,21 @@ describe("Given a Header component", () => {
     test("And it should show a burguer menu", () => {
       const id = "burguer";
 
-      render(
-        <BrowserRouter>
-          <Header />
-        </BrowserRouter>,
-        { wrapper: Wrapper }
-      );
+      render(<Header />, { wrapper: Wrapper });
       const burguerMenu = screen.getByTestId(id);
 
       expect(burguerMenu).toBeInTheDocument();
     });
 
     test("And it should show a list of links", () => {
-      render(
-        <BrowserRouter>
-          <Header />
-        </BrowserRouter>,
-        { wrapper: Wrapper }
-      );
+      render(<Header />, { wrapper: Wrapper });
       const navigation = screen.getByRole("navigation");
 
       expect(navigation).toBeInTheDocument();
     });
     test("And if the user click on the menu then it should call the setState", async () => {
       const usestate = jest.spyOn(React, "useState");
-      render(
-        <BrowserRouter>
-          <Header />
-        </BrowserRouter>,
-        { wrapper: Wrapper }
-      );
+      render(<Header />, { wrapper: Wrapper });
       const burguer = screen.getByRole("button");
       await userEvent.click(burguer);
 
@@ -87,12 +67,7 @@ describe("Given a Header component", () => {
     test("And it should show a logout button if it's logged in", async () => {
       const textButton = "Logout";
 
-      render(
-        <BrowserRouter>
-          <Header />
-        </BrowserRouter>,
-        { wrapper: WrapperFakeStore }
-      );
+      render(<Header />, { wrapper: WrapperFakeStore });
       const logoutButton = screen.getByText(textButton);
       await userEvent.click(logoutButton);
 

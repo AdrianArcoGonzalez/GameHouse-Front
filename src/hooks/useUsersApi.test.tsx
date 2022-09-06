@@ -4,6 +4,7 @@ import { store } from "../store/store";
 import useUsersApi from "./useUsersApi";
 import { Provider } from "react-redux";
 import { toast } from "react-toastify";
+import { BrowserRouter } from "react-router-dom";
 
 jest.mock("react-toastify");
 
@@ -18,7 +19,11 @@ interface WrapperProps {
 }
 
 const Wrapper = ({ children }: WrapperProps): JSX.Element => {
-  return <Provider store={store}>{children}</Provider>;
+  return (
+    <Provider store={store}>
+      <BrowserRouter>{children}</BrowserRouter>
+    </Provider>
+  );
 };
 
 describe("Given a useUserApi custom hook", () => {
@@ -63,7 +68,9 @@ describe("Given a useUserApi custom hook", () => {
         result: {
           current: { registerUser },
         },
-      } = renderHook(useUsersApi, { wrapper: Wrapper });
+      } = renderHook(useUsersApi, {
+        wrapper: Wrapper,
+      });
 
       const returnRegister = await registerUser(formdataTest);
 
