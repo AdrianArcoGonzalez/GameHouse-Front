@@ -26,7 +26,7 @@ export const handlers = [
   }),
 
   rest.post(`${url}games/users/register`, async (req, res, ctx) => {
-    const request: any = await req;
+    const request: any = req;
     const userFormData: any = await request._body.get("user");
     const user = JSON.parse(userFormData);
     if (user.password === "") {

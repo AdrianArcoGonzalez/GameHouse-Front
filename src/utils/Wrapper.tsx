@@ -1,4 +1,5 @@
-import * as reactRedux from "react-redux";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import { store } from "../store/store";
 
 export interface WrapperProps {
@@ -6,5 +7,9 @@ export interface WrapperProps {
 }
 
 export const Wrapper = ({ children }: WrapperProps): JSX.Element => {
-  return <reactRedux.Provider store={store}>{children}</reactRedux.Provider>;
+  return (
+    <Provider store={store}>
+      <BrowserRouter>{children}</BrowserRouter>
+    </Provider>
+  );
 };
