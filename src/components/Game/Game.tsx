@@ -11,7 +11,6 @@ const Game = ({
 }: GameProps): JSX.Element => {
   const navigate = useNavigate();
   const handleNavigate = () => {
-    debugger;
     navigate(`/details/${id}`);
   };
 
