@@ -17,8 +17,10 @@ const App = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    debugger;
     const tokenEncrypted = localStorage.getItem("token");
     if (tokenEncrypted) {
+      debugger;
       const token = decodeToken(tokenEncrypted);
       const user = { ...token, isLogged: true };
       dispatch(logInUserActionCreator(user));
