@@ -1,14 +1,15 @@
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
+import { Wrapper } from "../../utils/Wrapper";
 import Footer from "./Footer";
 
 describe("Given a Footer component", () => {
   describe("When it's instantiated", () => {
     test("Then it should show a heading", () => {
       render(
-        <BrowserRouter>
+        <Wrapper>
           <Footer />
-        </BrowserRouter>
+        </Wrapper>
       );
       const heading = screen.getByRole("heading");
 
@@ -19,10 +20,11 @@ describe("Given a Footer component", () => {
       const copyrightText = "© 2022 GameHouse Inc. Adrian Arco Gonzalez";
 
       render(
-        <BrowserRouter>
+        <Wrapper>
           <Footer />
-        </BrowserRouter>
+        </Wrapper>
       );
+
       const copyright = screen.getByText(copyrightText);
 
       expect(copyright).toBeInTheDocument();

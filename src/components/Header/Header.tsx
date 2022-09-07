@@ -6,7 +6,7 @@ import { logOutUserActionCreator } from "../../store/slice/usersSlice";
 import { RootState } from "../../store/store";
 import HeaderStyled from "./HeaderStyled";
 const Header = (): JSX.Element => {
-  const isLogged = useAppSelector((state: RootState) => state.user.isLogged);
+  const { isLogged } = useAppSelector((state: RootState) => state.user);
   const dispatch = useAppDispatch();
   const [menuVisible, setMenuVisible] = useState(false);
 
@@ -55,33 +55,30 @@ const Header = (): JSX.Element => {
                   My Collection
                 </NavLink>
               </li>
-              <li className="burguer-menu__menu--item">
-                <NavLink
-                  to="/games"
-                  className="menu__link"
-                  onClick={openCloseMenu}
-                >
-                  Games
-                </NavLink>
-              </li>
-              <li className="burguer-menu__menu--item">
-                <NavLink
-                  to="/login"
-                  className="menu__link"
-                  onClick={openCloseMenu}
-                >
-                  Sign In
-                </NavLink>
-              </li>
-              <li className="burguer-menu__menu--item">
-                <NavLink
-                  to="/register"
-                  className="menu__link"
-                  onClick={openCloseMenu}
-                >
-                  Sign Up
-                </NavLink>
-              </li>
+
+              {!isLogged && (
+                <li className="burguer-menu__menu--item">
+                  <NavLink
+                    to="/login"
+                    className="menu__link"
+                    onClick={openCloseMenu}
+                  >
+                    Sign In
+                  </NavLink>
+                </li>
+              )}
+
+              {!isLogged && (
+                <li className="burguer-menu__menu--item">
+                  <NavLink
+                    to="/register"
+                    className="menu__link"
+                    onClick={openCloseMenu}
+                  >
+                    Sign Up
+                  </NavLink>
+                </li>
+              )}
             </ul>
           </section>
         )}

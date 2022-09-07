@@ -6,9 +6,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink } from "react-router-dom";
+import { useAppSelector } from "../../store/hooks";
 import FooterStyled from "./FooterStyled";
 
 const Footer = (): JSX.Element => {
+  const { isLogged } = useAppSelector((state) => state.user);
   return (
     <FooterStyled>
       <h2 className="footer__title">GameHouse</h2>
@@ -34,15 +36,17 @@ const Footer = (): JSX.Element => {
         <NavLink to="/my-collection" className="footer__link">
           My Collection
         </NavLink>
-        <NavLink to="/games" className="footer__link">
-          Games
-        </NavLink>
-        <NavLink to="/login" className="footer__link">
-          Sign In
-        </NavLink>
-        <NavLink to="/register" className="footer__link">
-          Sign Up
-        </NavLink>
+        {!isLogged && (
+          <NavLink to="/login" className="footer__link">
+            Sign In
+          </NavLink>
+        )}
+
+        {!isLogged && (
+          <NavLink to="/register" className="footer__link">
+            Sign Up
+          </NavLink>
+        )}
       </div>
       <span className="footer__sentence">
         © 2022 GameHouse Inc. Adrian Arco Gonzalez
