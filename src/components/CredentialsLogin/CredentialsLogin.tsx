@@ -6,17 +6,17 @@ interface SecurityRoutesProps {
   children: JSX.Element;
 }
 
-const SecurityRoutes = ({ children }: SecurityRoutesProps) => {
-  const user = useAppSelector((state) => state.user);
+const CredentialsLogin = ({ children }: SecurityRoutesProps) => {
+  const { isLogged } = useAppSelector((state) => state.user);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!user.isLogged) {
+    if (!isLogged) {
       navigate("/login");
     }
-  }, [navigate, user.isLogged]);
+  }, [navigate, isLogged]);
 
   return children;
 };
 
-export default SecurityRoutes;
+export default CredentialsLogin;

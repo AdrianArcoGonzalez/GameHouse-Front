@@ -6,24 +6,24 @@ import LoginPage from "../../pages/LoginPage";
 import HomePage from "../../pages/HomePage";
 import NotFoundPage from "../../pages/NotFoundPage";
 import DetailsPage from "../../pages/DetailsPage";
-import SecurityRoutes from "../SecurityRoutes/SecurityRoutes";
+import CredentialsLogin from "../CredentialsLogin/CredentialsLogin";
 import { useEffect } from "react";
 import decodeToken from "../../utils/auth";
 import { useAppDispatch } from "../../store/hooks";
 import { logInUserActionCreator } from "../../store/slice/usersSlice";
-import SecurityRegisterLogin from "../SecurityRegisterLogin/SecurityRegisterLogin";
+import CredentialsLogout from "../CredentialsLogout/CredentialsLogout";
 
 const App = (): JSX.Element => {
   const dispatch = useAppDispatch();
+  const tokenEncrypted = localStorage.getItem("token");
 
   useEffect(() => {
-    const tokenEncrypted = localStorage.getItem("token");
     if (tokenEncrypted) {
       const token = decodeToken(tokenEncrypted);
       const user = { ...token, isLogged: true };
       dispatch(logInUserActionCreator(user));
     }
-  }, [dispatch]);
+  }, [dispatch, tokenEncrypted]);
   return (
     <>
       <Header />
@@ -33,34 +33,34 @@ const App = (): JSX.Element => {
         <Route
           path="/login"
           element={
-            <SecurityRegisterLogin>
+            <CredentialsLogout>
               <LoginPage />
-            </SecurityRegisterLogin>
+            </CredentialsLogout>
           }
         />
         <Route path="/games" element={<></>} />
         <Route
           path="/register"
           element={
-            <SecurityRegisterLogin>
+            <CredentialsLogout>
               <RegisterPage />
-            </SecurityRegisterLogin>
+            </CredentialsLogout>
           }
         />
         <Route
           path="/my-collection"
           element={
-            <SecurityRoutes>
+            <CredentialsLogin>
               <></>
-            </SecurityRoutes>
+            </CredentialsLogin>
           }
         />
         <Route
           path="/details/:id"
           element={
-            <SecurityRoutes>
+            <CredentialsLogin>
               <DetailsPage />
-            </SecurityRoutes>
+            </CredentialsLogin>
           }
         />
         <Route path="*" element={<NotFoundPage />} />
