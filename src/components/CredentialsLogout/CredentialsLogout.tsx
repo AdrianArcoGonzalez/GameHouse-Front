@@ -6,16 +6,16 @@ interface SecurityRegisterLoginProps {
   children: JSX.Element;
 }
 
-const SecurityRegisterLogin = ({ children }: SecurityRegisterLoginProps) => {
-  const user = useAppSelector((state) => state.user);
+const CredentialsLogout = ({ children }: SecurityRegisterLoginProps) => {
+  const { isLogged } = useAppSelector((state) => state.user);
   const navigate = useNavigate();
   useEffect(() => {
-    if (user.isLogged) {
+    if (isLogged) {
       navigate("/home");
     }
-  }, [navigate, user.isLogged]);
+  }, [navigate, isLogged]);
 
   return children;
 };
 
-export default SecurityRegisterLogin;
+export default CredentialsLogout;

@@ -4,7 +4,7 @@ import mockStore from "../../mocks/mockStore";
 import DetailsPage from "../../pages/DetailsPage";
 import { store } from "../../store/store";
 import { Wrapper } from "../../utils/Wrapper";
-import SecurityRegisterLogin from "./SecurityRegisterLogin";
+import CredentialsLogout from "./CredentialsLogout";
 
 const mockNavigate = jest.fn();
 jest.mock("react-router-dom", () => ({
@@ -17,9 +17,9 @@ describe("Given a Security Routes component", () => {
     test("Then it should call the navigate method", () => {
       render(
         <Provider store={mockStore}>
-          <SecurityRegisterLogin>
+          <CredentialsLogout>
             <h1>User Login</h1>
-          </SecurityRegisterLogin>
+          </CredentialsLogout>
         </Provider>
       );
 
@@ -29,9 +29,9 @@ describe("Given a Security Routes component", () => {
     test("And if the user isn`t logged in it should return a heading", () => {
       render(
         <Provider store={store}>
-          <SecurityRegisterLogin>
+          <CredentialsLogout>
             <h1>User Login</h1>
-          </SecurityRegisterLogin>
+          </CredentialsLogout>
         </Provider>
       );
       const userLogin = screen.getByRole("heading");
