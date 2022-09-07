@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import useGamesApi from "../../hooks/useGamesApi";
 import { Game as IGame } from "../../interfaces/interfaces";
 import { useAppSelector } from "../../store/hooks";
-
 import Game from "../Game/Game";
 import GamesStyled from "./GamesStyled";
 
