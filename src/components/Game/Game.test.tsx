@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { BrowserRouter } from "react-router-dom";
 import { mockGame } from "../../mocks/mockGame";
+import { Wrapper } from "../../utils/Wrapper";
 import Game from "./Game";
 
 const mockNavigate = jest.fn();
@@ -15,9 +16,9 @@ describe("Given a Game component", () => {
     test("Then it should render the image with the src given", () => {
       const expectedSrc = `http://localhost/${mockGame.image}`;
       render(
-        <BrowserRouter>
+        <Wrapper>
           <Game game={mockGame} />
-        </BrowserRouter>
+        </Wrapper>
       );
       const image = screen.getByRole("img");
 
@@ -26,9 +27,9 @@ describe("Given a Game component", () => {
 
     test("And the image must have the title as alt text", () => {
       render(
-        <BrowserRouter>
+        <Wrapper>
           <Game game={mockGame} />
-        </BrowserRouter>
+        </Wrapper>
       );
       const image = screen.getByRole("img");
 
@@ -37,9 +38,9 @@ describe("Given a Game component", () => {
 
     test("And it should show the title of the game on screen", () => {
       render(
-        <BrowserRouter>
+        <Wrapper>
           <Game game={mockGame} />
-        </BrowserRouter>
+        </Wrapper>
       );
       const title = screen.getByText(mockGame.title);
 
@@ -48,9 +49,9 @@ describe("Given a Game component", () => {
 
     test("And it should show the category of the game on screen", () => {
       render(
-        <BrowserRouter>
+        <Wrapper>
           <Game game={mockGame} />
-        </BrowserRouter>
+        </Wrapper>
       );
       const category = screen.getByText(mockGame.category);
 
@@ -59,9 +60,9 @@ describe("Given a Game component", () => {
 
     test("And if the user click on the image it should call the handleNavigate", async () => {
       render(
-        <BrowserRouter>
+        <Wrapper>
           <Game game={mockGame} />
-        </BrowserRouter>
+        </Wrapper>
       );
       const image = screen.getByRole("img");
       await userEvent.click(image);

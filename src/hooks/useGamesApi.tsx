@@ -3,12 +3,16 @@ import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { errorModal } from "../modals/modals";
 import { useAppDispatch } from "../store/hooks";
-import { getAllGamesActionCreator } from "../store/slice/gamesSlice";
+import {
+  deleteGameActionCreator,
+  getAllGamesActionCreator,
+} from "../store/slice/gamesSlice";
 
 const useGamesApi = () => {
   const dispatch = useAppDispatch();
   const backUrl = process.env.REACT_APP_URL_BACK;
   const navigate = useNavigate();
+
   const getAllGames = useCallback(async () => {
     try {
       const response = await axios.get(`${backUrl}games/games/`);
@@ -39,7 +43,19 @@ const useGamesApi = () => {
     [backUrl, navigate]
   );
 
-  return { getAllGames, getOneGameById };
+  const deleteGameById = async (idToDelete: string) => {
+    try {
+      const data = await axios.delete(`${backUrl}games/games/`, {
+        data: { id: idToDelete },
+      });
+      dispatch(deleteGameActionCreator(idToDelete));
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return { getAllGames, getOneGameById, deleteGameById };
 };
 
 export default useGamesApi;

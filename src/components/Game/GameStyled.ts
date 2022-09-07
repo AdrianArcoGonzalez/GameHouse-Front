@@ -17,7 +17,6 @@ const GameStyled = styled.article`
 
   .game {
     &__image {
-      border: 1px solid white;
       object-fit: cover;
       object-position: center;
 
@@ -34,7 +33,7 @@ const GameStyled = styled.article`
       align-items: center;
       gap: 20px;
       position: absolute;
-      width: 198px;
+      width: 200px;
       height: 100px;
       bottom: 20px;
       margin: 0 auto;
@@ -43,7 +42,7 @@ const GameStyled = styled.article`
       @media (min-width: 850px) {
         display: none;
         height: 150px;
-        width: 298px;
+        width: 300px;
       }
     }
     &-info__element {
