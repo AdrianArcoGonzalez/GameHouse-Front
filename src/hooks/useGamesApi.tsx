@@ -52,17 +52,20 @@ const useGamesApi = () => {
     } catch (error) {}
   };
 
-  const getByOwner = async (owner: string) => {
-    try {
-      const {
-        data: { games },
-      } = await axios.get(`${backUrl}games/games/my-collection/${owner}`, {
-        headers: { Authorization: `Bearer ${user.token}` },
-      });
+  const getByOwner = useCallback(
+    async (owner: string) => {
+      try {
+        const {
+          data: { games },
+        } = await axios.get(`${backUrl}games/games/my-collection/${owner}`, {
+          headers: { Authorization: `Bearer ${user.token}` },
+        });
 
-      dispatch(getAllGamesActionCreator(games));
-    } catch (error) {}
-  };
+        dispatch(getAllGamesActionCreator(games));
+      } catch (error) {}
+    },
+    [backUrl, dispatch, user.token]
+  );
 
   return { getAllGames, getOneGameById, deleteGameById, getByOwner };
 };
