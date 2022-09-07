@@ -9,7 +9,7 @@ interface SecurityRoutesProps {
 const SecurityRoutes = ({ children }: SecurityRoutesProps) => {
   const user = useAppSelector((state) => state.user);
   const navigate = useNavigate();
-  debugger;
+
   useEffect(() => {
     if (!user.isLogged) {
       navigate("/login");
