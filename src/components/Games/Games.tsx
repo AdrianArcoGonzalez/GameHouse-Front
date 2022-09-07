@@ -5,7 +5,7 @@ import GamesStyled from "./GamesStyled";
 
 const Games = (): JSX.Element => {
   const games = useAppSelector((state) => state.games);
-  debugger;
+
   return (
     <GamesStyled>
       <ul className="games-list">

@@ -1,7 +1,7 @@
 import DetailsPage from "./DetailsPage";
 import { mockGame } from "../mocks/mockGame";
 import TestRenderer from "react-test-renderer";
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { Wrapper } from "../utils/Wrapper";
 import React from "react";
 const mockNavigate = jest.fn().mockReturnValue(mockGame.id);
