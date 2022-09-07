@@ -35,7 +35,7 @@ describe("Given a useGamesApi custom hook", () => {
       } = renderHook(useGamesApi, { wrapper: Wrapper });
       await getOneGameById("123123123123123123");
 
-      expect(toast.error).toHaveBeenCalled();
+      expect(toast.info).toHaveBeenCalled();
     });
   });
 

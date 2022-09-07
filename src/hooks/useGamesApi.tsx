@@ -1,8 +1,7 @@
 import axios from "axios";
 import { useCallback } from "react";
-import { useNavigate } from "react-router-dom";
-import { errorModal } from "../modals/modals";
-import { useAppDispatch } from "../store/hooks";
+import { errorModal, goodbyeModal } from "../modals/modals";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
 import {
   deleteGameActionCreator,
   getAllGamesActionCreator,
@@ -11,8 +10,7 @@ import {
 const useGamesApi = () => {
   const dispatch = useAppDispatch();
   const backUrl = process.env.REACT_APP_URL_BACK;
-  const navigate = useNavigate();
-
+  const user = useAppSelector((state) => state.user);
   const getAllGames = useCallback(async () => {
     try {
       const response = await axios.get(`${backUrl}games/games/`);
@@ -33,29 +31,40 @@ const useGamesApi = () => {
       try {
         const {
           data: { game },
-        } = await axios.get(`${backUrl}games/games/${id}`);
+        } = await axios.get(`${backUrl}games/games/${id}`, {
+          headers: { Authorization: `Bearer ${user.token}` },
+        });
         return game;
       } catch (error) {
-        errorModal("Cannot show details from this game");
-        navigate("/home");
+        goodbyeModal("You need to login to see details");
       }
     },
-    [backUrl, navigate]
+    [backUrl, user.token]
   );
 
   const deleteGameById = async (idToDelete: string) => {
     try {
-      const data = await axios.delete(`${backUrl}games/games/`, {
+      await axios.delete(`${backUrl}games/games/`, {
         data: { id: idToDelete },
+        headers: { Authorization: `Bearer ${user.token}` },
       });
       dispatch(deleteGameActionCreator(idToDelete));
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
-  return { getAllGames, getOneGameById, deleteGameById };
+  const getByOwner = async (owner: string) => {
+    try {
+      const {
+        data: { games },
+      } = await axios.get(`${backUrl}games/games/my-collection/${owner}`, {
+        headers: { Authorization: `Bearer ${user.token}` },
+      });
+
+      dispatch(getAllGamesActionCreator(games));
+    } catch (error) {}
+  };
+
+  return { getAllGames, getOneGameById, deleteGameById, getByOwner };
 };
 
 export default useGamesApi;
