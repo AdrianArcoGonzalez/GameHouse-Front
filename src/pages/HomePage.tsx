@@ -4,8 +4,17 @@ import "react-toastify/dist/ReactToastify.css";
 import Games from "../components/Games/Games";
 import HomePageStyled from "./HomePageStyled";
 import JoinUs from "../components/JoinUs/JoinUs";
+import useGamesApi from "../hooks/useGamesApi";
+import { useEffect } from "react";
 
 const HomePage = (): JSX.Element => {
+  const { getAllGames } = useGamesApi();
+  useEffect(() => {
+    (async () => {
+      await getAllGames();
+    })();
+  }, [getAllGames]);
+
   return (
     <HomePageStyled>
       <HeroSection text={heroTexts.home} srcImage={"images/home.webp"} />

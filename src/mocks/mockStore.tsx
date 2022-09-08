@@ -3,10 +3,10 @@ import { Game, User } from "../interfaces/interfaces";
 import { mockGameArray } from "./mockGame";
 
 const initialUserState = {
-  username: "",
-  id: "",
+  username: "admin",
+  id: "123123123",
   isLogged: true,
-  token: "",
+  token: "123123123.123123123.1231231",
 };
 
 const initialGameState: Game[] = mockGameArray;

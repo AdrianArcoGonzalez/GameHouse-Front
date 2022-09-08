@@ -12,6 +12,7 @@ import decodeToken from "../../utils/auth";
 import { useAppDispatch } from "../../store/hooks";
 import { logInUserActionCreator } from "../../store/slice/usersSlice";
 import CredentialsLogout from "../CredentialsLogout/CredentialsLogout";
+import MyCollectionPage from "../../pages/MyCollectionPage";
 
 const App = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -51,7 +52,7 @@ const App = (): JSX.Element => {
           path="/my-collection"
           element={
             <CredentialsLogin>
-              <></>
+              <MyCollectionPage />
             </CredentialsLogin>
           }
         />

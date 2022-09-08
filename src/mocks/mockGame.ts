@@ -7,7 +7,7 @@ export const mockGame: Game = {
   dislikes: 40,
   likes: 100,
   image: "images/leagueoflegends.jpg",
-  owner: "Admin",
+  owner: "admin",
   sinopsis:
     "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam odio ut odit, illo sit eligendi nobis explicabo eos, aliquid qui inventore provident minus impedit consequuntur asperiores iure recusandae culpa quam?",
 
@@ -22,7 +22,7 @@ export const mockGame2: Game = {
   dislikes: 40,
   likes: 100,
   image: "images/thelastofus.webp",
-  owner: "Admin",
+  owner: "admin",
   sinopsis:
     "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam odio ut odit, illo sit eligendi nobis explicabo eos, aliquid qui inventore provident minus impedit consequuntur asperiores iure recusandae culpa quam?",
 
@@ -36,7 +36,7 @@ export const mockGame3: Game = {
   dislikes: 40,
   likes: 100,
   image: "images/tarkov.jpg",
-  owner: "Admin",
+  owner: "admin",
   sinopsis:
     "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam odio ut odit, illo sit eligendi nobis explicabo eos, aliquid qui inventore provident minus impedit consequuntur asperiores iure recusandae culpa quam?",
 
