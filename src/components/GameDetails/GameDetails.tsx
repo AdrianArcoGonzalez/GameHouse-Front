@@ -1,4 +1,7 @@
+import { SyntheticEvent } from "react";
+import useGamesApi from "../../hooks/useGamesApi";
 import { Game as IGame } from "../../interfaces/interfaces";
+import { useAppSelector } from "../../store/hooks";
 import GameDetailsStyled from "./GameDetailsStyled";
 
 interface GameDetailsProps {
@@ -6,8 +9,15 @@ interface GameDetailsProps {
 }
 
 const GameDetails = ({
-  game: { category, company, image, owner, title, sinopsis },
+  game: { category, company, image, owner, title, sinopsis, id },
 }: GameDetailsProps): JSX.Element => {
+  const { deleteGameById } = useGamesApi();
+  const { username } = useAppSelector((state) => state.user);
+
+  const handleDelete = async (event: SyntheticEvent) => {
+    event.preventDefault();
+    await deleteGameById(id);
+  };
   return (
     <GameDetailsStyled>
       <div className="image-container">
@@ -15,7 +25,7 @@ const GameDetails = ({
           src={`${image}`}
           alt={`${title}`}
           height={320}
-          width={270}
+          width={250}
           className="details__image"
         />
       </div>
@@ -34,6 +44,11 @@ const GameDetails = ({
           <span className="details__info-element--title">Created by: </span>
           {owner}
         </span>
+        {owner === username && (
+          <button className="button-delete" onClick={handleDelete}>
+            Delete
+          </button>
+        )}
       </article>
     </GameDetailsStyled>
   );

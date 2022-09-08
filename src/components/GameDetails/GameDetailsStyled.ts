@@ -19,7 +19,7 @@ const GameDetailsStyled = styled.section`
   .image-container {
     @media (min-width: 850px) {
       height: 400px;
-      width: 310px;
+      width: 300px;
       margin: 20px;
     }
   }
@@ -29,7 +29,7 @@ const GameDetailsStyled = styled.section`
       border: 1px solid white;
       @media (min-width: 850px) {
         height: 400px;
-        width: 310px;
+        width: 300px;
       }
     }
     &info {
@@ -71,6 +71,26 @@ const GameDetailsStyled = styled.section`
           }
         }
       }
+    }
+  }
+  .button-delete {
+    font-family: inherit;
+    margin: 0 auto;
+    width: 100px;
+    height: 30px;
+    border-radius: 20px;
+    background-color: #be2525;
+    color: white;
+    padding: 5px;
+    margin-top: 10px;
+    border: 1px solid white;
+    cursor: pointer;
+    margin-bottom: 10px;
+    @media (min-width: 850px) {
+    }
+    :hover {
+      background-color: #002d75;
+      font-weight: bold;
     }
   }
 `;

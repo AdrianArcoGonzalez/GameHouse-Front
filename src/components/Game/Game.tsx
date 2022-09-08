@@ -1,8 +1,6 @@
-import { SyntheticEvent } from "react";
 import { useNavigate } from "react-router-dom";
-import useGamesApi from "../../hooks/useGamesApi";
 import { Game as IGame } from "../../interfaces/interfaces";
-import { useAppSelector } from "../../store/hooks";
+
 import GameStyled from "./GameStyled";
 
 interface GameProps {
@@ -12,17 +10,10 @@ interface GameProps {
 const Game = ({
   game: { category, image, title, id, owner },
 }: GameProps): JSX.Element => {
-  const { username } = useAppSelector((state) => state.user);
-  const { deleteGameById } = useGamesApi();
   const navigate = useNavigate();
 
   const handleNavigate = () => {
     navigate(`/details/${id}`);
-  };
-
-  const handleDelete = async (event: SyntheticEvent) => {
-    event.preventDefault();
-    await deleteGameById(id);
   };
 
   return (
@@ -40,11 +31,6 @@ const Game = ({
           <span className="game-info__element-category">{category}</span>
         </div>
       </GameStyled>
-      {owner === username ? (
-        <button onClick={handleDelete}>Delete</button>
-      ) : (
-        <></>
-      )}
     </>
   );
 };

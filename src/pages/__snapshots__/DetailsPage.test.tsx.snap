@@ -24,7 +24,7 @@ Array [
     </div>
   </section>,
   <section
-    className="sc-bczRLJ cuPKdA"
+    className="sc-bczRLJ gOLlQd"
   >
     <div
       className="image-container"
@@ -34,7 +34,7 @@ Array [
         className="details__image"
         height={320}
         src=""
-        width={270}
+        width={250}
       />
     </div>
     <article
@@ -77,6 +77,12 @@ Array [
           Created by: 
         </span>
       </span>
+      <button
+        className="button-delete"
+        onClick={[Function]}
+      >
+        Delete
+      </button>
     </article>
   </section>,
 ]
