@@ -84,7 +84,34 @@ describe("Given a useGamesApi custom hook", () => {
         expect(mockDispatch).toHaveBeenCalled();
       });
     });
+  });
+  describe("When it's invoked with getByOwner method", () => {
+    test("Then if the data is ok it should call de dispatch", async () => {
+      const {
+        result: {
+          current: { getByOwner },
+        },
+      } = renderHook(useGamesApi, { wrapper: Wrapper });
 
+      // eslint-disable-next-line testing-library/no-await-sync-query
+      await getByOwner(mockUser.username);
+
+      expect(mockDispatch).toHaveBeenCalled();
+    });
+
+    test("Then if the data is ok it should call the modal error", async () => {
+      axios.get = jest.fn().mockRejectedValue(new Error());
+      const {
+        result: {
+          current: { getByOwner },
+        },
+      } = renderHook(useGamesApi, { wrapper: Wrapper });
+
+      // eslint-disable-next-line testing-library/no-await-sync-query
+      await getByOwner(mockUser.username);
+
+      expect(toast.error).toHaveBeenCalled();
+    });
     test("And if it get an error getting all games it should call the error toast", async () => {
       axios.get = jest.fn().mockResolvedValue({ data: { games: [] } });
       const {

@@ -68,7 +68,9 @@ const useGamesApi = () => {
         });
 
         dispatch(getAllGamesActionCreator(games));
-      } catch (error) {}
+      } catch (error) {
+        errorModal("Can't get your games now :(");
+      }
     },
     [backUrl, dispatch, user.token]
   );

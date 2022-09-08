@@ -61,4 +61,8 @@ export const handlers = [
   rest.delete(`${url}games/games/`, async (_req, res, ctx) => {
     return res(ctx.status(200), ctx.json({ game: mockGame }));
   }),
+
+  rest.get(`${url}games/games/my-collection/admin`, async (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json({ games: mockGame }));
+  }),
 ];
