@@ -18,8 +18,8 @@ jest.mock("../../hooks/useGamesApi", () => () => mockUseGames);
 
 describe("Given a Game component", () => {
   describe("When it's instantiated with a game as props", () => {
-    test("Then it should render the image with the src given", () => {
-      const expectedSrc = `http://localhost/${mockGame.image}`;
+    test("Then it should render the image with the alt given", () => {
+      const expectedAltText = mockGame.title;
       render(
         <Wrapper>
           <Game game={mockGame} />
@@ -27,7 +27,7 @@ describe("Given a Game component", () => {
       );
       const image = screen.getByRole("img");
 
-      expect((image as HTMLImageElement).src).toBe(expectedSrc);
+      expect((image as HTMLImageElement).alt).toBe(expectedAltText);
     });
 
     test("And the image must have the title as alt text", () => {

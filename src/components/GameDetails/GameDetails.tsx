@@ -8,6 +8,8 @@ interface GameDetailsProps {
   game: IGame;
 }
 
+const urlBack = process.env.REACT_APP_URL_BACK;
+
 const GameDetails = ({
   game: { category, company, image, owner, title, sinopsis, id },
 }: GameDetailsProps): JSX.Element => {
@@ -22,8 +24,8 @@ const GameDetails = ({
     <GameDetailsStyled>
       <div className="image-container">
         <img
-          src={`${image}`}
-          alt={`${title}`}
+          src={`${urlBack}${image}`}
+          alt={title}
           height={320}
           width={250}
           className="details__image"
