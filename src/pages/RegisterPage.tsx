@@ -7,7 +7,7 @@ const RegisterPage = (): JSX.Element => {
     <>
       <HeroSection
         text={heroTexts.register}
-        srcImage={"images/form-background.png"}
+        srcImage={"images/register.webp"}
       />
       <Register />;
     </>

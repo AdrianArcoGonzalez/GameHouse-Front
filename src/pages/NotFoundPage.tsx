@@ -6,7 +6,7 @@ import NotFoundPageStyled from "./NotFoundPageStyled";
 const NotFoundPage = (): JSX.Element => {
   return (
     <>
-      <HeroSection srcImage="/images/notFound.jpg" text={heroTexts.notFound} />
+      <HeroSection srcImage="/images/notFound.webp" text={heroTexts.notFound} />
       <NotFoundPageStyled>
         <span className="not-found__title">404 Page Not Found</span>
 

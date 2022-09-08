@@ -10,7 +10,7 @@ Array [
       alt="backgroundImage"
       className="hero__image"
       height="200px"
-      src="images/form-background.png"
+      src="images/register.webp"
       width="100vw"
     />
     <div

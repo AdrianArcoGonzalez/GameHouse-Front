@@ -35,7 +35,7 @@ const DetailsPage = (): JSX.Element => {
     <>
       <HeroSection
         text={heroTexts.details}
-        srcImage={"/images/detailsHeader.jpg"}
+        srcImage={"/images/detailsHeader.webp"}
       />
       <GameDetails game={game} />
     </>

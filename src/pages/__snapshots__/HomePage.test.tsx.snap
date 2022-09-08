@@ -38,7 +38,7 @@ exports[`Given a Home Page component When it's instantiated Then it should match
     />
   </section>
   <section
-    className="sc-eCYdqJ hNBWVG"
+    className="sc-eCYdqJ ggWLxv"
   >
     <div
       className="join-us__info-container"

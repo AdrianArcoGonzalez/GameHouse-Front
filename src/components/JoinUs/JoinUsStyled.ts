@@ -4,7 +4,7 @@ const JoinUsStyled = styled.section`
   font-family: "Roboto";
   color: white;
   width: 100%;
-  background-image: url("/images/joinComunity.jpg");
+  background-image: url("/images/joinComunity.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

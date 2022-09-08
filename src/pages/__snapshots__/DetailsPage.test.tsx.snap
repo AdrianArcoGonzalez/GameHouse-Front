@@ -10,7 +10,7 @@ Array [
       alt="backgroundImage"
       className="hero__image"
       height="200px"
-      src="/images/detailsHeader.jpg"
+      src="/images/detailsHeader.webp"
       width="100vw"
     />
     <div
@@ -19,7 +19,7 @@ Array [
       <p
         className="hero-container__sentence"
       >
-        “We look up at the same starts and see such diferent things.”(Jon Snow)
+        “We look up at the same starts and see such diferent things.” (Jon Snow)
       </p>
     </div>
   </section>,
