@@ -10,7 +10,7 @@ Array [
       alt="backgroundImage"
       className="hero__image"
       height="200px"
-      src="/images/notFound.jpg"
+      src="/images/notFound.webp"
       width="100vw"
     />
     <div
