@@ -1,5 +1,6 @@
 import { rest } from "msw";
 import { mockGame, mockGameArray } from "./mockGame";
+
 const url = process.env.REACT_APP_URL_BACK;
 
 export const handlers = [
@@ -27,7 +28,7 @@ export const handlers = [
 
   rest.post(`${url}games/users/register`, async (req, res, ctx) => {
     const request: any = req;
-    const userFormData: any = await request._body.get("user");
+    const userFormData: string = await request._body.get("user");
     const user = JSON.parse(userFormData);
     if (user.password === "") {
       return res(
@@ -55,5 +56,9 @@ export const handlers = [
 
   rest.get(`${url}games/games/123123123123123123`, (_req, res, ctx) => {
     return res(ctx.status(404), ctx.json(new Error()));
+  }),
+
+  rest.delete(`${url}games/games/`, async (_req, res, ctx) => {
+    return res(ctx.status(200), ctx.json({ game: mockGame }));
   }),
 ];

@@ -4,17 +4,47 @@ import { Wrapper } from "../utils/Wrapper";
 import useGamesApi from "./useGamesApi";
 import { toast } from "react-toastify";
 import { mockGame } from "../mocks/mockGame";
+import mockUser from "../mocks/mockUser";
 
 jest.mock("react-toastify");
 
+const mockSelector = mockUser;
 const mockDispatch = jest.fn();
-jest.mock("react-redux", () => ({
-  ...jest.requireActual("react-redux"),
-  useDispatch: () => mockDispatch,
+jest.mock("../store/hooks", () => ({
+  ...jest.requireActual("../store/hooks"),
+  useAppSelector: () => mockSelector,
+  useAppDispatch: () => mockDispatch,
 }));
-beforeEach(() => jest.restoreAllMocks());
+
+beforeEach(() => jest.clearAllMocks());
 
 describe("Given a useGamesApi custom hook", () => {
+  describe("When it's invoked with the method deleteGameById", () => {
+    test("Then it should call the dispatch", async () => {
+      const {
+        result: {
+          current: { deleteGameById },
+        },
+      } = renderHook(useGamesApi, { wrapper: Wrapper });
+
+      await deleteGameById("123123");
+
+      await expect(mockDispatch).toHaveBeenCalled();
+    });
+
+    test("And if it receive an error it should call the error modal", async () => {
+      axios.delete = jest.fn().mockRejectedValue(new Error());
+      const {
+        result: {
+          current: { deleteGameById },
+        },
+      } = renderHook(useGamesApi, { wrapper: Wrapper });
+
+      await deleteGameById("123");
+
+      await expect(toast.error).toHaveBeenCalled();
+    });
+  });
   describe("When it's invoked with getOneGameById with the correct id", () => {
     test("Then it should return a game with this id", async () => {
       const {
@@ -38,7 +68,6 @@ describe("Given a useGamesApi custom hook", () => {
       expect(toast.info).toHaveBeenCalled();
     });
   });
-
   describe("When it's invoked with getAllGames method", () => {
     test("Then it should dispatch all games received", async () => {
       const {

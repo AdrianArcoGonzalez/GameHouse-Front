@@ -44,12 +44,18 @@ const useGamesApi = () => {
 
   const deleteGameById = async (idToDelete: string) => {
     try {
-      await axios.delete(`${backUrl}games/games/`, {
+      debugger;
+
+      const game = await axios.delete(`${backUrl}games/games/`, {
         data: { id: idToDelete },
         headers: { Authorization: `Bearer ${user.token}` },
       });
+      console.log(game);
+
       dispatch(deleteGameActionCreator(idToDelete));
-    } catch (error) {}
+    } catch (error) {
+      errorModal("Can't delete this game now:(");
+    }
   };
 
   const getByOwner = useCallback(
