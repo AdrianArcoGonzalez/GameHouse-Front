@@ -66,7 +66,7 @@ const GameDetailsStyled = styled.section`
             flex-direction: row;
             gap: 5px;
             position: absolute;
-            bottom: 30px;
+            bottom: 80px;
             right: 100px;
           }
         }
@@ -89,7 +89,7 @@ const GameDetailsStyled = styled.section`
     @media (min-width: 850px) {
     }
     :hover {
-      background-color: #002d75;
+      background-color: red;
       font-weight: bold;
     }
   }
