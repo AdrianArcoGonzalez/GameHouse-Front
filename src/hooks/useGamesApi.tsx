@@ -44,13 +44,10 @@ const useGamesApi = () => {
 
   const deleteGameById = async (idToDelete: string) => {
     try {
-      debugger;
-
-      const game = await axios.delete(`${backUrl}games/games/`, {
+      await axios.delete(`${backUrl}games/games/`, {
         data: { id: idToDelete },
         headers: { Authorization: `Bearer ${user.token}` },
       });
-      console.log(game);
 
       dispatch(deleteGameActionCreator(idToDelete));
     } catch (error) {
