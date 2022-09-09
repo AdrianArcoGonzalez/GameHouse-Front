@@ -3,6 +3,9 @@ import CreateGame from "./CreateGame";
 import UserEvent from "@testing-library/user-event";
 import React from "react";
 import { Wrapper } from "../../utils/Wrapper";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+import { store } from "../../store/store";
 
 beforeEach(() => jest.restoreAllMocks());
 
@@ -10,6 +13,7 @@ const mockUseGames = {
   createGame: jest.fn(),
 };
 jest.mock("../../hooks/useGamesApi", () => () => mockUseGames);
+
 describe("Given a CreateGame component", () => {
   describe("When it's instantiated", () => {
     test("Then it should show a form", () => {
@@ -113,6 +117,32 @@ describe("Given a CreateGame component", () => {
       await UserEvent.click(options[0]);
 
       await waitFor(() => expect(useState).toHaveBeenCalled());
+    });
+
+    test("asdfasd", async () => {
+      const mockUseState = jest.spyOn(React, "useState");
+      const mockState = {
+        category: "",
+        company: "",
+        dislikes: 0,
+        image: "",
+        owner: "",
+        sinopsis: "",
+        likes: 0,
+        title: "",
+        reviews: [],
+      };
+      const mockUseGame = jest.fn();
+      mockUseState.mockImplementation(() => [mockState, mockUseGame]);
+      render(
+        <Provider store={store}>
+          <CreateGame />
+        </Provider>
+      );
+
+      const button = screen.getByRole("button");
+
+      expect(button).toBeDisabled();
     });
   });
 });
