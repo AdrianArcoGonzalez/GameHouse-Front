@@ -1,4 +1,5 @@
 import { SyntheticEvent } from "react";
+import { useLocation } from "react-router-dom";
 import useGamesApi from "../../hooks/useGamesApi";
 import { Game as IGame } from "../../interfaces/interfaces";
 import { useAppSelector } from "../../store/hooks";
@@ -8,11 +9,14 @@ interface GameDetailsProps {
   game: IGame;
 }
 
+const urlBack = process.env.REACT_APP_URL_BACK;
+
 const GameDetails = ({
   game: { category, company, image, owner, title, sinopsis, id },
 }: GameDetailsProps): JSX.Element => {
   const { deleteGameById } = useGamesApi();
   const { username } = useAppSelector((state) => state.user);
+  const { pathname } = useLocation();
 
   const handleDelete = async (event: SyntheticEvent) => {
     event.preventDefault();
@@ -22,8 +26,8 @@ const GameDetails = ({
     <GameDetailsStyled>
       <div className="image-container">
         <img
-          src={`${image}`}
-          alt={`${title}`}
+          src={`${urlBack}${image}`}
+          alt={title}
           height={320}
           width={250}
           className="details__image"
@@ -44,7 +48,7 @@ const GameDetails = ({
           <span className="details__info-element--title">Created by: </span>
           {owner}
         </span>
-        {owner === username && (
+        {owner === username && pathname !== `/details/${id}` && (
           <button className="button-delete" onClick={handleDelete}>
             Delete
           </button>

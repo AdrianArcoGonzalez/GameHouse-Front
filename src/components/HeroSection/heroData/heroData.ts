@@ -9,5 +9,8 @@ const heroTexts = {
   notFound: "“Who are you, that do not know your history?” (Fallout New Vegas)",
   myCollection:
     "“The courage to walk into the Darkness, but strength to return to the light.” (Destiny)",
+  addGame:
+    "”If our lives are already written, it would take a courageos man to chenge the script.” (Alan Wake)",
 };
+
 export default heroTexts;

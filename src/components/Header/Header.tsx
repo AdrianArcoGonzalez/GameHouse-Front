@@ -56,6 +56,15 @@ const Header = (): JSX.Element => {
                 </NavLink>
               </li>
 
+              <li className="burguer-menu__menu--item">
+                <NavLink
+                  to="/add-game"
+                  className="menu__link"
+                  onClick={openCloseMenu}
+                >
+                  Add Game
+                </NavLink>
+              </li>
               {!isLogged && (
                 <li className="burguer-menu__menu--item">
                   <NavLink

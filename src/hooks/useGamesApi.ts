@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useCallback } from "react";
-import { errorModal, goodbyeModal } from "../modals/modals";
+import { useNavigate } from "react-router-dom";
+import { errorModal, goodbyeModal, succesModal } from "../modals/modals";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import {
   deleteGameActionCreator,
@@ -11,6 +12,7 @@ const useGamesApi = () => {
   const dispatch = useAppDispatch();
   const backUrl = process.env.REACT_APP_URL_BACK;
   const user = useAppSelector((state) => state.user);
+  const navigate = useNavigate();
   const getAllGames = useCallback(async () => {
     try {
       const response = await axios.get(`${backUrl}games/games/`);
@@ -61,7 +63,7 @@ const useGamesApi = () => {
         const {
           data: { games },
         } = await axios.get(`${backUrl}games/games/my-collection/${owner}`, {
-          headers: { Authorization: `Bearer ${user.token}` },
+          headers: { authorization: `Bearer ${user.token}` },
         });
 
         dispatch(getAllGamesActionCreator(games));
@@ -72,7 +74,25 @@ const useGamesApi = () => {
     [backUrl, dispatch, user.token]
   );
 
-  return { getAllGames, getOneGameById, deleteGameById, getByOwner };
+  const createGame = async (formData: FormData) => {
+    try {
+      await axios.post(`${backUrl}games/games/`, formData, {
+        headers: { Authorization: `Bearer ${user.token}` },
+      });
+      succesModal("Game Created");
+      navigate("/my-collection");
+    } catch (error) {
+      errorModal("Error creating game");
+    }
+  };
+
+  return {
+    getAllGames,
+    getOneGameById,
+    deleteGameById,
+    getByOwner,
+    createGame,
+  };
 };
 
 export default useGamesApi;

@@ -13,6 +13,7 @@ import { useAppDispatch } from "../../store/hooks";
 import { logInUserActionCreator } from "../../store/slice/usersSlice";
 import CredentialsLogout from "../CredentialsLogout/CredentialsLogout";
 import MyCollectionPage from "../../pages/MyCollectionPage";
+import CreateGamePage from "../../pages/CreateGamePage";
 
 const App = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -61,6 +62,14 @@ const App = (): JSX.Element => {
           element={
             <CredentialsLogin>
               <DetailsPage />
+            </CredentialsLogin>
+          }
+        />
+        <Route
+          path="/add-game"
+          element={
+            <CredentialsLogin>
+              <CreateGamePage />
             </CredentialsLogin>
           }
         />

@@ -65,4 +65,8 @@ export const handlers = [
   rest.get(`${url}games/games/my-collection/admin`, async (req, res, ctx) => {
     return res(ctx.status(200), ctx.json({ games: mockGame }));
   }),
+
+  rest.post(`${url}games/games`, (req, res, ctx) => {
+    return res(ctx.status(201), ctx.json({ message: "Game created" }));
+  }),
 ];
