@@ -33,7 +33,7 @@ Array [
         alt=""
         className="details__image"
         height={320}
-        src="http://localhost:4000/"
+        src="https://aarco-final-project-202207.herokuapp.com/"
         width={250}
       />
     </div>

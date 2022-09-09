@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import { mockGame } from "../mocks/mockGame";
 import { store } from "../store/store";
 import { Wrapper } from "../utils/Wrapper";
@@ -32,9 +33,11 @@ describe("Given a mycollection page", () => {
 
     test("And it should show a card", () => {
       render(
-        <Provider store={store}>
-          <MyCollectionPage />
-        </Provider>
+        <BrowserRouter>
+          <Provider store={store}>
+            <MyCollectionPage />
+          </Provider>
+        </BrowserRouter>
       );
       const listItem = screen.getByRole("listitem");
 

@@ -1,4 +1,5 @@
 import { SyntheticEvent } from "react";
+import { useLocation } from "react-router-dom";
 import useGamesApi from "../../hooks/useGamesApi";
 import { Game as IGame } from "../../interfaces/interfaces";
 import { useAppSelector } from "../../store/hooks";
@@ -15,7 +16,8 @@ const GameDetails = ({
 }: GameDetailsProps): JSX.Element => {
   const { deleteGameById } = useGamesApi();
   const { username } = useAppSelector((state) => state.user);
-
+  const { pathname } = useLocation();
+  console.log(pathname);
   const handleDelete = async (event: SyntheticEvent) => {
     event.preventDefault();
     await deleteGameById(id);
@@ -46,7 +48,7 @@ const GameDetails = ({
           <span className="details__info-element--title">Created by: </span>
           {owner}
         </span>
-        {owner === username && (
+        {owner === username && pathname !== `/details/${id}` && (
           <button className="button-delete" onClick={handleDelete}>
             Delete
           </button>
