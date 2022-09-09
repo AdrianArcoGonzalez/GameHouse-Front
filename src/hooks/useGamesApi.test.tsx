@@ -68,6 +68,34 @@ describe("Given a useGamesApi custom hook", () => {
       expect(toast.info).toHaveBeenCalled();
     });
   });
+  describe("When it's invoked with createGame method", () => {
+    const formData = new FormData();
+    test("Then if the data is ok it should call the toast succes", async () => {
+      const {
+        result: {
+          current: { createGame },
+        },
+      } = renderHook(useGamesApi, { wrapper: Wrapper });
+
+      await createGame(formData);
+
+      expect(toast.success).toHaveBeenCalled();
+    });
+
+    test("Then if something gone wrong it should call the error toast", async () => {
+      axios.post = jest.fn().mockRejectedValue(new Error());
+
+      const {
+        result: {
+          current: { createGame },
+        },
+      } = renderHook(useGamesApi, { wrapper: Wrapper });
+
+      await createGame(formData);
+
+      expect(toast.error).toHaveBeenCalled();
+    });
+  });
   describe("When it's invoked with getAllGames method", () => {
     test("Then it should dispatch all games received", async () => {
       const {

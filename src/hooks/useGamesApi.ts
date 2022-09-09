@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useCallback } from "react";
-import { errorModal, goodbyeModal } from "../modals/modals";
+import { useNavigate } from "react-router-dom";
+import { errorModal, goodbyeModal, succesModal } from "../modals/modals";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import {
   deleteGameActionCreator,
@@ -11,6 +12,7 @@ const useGamesApi = () => {
   const dispatch = useAppDispatch();
   const backUrl = process.env.REACT_APP_URL_BACK;
   const user = useAppSelector((state) => state.user);
+  const navigate = useNavigate();
   const getAllGames = useCallback(async () => {
     try {
       const response = await axios.get(`${backUrl}games/games/`);
@@ -77,6 +79,8 @@ const useGamesApi = () => {
       await axios.post(`${backUrl}games/games/`, formData, {
         headers: { Authorization: `Bearer ${user.token}` },
       });
+      succesModal("Game Created");
+      navigate("/my-collection");
     } catch (error) {
       errorModal("Error creating game");
     }
