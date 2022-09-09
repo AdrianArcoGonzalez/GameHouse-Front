@@ -4,7 +4,6 @@ import UserEvent from "@testing-library/user-event";
 import React from "react";
 import { Wrapper } from "../../utils/Wrapper";
 import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
 import { store } from "../../store/store";
 
 beforeEach(() => jest.restoreAllMocks());
