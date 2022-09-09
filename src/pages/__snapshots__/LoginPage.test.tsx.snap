@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given a Login Page component When it's instantiated Then it should match the the Login page screenshot 1`] = `
+Array [
+  <section
+    className="sc-bczRLJ dVNtAm"
+    data-testid="section"
+  >
+    <img
+      alt="backgroundImage"
+      className="hero__image"
+      height="200px"
+      src="images/singindarksouls.webp"
+      width="100vw"
+    />
+    <div
+      className="hero-container"
+    >
+      <p
+        className="hero-container__sentence"
+      >
+        A strong man doesn’t need to read the future. He makes his own.” (Solid Snake)
+      </p>
+    </div>
+  </section>,
+  <form
+    autoComplete="off"
+    className="sc-gsnTZi dWgaqc"
+    data-testid="form"
+    noValidate={true}
+    onSubmit={[Function]}
+  >
+    <h2
+      className="login__title"
+    >
+      Sign In
+    </h2>
+    <label
+      className="form__input-container"
+      htmlFor="username"
+    >
+      Username
+    </label>
+    <input
+      className="form__input-element"
+      id="username"
+      onChange={[Function]}
+      placeholder="Username"
+      type="text"
+      value=""
+    />
+    <label
+      className="form__input-container"
+      htmlFor="password"
+    >
+      Password
+    </label>
+    <input
+      className="form__input-element"
+      id="password"
+      onChange={[Function]}
+      placeholder="*******"
+      type="password"
+      value=""
+    />
+    <button
+      className="form-button"
+      disabled={true}
+      type="submit"
+    >
+      Sign In
+    </button>
+    <span
+      className="form__info"
+    >
+      Haven't an account yet? Go to
+       
+      <a
+        className="info__link"
+        href="/register"
+        onClick={[Function]}
+      >
+        Sign Up
+      </a>
+    </span>
+  </form>,
+  ";",
+]
+`;

@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given a NotFoundPage component When it's instantiated Then it should match the the NotFoundPage page screenshot 1`] = `
+Array [
+  <section
+    className="sc-bczRLJ dVNtAm"
+    data-testid="section"
+  >
+    <img
+      alt="backgroundImage"
+      className="hero__image"
+      height="200px"
+      src="/images/notFound.webp"
+      width="100vw"
+    />
+    <div
+      className="hero-container"
+    >
+      <p
+        className="hero-container__sentence"
+      >
+        “Who are you, that do not know your history?” (Fallout New Vegas)
+      </p>
+    </div>
+  </section>,
+  <div
+    className="sc-gsnTZi dKokb"
+  >
+    <span
+      className="not-found__title"
+    >
+      404 Page Not Found
+    </span>
+    <a
+      className="not-found__link"
+      href="/home"
+      onClick={[Function]}
+    >
+      Go Home
+    </a>
+  </div>,
+]
+`;
