@@ -65,14 +65,7 @@ const App = (): JSX.Element => {
             </CredentialsLogin>
           }
         />
-        <Route
-          path="/add-game"
-          element={
-            <CredentialsLogin>
-              <CreateGamePage />
-            </CredentialsLogin>
-          }
-        />
+        <Route path="/add-game" element={<CreateGamePage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
 

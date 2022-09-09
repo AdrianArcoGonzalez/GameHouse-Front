@@ -1,4 +1,5 @@
 import { SyntheticEvent, useState } from "react";
+import useGamesApi from "../../hooks/useGamesApi";
 import { useAppSelector } from "../../store/hooks";
 import CreateGameStyled from "./CreateGameStyled";
 
@@ -11,19 +12,16 @@ const initialGameState = {
   likes: 0,
   dislikes: 0,
   owner: "",
-  reviews: [],
+  reviews: [""],
 };
-const formData = new FormData();
+let formData = new FormData();
 
 const CreateGame = (): JSX.Element => {
-  const { username } = useAppSelector((state) => state.user);
+  const { createGame } = useGamesApi();
   const [gameCreate, setCreateGame] = useState(initialGameState);
+  const { username } = useAppSelector((state) => state.user);
 
-  const onChangeField = (
-    event:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
+  const onChangeField = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCreateGame({
       ...gameCreate,
       [event.target.id]: event.target.value,
@@ -36,6 +34,12 @@ const CreateGame = (): JSX.Element => {
     });
   };
 
+  const onChangeTextArea = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setCreateGame({
+      ...gameCreate,
+      [event.target.id]: event.target.value,
+    });
+  };
   const onChangeFile = (event: React.ChangeEvent<HTMLInputElement>) => {
     formData.append("image", event.target.files![0]);
     setCreateGame({
@@ -44,11 +48,19 @@ const CreateGame = (): JSX.Element => {
     });
   };
 
-  const handleSubmit = (event: SyntheticEvent) => {
+  const handleSubmit = async (event: SyntheticEvent) => {
     event.preventDefault();
-    setCreateGame({ ...gameCreate, owner: username });
-    formData.append("game", JSON.stringify(gameCreate));
+
+    console.log(username);
+
+    formData.append("game", JSON.stringify({ ...gameCreate, owner: username }));
+
+    console.log(formData.get("image"));
+    console.log(formData.get("game"));
+
+    await createGame(formData);
     setCreateGame(initialGameState);
+    formData = new FormData();
   };
 
   const hasEmptyFields =
@@ -67,8 +79,8 @@ const CreateGame = (): JSX.Element => {
           value={gameCreate.title}
           onChange={onChangeField}
           type="text"
-          id="Assassins Creed 3"
-          placeholder="title"
+          id="title"
+          placeholder="Assassins Creed 3"
           className="form__input-element"
         />
       </div>
@@ -115,7 +127,7 @@ const CreateGame = (): JSX.Element => {
           placeholder="Add a description of the game"
           className="form__input-element"
           id="sinopsis"
-          onChange={onChangeField}
+          onChange={onChangeTextArea}
         ></textarea>
       </div>
 

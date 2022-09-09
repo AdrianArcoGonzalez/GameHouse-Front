@@ -61,7 +61,7 @@ const useGamesApi = () => {
         const {
           data: { games },
         } = await axios.get(`${backUrl}games/games/my-collection/${owner}`, {
-          headers: { Authorization: `Bearer ${user.token}` },
+          headers: { authorization: `Bearer ${user.token}` },
         });
 
         dispatch(getAllGamesActionCreator(games));
@@ -72,7 +72,23 @@ const useGamesApi = () => {
     [backUrl, dispatch, user.token]
   );
 
-  return { getAllGames, getOneGameById, deleteGameById, getByOwner };
+  const createGame = async (formData: FormData) => {
+    try {
+      await axios.post(`http://localhost:4000/games/games/`, formData, {
+        headers: { Authorization: `Bearer ${user.token}` },
+      });
+    } catch (error) {
+      errorModal("Error creating game");
+    }
+  };
+
+  return {
+    getAllGames,
+    getOneGameById,
+    deleteGameById,
+    getByOwner,
+    createGame,
+  };
 };
 
 export default useGamesApi;
