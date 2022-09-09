@@ -7,9 +7,11 @@ const CreateGamePageStyled = styled.section`
   flex-direction: column;
   .title {
     color: white;
+    text-align: center;
     border-bottom: 1px solid white;
     margin-top: 10px;
     margin-bottom: 30px;
+    width: 90%;
   }
 `;
 

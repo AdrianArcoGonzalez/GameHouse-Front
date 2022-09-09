@@ -67,7 +67,7 @@ const CreateGame = (): JSX.Element => {
           value={gameCreate.title}
           onChange={onChangeField}
           type="text"
-          id="title"
+          id="Assassins Creed 3"
           placeholder="title"
           className="form__input-element"
         />
