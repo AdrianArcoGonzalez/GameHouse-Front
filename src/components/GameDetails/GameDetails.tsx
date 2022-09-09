@@ -12,7 +12,7 @@ interface GameDetailsProps {
 const urlBack = process.env.REACT_APP_URL_BACK;
 
 const GameDetails = ({
-  game: { category, company, image, owner, title, sinopsis, id },
+  game: { category, company, image, owner, title, sinopsis, id, imageBackUp },
 }: GameDetailsProps): JSX.Element => {
   const { deleteGameById } = useGamesApi();
   const { username } = useAppSelector((state) => state.user);
@@ -27,6 +27,11 @@ const GameDetails = ({
       <div className="image-container">
         <img
           src={`${urlBack}${image}`}
+          onError={({ currentTarget }) => {
+            currentTarget.onerror = null;
+            currentTarget.src = imageBackUp!;
+          }}
+          loading="lazy"
           alt={title}
           height={320}
           width={250}
