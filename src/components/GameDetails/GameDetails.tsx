@@ -17,7 +17,7 @@ const GameDetails = ({
   const { deleteGameById } = useGamesApi();
   const { username } = useAppSelector((state) => state.user);
   const { pathname } = useLocation();
-  console.log(pathname);
+
   const handleDelete = async (event: SyntheticEvent) => {
     event.preventDefault();
     await deleteGameById(id);
