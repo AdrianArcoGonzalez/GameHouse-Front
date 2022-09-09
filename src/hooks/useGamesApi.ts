@@ -74,7 +74,7 @@ const useGamesApi = () => {
 
   const createGame = async (formData: FormData) => {
     try {
-      await axios.post(`http://localhost:4000/games/games/`, formData, {
+      await axios.post(`${backUrl}games/games/`, formData, {
         headers: { Authorization: `Bearer ${user.token}` },
       });
     } catch (error) {
