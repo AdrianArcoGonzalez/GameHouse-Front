@@ -9,9 +9,8 @@ const CreateGameStyled = styled.form`
   background-color: #1e1c1f;
   width: 90%;
   border-radius: 20px;
-  margin: 0 auto;
   color: white;
-
+  margin-bottom: 30px;
   .input-container {
     display: flex;
     justify-content: center;
@@ -22,6 +21,7 @@ const CreateGameStyled = styled.form`
   .form__input-element {
     text-align: center;
     padding: 5px;
+    resize: none;
   }
   .form__input-label {
     padding: 10px;
@@ -37,6 +37,7 @@ const CreateGameStyled = styled.form`
     margin-top: 10px;
     border: 1px solid white;
     cursor: pointer;
+    margin-bottom: 20px;
   }
   .form-button:hover {
     background-color: #002d75;

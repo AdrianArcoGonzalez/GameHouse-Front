@@ -110,6 +110,8 @@ const CreateGame = (): JSX.Element => {
           Sinopsis
         </label>
         <textarea
+          rows={10}
+          cols={20}
           placeholder="Add a description of the game"
           className="form__input-element"
           id="sinopsis"
