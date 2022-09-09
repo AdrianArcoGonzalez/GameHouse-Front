@@ -50,14 +50,7 @@ const CreateGame = (): JSX.Element => {
 
   const handleSubmit = async (event: SyntheticEvent) => {
     event.preventDefault();
-
-    console.log(username);
-
     formData.append("game", JSON.stringify({ ...gameCreate, owner: username }));
-
-    console.log(formData.get("image"));
-    console.log(formData.get("game"));
-
     await createGame(formData);
     setCreateGame(initialGameState);
     formData = new FormData();
