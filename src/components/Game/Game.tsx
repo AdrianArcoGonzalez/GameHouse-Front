@@ -9,7 +9,7 @@ interface GameProps {
 
 const urlBack = process.env.REACT_APP_URL_BACK;
 const Game = ({
-  game: { category, image, title, id, owner },
+  game: { category, image, title, id, owner, imageBackUp },
 }: GameProps): JSX.Element => {
   const navigate = useNavigate();
 
@@ -22,7 +22,12 @@ const Game = ({
       <GameStyled onClick={handleNavigate}>
         <img
           src={`${urlBack}${image}`}
+          onError={({ currentTarget }) => {
+            currentTarget.onerror = null;
+            currentTarget.src = imageBackUp!;
+          }}
           alt={title}
+          loading="lazy"
           className="game__image"
           height="280px"
           width="200px"

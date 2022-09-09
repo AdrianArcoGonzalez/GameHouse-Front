@@ -21,4 +21,5 @@ export interface Game {
   likes: number;
   dislikes: number;
   reviews?: string[];
+  imageBackUp?: string;
 }
