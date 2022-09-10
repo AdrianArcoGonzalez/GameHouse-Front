@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
@@ -72,6 +72,17 @@ describe("Given a GameDetails component", () => {
       await waitFor(() =>
         expect(mockUseGames.deleteGameById).toHaveBeenCalled()
       );
+    });
+    test("And if the image src returns an error it should use the backUpImg as src", () => {
+      render(
+        <Wrapper>
+          <GameDetails game={mockGame} />
+        </Wrapper>
+      );
+      const image = screen.getByRole("img");
+      fireEvent.error(image);
+
+      expect(image.getAttribute("src")).toBe(mockGame.imageBackUp);
     });
   });
 });
