@@ -13,6 +13,7 @@ export const mockGame: Game = {
 
   title: "League of Legends",
   reviews: [""],
+  imageBackUp: "backupSrc",
 };
 
 export const mockGame2: Game = {
@@ -28,6 +29,7 @@ export const mockGame2: Game = {
 
   title: "The Last of Us",
   reviews: [""],
+  imageBackUp: "backupSrc",
 };
 export const mockGame3: Game = {
   category: "Shooter",
@@ -42,6 +44,7 @@ export const mockGame3: Game = {
 
   title: "Escape from Tarkov",
   reviews: [""],
+  imageBackUp: "backupSrc",
 };
 
 export const mockGameArray: Game[] = [mockGame, mockGame2, mockGame3];

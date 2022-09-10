@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { mockGame } from "../../mocks/mockGame";
 import { Wrapper } from "../../utils/Wrapper";
@@ -73,6 +73,18 @@ describe("Given a Game component", () => {
       await userEvent.click(image);
 
       expect(mockNavigate).toHaveBeenCalled();
+    });
+
+    test("And if the image src returns an error it should use the backUpImg as src", () => {
+      render(
+        <Wrapper>
+          <Game game={mockGame} />
+        </Wrapper>
+      );
+      const image = screen.getByRole("img");
+      fireEvent.error(image);
+
+      expect(image.getAttribute("src")).toBe(mockGame.imageBackUp);
     });
   });
 });
