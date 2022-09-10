@@ -1,4 +1,4 @@
-import { SyntheticEvent, useEffect, useState } from "react";
+import { SyntheticEvent, useState } from "react";
 import useGamesApi from "../../hooks/useGamesApi";
 import { useAppSelector } from "../../store/hooks";
 import CreateGameStyled from "./CreateGameStyled";
@@ -20,10 +20,6 @@ const CreateGame = (): JSX.Element => {
   const { createGame } = useGamesApi();
   const [gameCreate, setCreateGame] = useState(initialGameState);
   const { username } = useAppSelector((state) => state.user);
-
-  useEffect(() => {
-    window.scrollTo({ top: 0 });
-  }, []);
 
   const onChangeField = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCreateGame({

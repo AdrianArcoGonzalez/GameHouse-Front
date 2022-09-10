@@ -143,17 +143,5 @@ describe("Given a CreateGame component", () => {
 
       expect(button).toBeDisabled();
     });
-
-    test("And if show the method window scroll", async () => {
-      window.scrollTo = jest.fn();
-
-      render(
-        <Provider store={store}>
-          <CreateGame />
-        </Provider>
-      );
-
-      expect(window.scrollTo).toHaveBeenCalled();
-    });
   });
 });
