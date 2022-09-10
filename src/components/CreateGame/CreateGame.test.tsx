@@ -118,7 +118,7 @@ describe("Given a CreateGame component", () => {
       await waitFor(() => expect(useState).toHaveBeenCalled());
     });
 
-    test("asdfasd", async () => {
+    test("And the button must be disabled if there is an input empty", async () => {
       const mockUseState = jest.spyOn(React, "useState");
       const mockState = {
         category: "",
@@ -142,6 +142,18 @@ describe("Given a CreateGame component", () => {
       const button = screen.getByRole("button");
 
       expect(button).toBeDisabled();
+    });
+
+    test("And if show the method window scroll", async () => {
+      window.scrollTo = jest.fn();
+
+      render(
+        <Provider store={store}>
+          <CreateGame />
+        </Provider>
+      );
+
+      expect(window.scrollTo).toHaveBeenCalled();
     });
   });
 });

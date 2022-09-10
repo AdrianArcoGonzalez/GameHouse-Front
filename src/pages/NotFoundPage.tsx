@@ -1,9 +1,13 @@
+import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import heroTexts from "../components/HeroSection/heroData/heroData";
 import HeroSection from "../components/HeroSection/HeroSection";
 import NotFoundPageStyled from "./NotFoundPageStyled";
 
 const NotFoundPage = (): JSX.Element => {
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
   return (
     <>
       <HeroSection srcImage="/images/notFound.webp" text={heroTexts.notFound} />
