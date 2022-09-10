@@ -11,6 +11,8 @@ const heroTexts = {
     "“The courage to walk into the Darkness, but strength to return to the light.” (Destiny)",
   addGame:
     "”If our lives are already written, it would take a courageos man to chenge the script.” (Alan Wake)",
+  editGame:
+    "“The right man in the wrong place can make all the difference in the world.” (Half-Life 2)",
 };
 
 export default heroTexts;
