@@ -66,8 +66,8 @@ describe("Given a GameDetails component", () => {
           </Provider>
         </BrowserRouter>
       );
-      const button = screen.getByRole("button");
-      await userEvent.click(button);
+      const buttons = screen.getAllByRole("button");
+      await userEvent.click(buttons[0]);
 
       await waitFor(() =>
         expect(mockUseGames.deleteGameById).toHaveBeenCalled()
