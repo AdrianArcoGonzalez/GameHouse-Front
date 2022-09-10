@@ -10,6 +10,7 @@ import { useEffect } from "react";
 const HomePage = (): JSX.Element => {
   const { getAllGames } = useGamesApi();
   useEffect(() => {
+    window.scrollTo({ top: 0 });
     (async () => {
       await getAllGames();
     })();
