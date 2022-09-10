@@ -10,6 +10,7 @@ const MyCollectionPage = (): JSX.Element => {
   const { username } = useAppSelector((state) => state.user);
   const games = useAppSelector((state) => state.games);
   useEffect(() => {
+    window.scrollTo({ top: 0 });
     (async () => {
       await getByOwner(username);
     })();

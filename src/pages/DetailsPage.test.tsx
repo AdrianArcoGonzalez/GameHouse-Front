@@ -4,6 +4,9 @@ import TestRenderer from "react-test-renderer";
 import { render } from "@testing-library/react";
 import { Wrapper } from "../utils/Wrapper";
 import React from "react";
+import { Provider } from "react-redux";
+import { store } from "../store/store";
+import { BrowserRouter } from "react-router-dom";
 
 const mockNavigate = jest.fn().mockReturnValue(mockGame.id);
 jest.mock("react-router-dom", () => ({
@@ -15,7 +18,6 @@ jest.mock("react-router-dom", () => ({
 const mockUseGames = {
   getOneGameById: jest.fn().mockResolvedValue(mockGame),
 };
-
 jest.mock("../hooks/useGamesApi", () => () => mockUseGames);
 
 describe("Given a DetailsPage component", () => {
@@ -39,6 +41,21 @@ describe("Given a DetailsPage component", () => {
       );
 
       expect(mockUseState).toHaveBeenCalled();
+    });
+
+    test("And it should call the method window scroll", async () => {
+      jest.restoreAllMocks();
+      window.scrollTo = jest.fn();
+
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <DetailsPage />
+          </Provider>
+        </BrowserRouter>
+      );
+
+      expect(window.scrollTo).toHaveBeenCalled();
     });
   });
 });

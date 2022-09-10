@@ -25,6 +25,7 @@ const DetailsPage = (): JSX.Element => {
   const { id } = useParams();
 
   useEffect(() => {
+    window.scrollTo({ top: 0 });
     (async () => {
       const game = await getOneGameById(id!);
       setGame(game);

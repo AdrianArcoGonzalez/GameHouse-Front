@@ -118,7 +118,7 @@ describe("Given a CreateGame component", () => {
       await waitFor(() => expect(useState).toHaveBeenCalled());
     });
 
-    test("asdfasd", async () => {
+    test("And the button must be disabled if there is an input empty", async () => {
       const mockUseState = jest.spyOn(React, "useState");
       const mockState = {
         category: "",
