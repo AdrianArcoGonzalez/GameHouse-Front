@@ -15,7 +15,7 @@ describe("Given a createGamePage component", () => {
       expect(createGamePage).toMatchSnapshot();
     });
 
-    test("And if show the method window scroll", async () => {
+    test("And it should call the method window scroll", async () => {
       window.scrollTo = jest.fn();
 
       render(
