@@ -14,6 +14,7 @@ import { logInUserActionCreator } from "../../store/slice/usersSlice";
 import CredentialsLogout from "../CredentialsLogout/CredentialsLogout";
 import MyCollectionPage from "../../pages/MyCollectionPage";
 import CreateGamePage from "../../pages/CreateGamePage";
+import EditGamePage from "../../pages/EditGamePage";
 
 const App = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -70,6 +71,14 @@ const App = (): JSX.Element => {
           element={
             <CredentialsLogin>
               <CreateGamePage />
+            </CredentialsLogin>
+          }
+        />
+        <Route
+          path="/edit-game/:id"
+          element={
+            <CredentialsLogin>
+              <EditGamePage />
             </CredentialsLogin>
           }
         />
