@@ -43,5 +43,17 @@ describe("Given a mycollection page", () => {
 
       expect(listItem).toBeInTheDocument();
     });
+
+    test("And it should call the method window scroll", async () => {
+      window.scrollTo = jest.fn();
+
+      render(
+        <Wrapper>
+          <MyCollectionPage />
+        </Wrapper>
+      );
+
+      expect(window.scrollTo).toHaveBeenCalled();
+    });
   });
 });
