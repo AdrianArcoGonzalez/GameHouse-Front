@@ -86,7 +86,20 @@ const useGamesApi = () => {
     }
   };
 
+  const editGame = async (formData: FormData, id: string) => {
+    try {
+      await axios.put(`${backUrl}games/games/${id}`, formData, {
+        headers: { Authorization: `Bearer ${user.token}` },
+      });
+
+      succesModal("Game Edited");
+    } catch (error) {
+      errorModal("Something went wrong");
+    }
+  };
+
   return {
+    editGame,
     getAllGames,
     getOneGameById,
     deleteGameById,

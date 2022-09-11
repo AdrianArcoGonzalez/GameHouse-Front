@@ -1,4 +1,4 @@
-import { Game } from "../interfaces/interfaces";
+import { Game, ProtoGame } from "../interfaces/interfaces";
 
 export const mockGame: Game = {
   category: "MOBA",
@@ -48,3 +48,16 @@ export const mockGame3: Game = {
 };
 
 export const mockGameArray: Game[] = [mockGame, mockGame2, mockGame3];
+
+export const mockProtoGame: ProtoGame = {
+  category: "MOBA",
+  company: "Riot",
+  dislikes: 40,
+  likes: 100,
+  image: "",
+  owner: "admin",
+  sinopsis:
+    "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam odio ut odit, illo sit eligendi nobis explicabo eos, aliquid qui inventore provident minus impedit consequuntur asperiores iure recusandae culpa quam?",
+  title: "League of Legends",
+  reviews: [""],
+};
