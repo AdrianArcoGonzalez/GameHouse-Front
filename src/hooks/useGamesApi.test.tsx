@@ -113,6 +113,43 @@ describe("Given a useGamesApi custom hook", () => {
       });
     });
   });
+  describe("When it's invoked with editGame", () => {
+    test("Then it should call the toast succes", async () => {
+      const formData = new FormData();
+      const fakeId = "123";
+      const {
+        result: {
+          current: { editGame },
+        },
+      } = renderHook(useGamesApi, { wrapper: Wrapper });
+
+      await act(async () => {
+        await editGame(formData, fakeId);
+      });
+
+      await waitFor(() => {
+        expect(toast.error).toHaveBeenCalled();
+      });
+    });
+
+    test("And should call the error toast if it cannot complete the edit", async () => {
+      const formData = new FormData();
+      const fakeId = "123123";
+      const {
+        result: {
+          current: { editGame },
+        },
+      } = renderHook(useGamesApi, { wrapper: Wrapper });
+
+      await act(async () => {
+        await editGame(formData, fakeId);
+      });
+
+      await waitFor(() => {
+        expect(toast.success).toHaveBeenCalled();
+      });
+    });
+  });
   describe("When it's invoked with getByOwner method", () => {
     test("Then if the data is ok it should call de dispatch", async () => {
       const {
