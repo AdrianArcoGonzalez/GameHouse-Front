@@ -31,8 +31,6 @@ const mockState = {
 describe("Given a EditGame component", () => {
   describe("When it's instantiated", () => {
     test("Then it should show a form", () => {
-      const mockUseGame = jest.fn();
-      mockUseState.mockImplementation(() => [mockState, mockUseGame]);
       const expectedLength = 3;
       render(
         <BrowserRouter>

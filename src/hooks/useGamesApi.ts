@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import { Game } from "../interfaces/interfaces";
 import { errorModal, goodbyeModal, succesModal } from "../modals/modals";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import {
@@ -101,9 +100,9 @@ const useGamesApi = () => {
 
   const getByCategory = async (category: string) => {
     try {
-      const games: Game[] = await axios.get(
-        `${backUrl}games/games/category/${category}`
-      );
+      const {
+        data: { games },
+      } = await axios.get(`${backUrl}games/games/category/${category}`);
 
       if (games.length === 0) {
         goodbyeModal("No games found on this category");

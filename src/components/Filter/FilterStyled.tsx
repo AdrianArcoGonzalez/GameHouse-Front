@@ -4,7 +4,7 @@ const FilterStyled = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 20px;
   font-family: "Roboto";
   margin-bottom: 20px;
   background-color: #1e1c1f;
@@ -20,6 +20,11 @@ const FilterStyled = styled.form`
     color: white;
     font-family: inherit;
     padding: 10px;
+  }
+  .input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .button {
     background-color: #1e1c1f;
