@@ -32,7 +32,7 @@ describe("Given a CreateGame component", () => {
       expect(textArea).toBeInTheDocument();
     });
     test("And it should show an options input with 8 options", () => {
-      const expectedLenght = 7;
+      const expectedLenght = 8;
       render(<CreateGame />, { wrapper: Wrapper });
 
       const inputOptions = screen.getAllByRole("option");
