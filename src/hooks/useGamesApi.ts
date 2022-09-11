@@ -98,7 +98,24 @@ const useGamesApi = () => {
     }
   };
 
+  const getByCategory = async (category: string) => {
+    try {
+      const {
+        data: { games },
+      } = await axios.get(`${backUrl}games/games/category/${category}`);
+
+      if (games.length === 0) {
+        goodbyeModal("No games found on this category");
+        return;
+      }
+      dispatch(getAllGamesActionCreator(games));
+    } catch (error) {
+      errorModal("Something gone wrong");
+    }
+  };
+
   return {
+    getByCategory,
     editGame,
     getAllGames,
     getOneGameById,
