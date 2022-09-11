@@ -21,15 +21,15 @@ const Filter = (): JSX.Element => {
     await getByCategory(state.category);
   };
   return (
-    <FilterStyled>
+    <FilterStyled noValidate onSubmit={handleGetCategory}>
       <div className="input-container">
-        <label htmlFor="category" className="form__input-label">
+        <label htmlFor="category" className="title">
           Category
         </label>
         <select
           id="category"
           onChange={onChangeSelect}
-          className="form__input-element"
+          className="select-input"
         >
           <option>All</option>
           <option>Adventure</option>
@@ -41,7 +41,9 @@ const Filter = (): JSX.Element => {
           <option>Simulator</option>
         </select>
       </div>
-      <button onSubmit={handleGetCategory}>Search</button>
+      <button className="button" type="submit">
+        Search
+      </button>
     </FilterStyled>
   );
 };
