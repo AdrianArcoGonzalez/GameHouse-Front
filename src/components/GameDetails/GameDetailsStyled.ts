@@ -40,6 +40,7 @@ const GameDetailsStyled = styled.section`
         padding: 10px;
         @media (min-width: 850px) {
           position: relative;
+          width: 100%;
           align-items: flex-start;
         }
       }
@@ -75,7 +76,6 @@ const GameDetailsStyled = styled.section`
   }
   .button-delete {
     font-family: inherit;
-    margin: 0 auto;
     width: 100px;
     height: 30px;
     border-radius: 20px;
