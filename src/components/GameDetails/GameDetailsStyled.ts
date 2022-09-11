@@ -40,6 +40,7 @@ const GameDetailsStyled = styled.section`
         padding: 10px;
         @media (min-width: 850px) {
           position: relative;
+          width: 100%;
           align-items: flex-start;
         }
       }
@@ -75,7 +76,6 @@ const GameDetailsStyled = styled.section`
   }
   .button-delete {
     font-family: inherit;
-    margin: 0 auto;
     width: 100px;
     height: 30px;
     border-radius: 20px;
@@ -86,10 +86,28 @@ const GameDetailsStyled = styled.section`
     border: 1px solid white;
     cursor: pointer;
     margin-bottom: 10px;
-    @media (min-width: 850px) {
-    }
+
     :hover {
       background-color: red;
+      font-weight: bold;
+    }
+  }
+  .button-edit {
+    font-family: inherit;
+    margin: 0 auto;
+    width: 100px;
+    height: 30px;
+    border-radius: 20px;
+    background-color: blue;
+    color: white;
+    padding: 5px;
+    margin-top: 10px;
+    border: 1px solid white;
+    cursor: pointer;
+    margin-bottom: 10px;
+
+    :hover {
+      background-color: darkblue;
       font-weight: bold;
     }
   }

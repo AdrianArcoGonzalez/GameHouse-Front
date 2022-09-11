@@ -1,5 +1,5 @@
 import { SyntheticEvent } from "react";
-import { useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import useGamesApi from "../../hooks/useGamesApi";
 import { Game as IGame } from "../../interfaces/interfaces";
 import { useAppSelector } from "../../store/hooks";
@@ -57,6 +57,11 @@ const GameDetails = ({
           <button className="button-delete" onClick={handleDelete}>
             Delete
           </button>
+        )}
+        {owner === username && pathname !== `/details/${id}` && (
+          <NavLink to={`/edit-game/${id}`}>
+            <button className="button-edit">Edit</button>
+          </NavLink>
         )}
       </article>
     </GameDetailsStyled>

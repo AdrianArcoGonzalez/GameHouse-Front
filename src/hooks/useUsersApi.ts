@@ -38,7 +38,7 @@ const useUsersApi = () => {
       const { data } = response;
       const user = decodeToken(data.user.token);
       const loginUser = { ...user, isLogged: true };
-      succesModal("Welcome Hero!");
+      succesModal(`Welcome ${user.username}!`);
       dispatch(logInUserActionCreator(loginUser));
       localStorage.setItem("token", user.token);
       navigate("/home");

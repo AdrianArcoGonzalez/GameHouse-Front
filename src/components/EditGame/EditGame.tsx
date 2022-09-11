@@ -1,79 +1,71 @@
 import { SyntheticEvent, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import useGamesApi from "../../hooks/useGamesApi";
+import { ProtoGame } from "../../interfaces/interfaces";
 import { useAppSelector } from "../../store/hooks";
-import CreateGameStyled from "./CreateGameStyled";
+import EditGameStyled from "./EditGameStyled";
 
-const initialGameState = {
-  title: "",
-  category: "",
-  company: "",
-  sinopsis: "",
-  image: "",
-  likes: 0,
-  dislikes: 0,
-  owner: "",
-  reviews: [""],
-};
 let formData = new FormData();
 
-const CreateGame = (): JSX.Element => {
-  const { createGame } = useGamesApi();
-  const [gameCreate, setCreateGame] = useState(initialGameState);
+interface EditGameProps {
+  game: ProtoGame;
+}
+
+const EditGame = ({ game }: EditGameProps): JSX.Element => {
+  const { editGame } = useGamesApi();
+  const [gameEdit, setEditGame] = useState(game);
   const { username } = useAppSelector((state) => state.user);
+  const { id } = useParams();
+  const navigate = useNavigate();
 
   const onChangeField = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setCreateGame({
-      ...gameCreate,
+    setEditGame({
+      ...gameEdit,
       [event.target.id]: event.target.value,
     });
   };
   const onChangeSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setCreateGame({
-      ...gameCreate,
+    setEditGame({
+      ...gameEdit,
       [event.target.id]: event.target.value,
     });
   };
 
   const onChangeTextArea = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setCreateGame({
-      ...gameCreate,
+    setEditGame({
+      ...gameEdit,
       [event.target.id]: event.target.value,
     });
   };
   const onChangeFile = (event: React.ChangeEvent<HTMLInputElement>) => {
     formData.append("image", event.target.files![0]);
-    setCreateGame({
-      ...gameCreate,
+    setEditGame({
+      ...gameEdit,
       image: event.target.value,
     });
   };
 
   const handleSubmit = async (event: SyntheticEvent) => {
     event.preventDefault();
-    formData.append("game", JSON.stringify({ ...gameCreate, owner: username }));
-    await createGame(formData);
-    setCreateGame(initialGameState);
+    formData.append("game", JSON.stringify({ ...gameEdit, owner: username }));
+    await editGame(formData, id!);
+    setEditGame(game);
     formData = new FormData();
+    navigate("/my-collection");
   };
 
-  const hasEmptyFields =
-    gameCreate.title === initialGameState.title ||
-    gameCreate.sinopsis === initialGameState.sinopsis ||
-    gameCreate.company === initialGameState.company ||
-    gameCreate.category === initialGameState.category;
-
   return (
-    <CreateGameStyled noValidate autoComplete="off" onSubmit={handleSubmit}>
+    <EditGameStyled noValidate autoComplete="off" onSubmit={handleSubmit}>
       <div className="input-container">
         <label htmlFor="title" className="form__input-label">
           Title
         </label>
         <input
-          value={gameCreate.title}
+          value={EditGameStyled.title}
           onChange={onChangeField}
           type="text"
           id="title"
-          placeholder="Assassins Creed 3"
+          placeholder="Add a new title"
           className="form__input-element"
         />
       </div>
@@ -83,11 +75,11 @@ const CreateGame = (): JSX.Element => {
           Company
         </label>
         <input
-          value={gameCreate.company}
+          value={gameEdit.company}
           onChange={onChangeField}
           id="company"
           type="text"
-          placeholder="FromSoftware"
+          placeholder="Add a new Company"
           className="form__input-element"
         />
       </div>
@@ -101,6 +93,7 @@ const CreateGame = (): JSX.Element => {
           onChange={onChangeSelect}
           className="form__input-element"
         >
+          <option>Choose on</option>
           <option>Adventure</option>
           <option>Shooter</option>
           <option>Strategy</option>
@@ -110,6 +103,7 @@ const CreateGame = (): JSX.Element => {
           <option>Simulator</option>
         </select>
       </div>
+
       <div className="input-container">
         <label htmlFor="sinopsis" className="form__input-label">
           Sinopsis
@@ -117,7 +111,7 @@ const CreateGame = (): JSX.Element => {
         <textarea
           rows={10}
           cols={20}
-          placeholder="Add a description of the game"
+          placeholder="Add a new sinosis"
           className="form__input-element"
           id="sinopsis"
           onChange={onChangeTextArea}
@@ -132,15 +126,14 @@ const CreateGame = (): JSX.Element => {
           id="image"
           onChange={onChangeFile}
           type="file"
-          value={gameCreate.image}
           className="form__input-element"
         />
       </div>
-      <button className="form-button" type="submit" disabled={hasEmptyFields}>
-        Create
+      <button className="form-button" type="submit">
+        Edit
       </button>
-    </CreateGameStyled>
+    </EditGameStyled>
   );
 };
 
-export default CreateGame;
+export default EditGame;

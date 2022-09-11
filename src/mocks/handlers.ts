@@ -69,4 +69,12 @@ export const handlers = [
   rest.post(`${url}games/games`, (req, res, ctx) => {
     return res(ctx.status(201), ctx.json({ message: "Game created" }));
   }),
+
+  rest.put(`${url}games/games/123123`, (_req, res, ctx) => {
+    return res(ctx.status(200));
+  }),
+
+  rest.put(`${url}games/games/123`, (_req, res, ctx) => {
+    return res(ctx.status(400), ctx.json({ error: new Error() }));
+  }),
 ];
