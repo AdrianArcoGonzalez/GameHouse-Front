@@ -6,6 +6,7 @@ import HomePageStyled from "./HomePageStyled";
 import JoinUs from "../components/JoinUs/JoinUs";
 import useGamesApi from "../hooks/useGamesApi";
 import { useEffect } from "react";
+import Filter from "../components/Filter/Filter";
 
 const HomePage = (): JSX.Element => {
   const { getAllGames } = useGamesApi();
@@ -20,6 +21,7 @@ const HomePage = (): JSX.Element => {
     <HomePageStyled>
       <HeroSection text={heroTexts.home} srcImage={"images/home.webp"} />
       <h2 className="games-list__title">Comunity Games</h2>
+      <Filter />
       <Games />
       <JoinUs />
     </HomePageStyled>
