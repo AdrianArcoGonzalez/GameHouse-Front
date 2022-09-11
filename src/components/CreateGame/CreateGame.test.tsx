@@ -1,10 +1,10 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import CreateGame from "./CreateGame";
 import UserEvent from "@testing-library/user-event";
 import React from "react";
 import { Wrapper } from "../../utils/Wrapper";
 import { Provider } from "react-redux";
 import { store } from "../../store/store";
+import CreateGame from "./CreateGame";
 
 beforeEach(() => jest.restoreAllMocks());
 
