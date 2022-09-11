@@ -77,4 +77,16 @@ export const handlers = [
   rest.put(`${url}games/games/123`, (_req, res, ctx) => {
     return res(ctx.status(400), ctx.json({ error: new Error() }));
   }),
+
+  rest.get(`${url}games/games/category/Adventure`, (_req, res, ctx) => {
+    return res(ctx.status(200), ctx.json({ games: mockGameArray }));
+  }),
+
+  rest.get(`${url}games/games/category/Action`, (_req, res, ctx) => {
+    return res(ctx.status(200), ctx.json({ games: [] }));
+  }),
+
+  rest.get(`${url}games/games/category/MOBA`, (_req, res, ctx) => {
+    return res(ctx.status(404), ctx.json({ error: new Error() }));
+  }),
 ];

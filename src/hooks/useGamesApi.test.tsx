@@ -1,3 +1,4 @@
+/* eslint-disable testing-library/no-await-sync-query */
 import { act, renderHook, waitFor } from "@testing-library/react";
 import axios from "axios";
 import { Wrapper } from "../utils/Wrapper";
@@ -5,6 +6,7 @@ import useGamesApi from "./useGamesApi";
 import { toast } from "react-toastify";
 import { mockGame } from "../mocks/mockGame";
 import mockUser from "../mocks/mockUser";
+import { goodbyeModal } from "../modals/modals";
 
 jest.mock("react-toastify");
 
@@ -112,6 +114,46 @@ describe("Given a useGamesApi custom hook", () => {
         expect(mockDispatch).toHaveBeenCalled();
       });
     });
+    describe("When it's invoked with method getByCategory", () => {
+      test("Then it should call the dispatch if it got a filled array", async () => {
+        const category = "Adventure";
+        const {
+          result: {
+            current: { getByCategory },
+          },
+        } = renderHook(useGamesApi, { wrapper: Wrapper });
+
+        await getByCategory(category);
+
+        expect(mockDispatch).toHaveBeenCalled();
+      });
+
+      test("Then if it return an empty array it should call a modal", async () => {
+        const category = "Action";
+        const {
+          result: {
+            current: { getByCategory },
+          },
+        } = renderHook(useGamesApi, { wrapper: Wrapper });
+
+        await getByCategory(category);
+
+        expect(toast.info).toHaveBeenCalled();
+      });
+
+      test("And if it return an error it should call the error modal", async () => {
+        const category = "MOBA";
+        const {
+          result: {
+            current: { getByCategory },
+          },
+        } = renderHook(useGamesApi, { wrapper: Wrapper });
+
+        await getByCategory(category);
+
+        expect(toast.error).toHaveBeenCalled();
+      });
+    });
   });
   describe("When it's invoked with editGame", () => {
     test("Then it should call the toast succes", async () => {
@@ -158,7 +200,6 @@ describe("Given a useGamesApi custom hook", () => {
         },
       } = renderHook(useGamesApi, { wrapper: Wrapper });
 
-      // eslint-disable-next-line testing-library/no-await-sync-query
       await getByOwner(mockUser.username);
 
       expect(mockDispatch).toHaveBeenCalled();
@@ -172,7 +213,6 @@ describe("Given a useGamesApi custom hook", () => {
         },
       } = renderHook(useGamesApi, { wrapper: Wrapper });
 
-      // eslint-disable-next-line testing-library/no-await-sync-query
       await getByOwner(mockUser.username);
 
       expect(toast.error).toHaveBeenCalled();
