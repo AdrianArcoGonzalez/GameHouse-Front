@@ -23,3 +23,16 @@ export interface Game {
   reviews?: string[];
   imageBackUp?: string;
 }
+
+export interface ProtoGame {
+  title: string;
+  category: string;
+  company: string;
+  image: string;
+  sinopsis: string;
+  owner: string;
+  likes: number;
+  dislikes: number;
+  reviews?: string[];
+  imageBackUp?: string;
+}
