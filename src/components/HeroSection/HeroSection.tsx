@@ -13,7 +13,6 @@ const HeroSection = ({ text, srcImage }: HeroSectionProps): JSX.Element => {
         className="hero__image"
         width="100vw"
         height="200px"
-        loading="lazy"
       />
       <div className="hero-container">
         <p className="hero-container__sentence">{text}</p>

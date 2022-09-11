@@ -101,6 +101,7 @@ const CreateGame = (): JSX.Element => {
           onChange={onChangeSelect}
           className="form__input-element"
         >
+          <option>Choose One</option>
           <option>Adventure</option>
           <option>Shooter</option>
           <option>Strategy</option>
