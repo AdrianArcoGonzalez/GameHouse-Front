@@ -25,7 +25,7 @@ const MyCollectionPage = (): JSX.Element => {
       <ul>
         {games.map((game) => (
           <li>
-            <GameDetails game={game} />
+            <GameDetails game={game} key={game.id} />
           </li>
         ))}
       </ul>

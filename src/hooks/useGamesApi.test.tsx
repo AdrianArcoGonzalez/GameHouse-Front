@@ -107,7 +107,7 @@ describe("Given a useGamesApi custom hook", () => {
       } = renderHook(useGamesApi, { wrapper: Wrapper });
 
       await act(async () => {
-        await getAllGames();
+        await getAllGames(1);
       });
 
       await waitFor(() => {
@@ -224,7 +224,7 @@ describe("Given a useGamesApi custom hook", () => {
           current: { getAllGames },
         },
       } = renderHook(useGamesApi, { wrapper: Wrapper });
-      await getAllGames();
+      await getAllGames(1);
 
       expect(mockDispatch).not.toBeCalled();
       expect(toast.error).toHaveBeenCalled();

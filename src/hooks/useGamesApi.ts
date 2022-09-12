@@ -13,20 +13,29 @@ const useGamesApi = () => {
   const backUrl = process.env.REACT_APP_URL_BACK;
   const user = useAppSelector((state) => state.user);
   const navigate = useNavigate();
-  const getAllGames = useCallback(async () => {
-    try {
-      const response = await axios.get(`${backUrl}games/games/`);
-      const { games } = response.data;
 
-      if (games.length === 0) {
-        throw new Error();
+  const getAllGames = useCallback(
+    async (page: number) => {
+      try {
+        const {
+          data: { games, totalGames },
+        } = await axios.get(
+          `http://localhost:4000/games/games/?page=${page}&limit=6`
+        );
+
+        if (games.length === 0) {
+          throw new Error();
+        }
+
+        dispatch(getAllGamesActionCreator(games));
+
+        return totalGames;
+      } catch (error) {
+        errorModal("Cannot get all games :(");
       }
-
-      dispatch(getAllGamesActionCreator(games));
-    } catch (error) {
-      errorModal("Cannot get all games :(");
-    }
-  }, [backUrl, dispatch]);
+    },
+    [dispatch]
+  );
 
   const getOneGameById = useCallback(
     async (id: string) => {

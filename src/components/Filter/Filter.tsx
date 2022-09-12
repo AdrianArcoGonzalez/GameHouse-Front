@@ -15,7 +15,7 @@ const Filter = (): JSX.Element => {
   const handleGetCategory = async (event: SyntheticEvent) => {
     event.preventDefault();
     if (state.category === "All") {
-      await getAllGames();
+      await getAllGames(1);
       return;
     }
     await getByCategory(state.category);
