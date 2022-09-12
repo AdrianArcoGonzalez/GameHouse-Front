@@ -15,7 +15,7 @@ const Filter = (): JSX.Element => {
   const handleGetCategory = async (event: SyntheticEvent) => {
     event.preventDefault();
     if (state.category === "All") {
-      await getAllGames();
+      await getAllGames(1);
       return;
     }
     await getByCategory(state.category);
@@ -33,7 +33,6 @@ const Filter = (): JSX.Element => {
         >
           <option>All</option>
           <option>Adventure</option>
-          <option>Shooter</option>
           <option>Strategy</option>
           <option>MOBA</option>
           <option>Shooter</option>
