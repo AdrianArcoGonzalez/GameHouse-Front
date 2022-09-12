@@ -7,26 +7,12 @@ import HomePage from "../../pages/HomePage";
 import NotFoundPage from "../../pages/NotFoundPage";
 import DetailsPage from "../../pages/DetailsPage";
 import CredentialsLogin from "../CredentialsLogin/CredentialsLogin";
-import { useEffect } from "react";
-import decodeToken from "../../utils/auth";
-import { useAppDispatch } from "../../store/hooks";
-import { logInUserActionCreator } from "../../store/slice/usersSlice";
 import CredentialsLogout from "../CredentialsLogout/CredentialsLogout";
 import MyCollectionPage from "../../pages/MyCollectionPage";
 import CreateGamePage from "../../pages/CreateGamePage";
 import EditGamePage from "../../pages/EditGamePage";
 
 const App = (): JSX.Element => {
-  const dispatch = useAppDispatch();
-  const tokenEncrypted = localStorage.getItem("token");
-
-  useEffect(() => {
-    if (tokenEncrypted) {
-      const token = decodeToken(tokenEncrypted);
-      const user = { ...token, isLogged: true };
-      dispatch(logInUserActionCreator(user));
-    }
-  }, [dispatch, tokenEncrypted]);
   return (
     <>
       <Header />

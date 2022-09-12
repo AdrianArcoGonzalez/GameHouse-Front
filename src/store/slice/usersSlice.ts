@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { User } from "../../interfaces/interfaces";
+import initialState from "../../utils/initialState";
 
 interface InitialStateUser {
   id: string;
@@ -7,7 +8,7 @@ interface InitialStateUser {
   token: string;
   isLogged: boolean;
 }
-const initialStateUser: InitialStateUser = {
+const emptyUser: InitialStateUser = {
   id: "",
   username: "",
   token: "",
@@ -16,11 +17,11 @@ const initialStateUser: InitialStateUser = {
 
 export const usersSlice = createSlice({
   name: "users",
-  initialState: initialStateUser,
+  initialState: initialState() as User,
   reducers: {
     logInUser: (state, action: PayloadAction<User>) => action.payload,
 
-    logOutUser: (state) => initialStateUser,
+    logOutUser: (state) => emptyUser,
   },
 });
 
