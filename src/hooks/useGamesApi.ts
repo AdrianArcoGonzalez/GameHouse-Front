@@ -18,23 +18,19 @@ const useGamesApi = () => {
     async (page: number) => {
       try {
         const {
-          data: { games, totalGames },
-        } = await axios.get(
-          `http://localhost:4000/games/games/?page=${page}&limit=6`
-        );
+          data: { games },
+        } = await axios.get(`${backUrl}games/games/?page=${page}&limit=6`);
 
         if (games.length === 0) {
           throw new Error();
         }
 
         dispatch(getAllGamesActionCreator(games));
-
-        return totalGames;
       } catch (error) {
         errorModal("Cannot get all games :(");
       }
     },
-    [dispatch]
+    [backUrl, dispatch]
   );
 
   const getOneGameById = useCallback(

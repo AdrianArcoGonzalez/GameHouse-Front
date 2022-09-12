@@ -9,16 +9,15 @@ import { useEffect, useState } from "react";
 import Filter from "../components/Filter/Filter";
 import Pagination from "../components/Pagination/Pagination";
 
+const initialState = 1;
+
 const HomePage = (): JSX.Element => {
   const { getAllGames } = useGamesApi();
-  const [page, setPage] = useState(1);
-  const [totalGames, setTotalGames] = useState(6);
-
+  const [page, setPage] = useState(initialState);
   useEffect(() => {
     window.scrollTo({ top: 0 });
     (async () => {
-      const totalGames = await getAllGames(page);
-      setTotalGames(totalGames);
+      await getAllGames(page);
     })();
   }, [getAllGames, page]);
 
@@ -28,7 +27,7 @@ const HomePage = (): JSX.Element => {
       <h2 className="games-list__title">Comunity Games</h2>
       <Filter />
       <Games />
-      <Pagination page={page} setPage={setPage} totalGames={totalGames} />
+      <Pagination page={page} setPage={setPage} />
       <JoinUs />
     </HomePageStyled>
   );

@@ -31,7 +31,7 @@ describe("Given a filter component", () => {
     });
 
     test("And it should show 8 options to choose", () => {
-      const expectedLenght = 8;
+      const expectedLenght = 7;
 
       render(
         <BrowserRouter>

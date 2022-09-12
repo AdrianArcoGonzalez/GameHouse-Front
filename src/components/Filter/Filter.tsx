@@ -33,7 +33,6 @@ const Filter = (): JSX.Element => {
         >
           <option>All</option>
           <option>Adventure</option>
-          <option>Shooter</option>
           <option>Strategy</option>
           <option>MOBA</option>
           <option>Shooter</option>

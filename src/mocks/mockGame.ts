@@ -49,6 +49,14 @@ export const mockGame3: Game = {
 
 export const mockGameArray: Game[] = [mockGame, mockGame2, mockGame3];
 
+export const mockGameArraySix: Game[] = [
+  mockGame,
+  mockGame2,
+  mockGame3,
+  mockGame,
+  mockGame2,
+  mockGame3,
+];
 export const mockProtoGame: ProtoGame = {
   category: "MOBA",
   company: "Riot",
