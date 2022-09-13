@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import { errorModal, goodbyeModal, succesModal } from "../modals/modals";
+import { errorModal, infoModal, succesModal } from "../modals/modals";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import {
   deleteGameActionCreator,
@@ -43,7 +43,7 @@ const useGamesApi = () => {
         });
         return game;
       } catch (error) {
-        goodbyeModal("You need to login to see details");
+        infoModal("You need to login to see details");
       }
     },
     [backUrl, user.token]
@@ -110,7 +110,7 @@ const useGamesApi = () => {
       } = await axios.get(`${backUrl}games/games/category/${category}`);
 
       if (games.length === 0) {
-        goodbyeModal("No games found on this category");
+        infoModal("No games found on this category");
         return;
       }
       dispatch(getAllGamesActionCreator(games));

@@ -13,7 +13,7 @@ const root = createRoot(container);
 root.render(
   <Provider store={store}>
     <BrowserRouter>
-      <ToastContainer />
+      <ToastContainer className="toast" />
       <App />
     </BrowserRouter>
   </Provider>

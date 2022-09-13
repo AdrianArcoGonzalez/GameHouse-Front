@@ -28,6 +28,7 @@ const CreateGame = (): JSX.Element => {
     });
   };
   const onChangeSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    debugger;
     setCreateGame({
       ...gameCreate,
       [event.target.id]: event.target.value,
@@ -103,7 +104,6 @@ const CreateGame = (): JSX.Element => {
         >
           <option>Choose One</option>
           <option>Adventure</option>
-          <option>Shooter</option>
           <option>Strategy</option>
           <option>MOBA</option>
           <option>Shooter</option>

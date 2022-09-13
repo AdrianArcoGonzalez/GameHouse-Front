@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-import { goodbyeModal } from "../../modals/modals";
+import { infoModal } from "../../modals/modals";
 import { useAppSelector } from "../../store/hooks";
 import PaginationStyled from "./PaginationStyled";
 
@@ -16,14 +16,14 @@ const Pagination = ({ page, setPage }: PaginationProps): JSX.Element => {
       setPage((page += 1));
       return;
     }
-    goodbyeModal("No more Pages to show");
+    infoModal("No more Pages to show");
   };
   const downgradePage = () => {
     if (page !== 1) {
       setPage((page -= 1));
       return;
     }
-    goodbyeModal("No more Pages to show");
+    infoModal("No more Pages to show");
   };
 
   return (
