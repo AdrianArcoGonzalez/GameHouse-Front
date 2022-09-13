@@ -25,15 +25,5 @@ describe("Given an App component", () => {
 
       expect(paragraph).toBeInTheDocument();
     });
-
-    test("And it should call the useDispatch", () => {
-      const mockTokenStorage =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGQzNWI4NGQzMmExOGViOTZhMjljYyIsInVzZXJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2NjI0OTU3Njh9.29edGTKKsTXErsUrlP9rSPoAHa9BGvoHa1JvcMNnmdc";
-      window.localStorage.setItem("token", mockTokenStorage);
-
-      render(<App />, { wrapper: Wrapper });
-
-      expect(mockDispatch).toHaveBeenCalled();
-    });
   });
 });

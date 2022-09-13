@@ -6,7 +6,7 @@ import useGamesApi from "./useGamesApi";
 import { toast } from "react-toastify";
 import { mockGame } from "../mocks/mockGame";
 import mockUser from "../mocks/mockUser";
-import { goodbyeModal } from "../modals/modals";
+import { infoModal } from "../modals/modals";
 
 jest.mock("react-toastify");
 

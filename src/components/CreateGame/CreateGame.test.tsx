@@ -32,7 +32,7 @@ describe("Given a CreateGame component", () => {
       expect(textArea).toBeInTheDocument();
     });
     test("And it should show an options input with 8 options", () => {
-      const expectedLenght = 8;
+      const expectedLenght = 7;
       render(<CreateGame />, { wrapper: Wrapper });
 
       const inputOptions = screen.getAllByRole("option");
@@ -41,42 +41,32 @@ describe("Given a CreateGame component", () => {
     });
 
     test("And when the user write it should call the usestate", async () => {
-      const useState = jest.spyOn(React, "useState");
       const text = "MyGame";
       render(<CreateGame />, { wrapper: Wrapper });
 
       const textInput = screen.getAllByRole("textbox");
       await UserEvent.type(textInput[0], text);
 
-      await waitFor(() => expect(useState).toHaveBeenCalled());
-    });
-
-    test("And when the user write  on textarea it should call the usestate", async () => {
-      const useState = jest.spyOn(React, "useState");
-      const text = "MyGame";
-      render(<CreateGame />, { wrapper: Wrapper });
-
-      const textAreaInput = screen.getByRole("combobox");
-      await UserEvent.type(textAreaInput, text);
-
-      await waitFor(() => expect(useState).toHaveBeenCalled());
+      await waitFor(() => expect(textInput[0]).toHaveValue(text));
     });
 
     test("And when the user write on textarea it should call the usestate", async () => {
-      const useState = jest.spyOn(React, "useState");
-
+      jest.clearAllMocks();
+      const expectedValue = "Adventure";
       render(<CreateGame />, { wrapper: Wrapper });
 
-      const optionInput = screen.getAllByRole("option");
-      await UserEvent.click(optionInput[0]);
+      const selectInput = screen.getByLabelText("Category");
+      UserEvent.selectOptions(selectInput, expectedValue);
 
-      await waitFor(() => expect(useState).toHaveBeenCalled());
+      await waitFor(() => {
+        expect(selectInput).toHaveValue(expectedValue);
+      });
     });
 
     test("And when the user upload a file it should call the usestate", async () => {
       const useState = jest.spyOn(React, "useState");
       const labelText = "Image";
-      const file = new File(["file"], "");
+      const file = new File([""], "");
       render(<CreateGame />, { wrapper: Wrapper });
 
       const fileInput = screen.getByLabelText(labelText);
@@ -97,25 +87,14 @@ describe("Given a CreateGame component", () => {
     });
 
     test("And when the user write on the textArea it should call useState", async () => {
-      const useState = jest.spyOn(React, "useState");
       const text = "This is a game";
+      const labelTextArea = "Sinopsis";
       render(<CreateGame />, { wrapper: Wrapper });
 
-      const textArea = screen.getByRole("combobox");
+      const textArea = screen.getByLabelText(labelTextArea);
       UserEvent.type(textArea, text);
 
-      await waitFor(() => expect(useState).toHaveBeenCalled());
-    });
-
-    test("And when the user write on the  it should call useState", async () => {
-      const useState = jest.spyOn(React, "useState");
-
-      render(<CreateGame />, { wrapper: Wrapper });
-
-      const options = screen.getAllByRole("option");
-      await UserEvent.click(options[0]);
-
-      await waitFor(() => expect(useState).toHaveBeenCalled());
+      await waitFor(() => expect(textArea).toHaveValue(text));
     });
 
     test("And the button must be disabled if there is an input empty", async () => {

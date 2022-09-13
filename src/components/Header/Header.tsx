@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { goodbyeModal } from "../../modals/modals";
+import { infoModal } from "../../modals/modals";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { logOutUserActionCreator } from "../../store/slice/usersSlice";
 import { RootState } from "../../store/store";
@@ -13,7 +13,7 @@ const Header = (): JSX.Element => {
   const logout = () => {
     dispatch(logOutUserActionCreator());
     localStorage.clear();
-    goodbyeModal("See You Soon Hero!");
+    infoModal("See You Soon Hero!");
   };
 
   const openCloseMenu = () => {

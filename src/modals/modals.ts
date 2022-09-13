@@ -1,4 +1,4 @@
-import { toast, Flip } from "react-toastify";
+import { toast, Zoom } from "react-toastify";
 
 export const succesModal = (message: string) =>
   toast.success(message, {
@@ -7,7 +7,7 @@ export const succesModal = (message: string) =>
     hideProgressBar: true,
     autoClose: 3000,
     closeButton: false,
-    transition: Flip,
+    transition: Zoom,
   });
 
 export const errorModal = (message: string) =>
@@ -17,16 +17,16 @@ export const errorModal = (message: string) =>
     hideProgressBar: true,
     autoClose: 3000,
     closeButton: false,
-    transition: Flip,
+    transition: Zoom,
   });
 
-export const goodbyeModal = (message: string) => {
+export const infoModal = (message: string) => {
   toast.info(message, {
     position: "top-center",
     theme: "light",
     hideProgressBar: true,
     closeButton: false,
-    transition: Flip,
+    transition: Zoom,
     autoClose: 3000,
   });
 };

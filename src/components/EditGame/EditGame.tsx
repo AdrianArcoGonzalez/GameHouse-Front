@@ -95,7 +95,6 @@ const EditGame = ({ game }: EditGameProps): JSX.Element => {
         >
           <option>Choose on</option>
           <option>Adventure</option>
-          <option>Shooter</option>
           <option>Strategy</option>
           <option>MOBA</option>
           <option>Shooter</option>
