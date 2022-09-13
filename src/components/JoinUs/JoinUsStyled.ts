@@ -13,6 +13,9 @@ const JoinUsStyled = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (min-width: 850px) {
+    background-image: url("/images/joinComunityBig.webp");
+  }
   .join-us__ {
     &info-container {
       display: flex;

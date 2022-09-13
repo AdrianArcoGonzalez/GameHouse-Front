@@ -2,9 +2,14 @@ import HeroSectionStyled from "./HeroSectionStyled";
 interface HeroSectionProps {
   text: string;
   srcImage: string;
+  srcSet?: string;
 }
 
-const HeroSection = ({ text, srcImage }: HeroSectionProps): JSX.Element => {
+const HeroSection = ({
+  text,
+  srcImage,
+  srcSet,
+}: HeroSectionProps): JSX.Element => {
   return (
     <HeroSectionStyled data-testid="section">
       <img
