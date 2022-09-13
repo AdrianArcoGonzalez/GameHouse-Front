@@ -39,9 +39,9 @@ describe("Given a mycollection page", () => {
           </Provider>
         </BrowserRouter>
       );
-      const listItem = screen.getByRole("listitem");
+      const img = screen.getByAltText("League of Legends");
 
-      expect(listItem).toBeInTheDocument();
+      expect(img).toBeInTheDocument();
     });
 
     test("And it should call the method window scroll", async () => {

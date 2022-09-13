@@ -27,7 +27,11 @@ const CreateGame = (): JSX.Element => {
       [event.target.id]: event.target.value,
     });
   };
-  const onChangeSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const onChangeSelect = (
+    event:
+      | React.ChangeEvent<HTMLSelectElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
     debugger;
     setCreateGame({
       ...gameCreate,
@@ -35,12 +39,6 @@ const CreateGame = (): JSX.Element => {
     });
   };
 
-  const onChangeTextArea = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setCreateGame({
-      ...gameCreate,
-      [event.target.id]: event.target.value,
-    });
-  };
   const onChangeFile = (event: React.ChangeEvent<HTMLInputElement>) => {
     formData.append("image", event.target.files![0]);
     setCreateGame({
@@ -121,7 +119,7 @@ const CreateGame = (): JSX.Element => {
           placeholder="Add a description of the game"
           className="form__input-element"
           id="sinopsis"
-          onChange={onChangeTextArea}
+          onChange={onChangeSelect}
         ></textarea>
       </div>
 

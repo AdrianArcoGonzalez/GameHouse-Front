@@ -24,7 +24,7 @@ const mockGameReducer = createReducer<Game[]>(gameInitialState, (builder) => {
 const mockStore = configureStore({
   reducer: {
     user: mockUserReducer,
-    game: mockGameReducer,
+    games: mockGameReducer,
   },
 });
 

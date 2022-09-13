@@ -98,7 +98,7 @@ const GameDetailsStyled = styled.section`
     width: 100px;
     height: 30px;
     border-radius: 20px;
-    background-color: blue;
+    background-color: #2f78ed;
     color: white;
     padding: 5px;
     margin-top: 10px;

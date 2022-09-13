@@ -7,6 +7,7 @@ import { useAppSelector } from "../store/hooks";
 
 const MyCollectionPage = (): JSX.Element => {
   const { getByOwner } = useGamesApi();
+  debugger;
   const { username } = useAppSelector((state) => state.user);
   const games = useAppSelector((state) => state.games);
   useEffect(() => {
@@ -24,9 +25,7 @@ const MyCollectionPage = (): JSX.Element => {
       />
       <ul>
         {games.map((game) => (
-          <li>
-            <GameDetails game={game} key={game.id} />
-          </li>
+          <GameDetails game={game} key={game.id} />
         ))}
       </ul>
     </>

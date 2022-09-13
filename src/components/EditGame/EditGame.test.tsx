@@ -15,19 +15,6 @@ const mockUseGames = {
 };
 jest.mock("../../hooks/useGamesApi", () => () => mockUseGames);
 
-const mockUseState = jest.spyOn(React, "useState");
-const mockState = {
-  category: "",
-  company: "",
-  dislikes: 0,
-  image: "",
-  owner: "",
-  sinopsis: "",
-  likes: 0,
-  title: "",
-  reviews: [],
-};
-
 describe("Given a EditGame component", () => {
   describe("When it's instantiated", () => {
     test("Then it should show a form", () => {
