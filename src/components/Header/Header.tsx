@@ -29,7 +29,11 @@ const Header = (): JSX.Element => {
             Logout
           </button>
         )}
-        <button className="burguer-menu__button" onClick={openCloseMenu}>
+        <button
+          className="burguer-menu__button"
+          onClick={openCloseMenu}
+          name="burguer-menu"
+        >
           <div className="burguer-menu" data-testid="burguer">
             <div className="burguer-menu__line"></div>
           </div>
