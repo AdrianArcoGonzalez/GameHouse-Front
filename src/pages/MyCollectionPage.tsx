@@ -7,7 +7,6 @@ import { useAppSelector } from "../store/hooks";
 
 const MyCollectionPage = (): JSX.Element => {
   const { getByOwner } = useGamesApi();
-  debugger;
   const { username } = useAppSelector((state) => state.user);
   const games = useAppSelector((state) => state.games);
   useEffect(() => {
