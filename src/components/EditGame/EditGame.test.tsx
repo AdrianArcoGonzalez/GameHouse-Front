@@ -52,7 +52,7 @@ describe("Given a EditGame component", () => {
       expect(textArea).toBeInTheDocument();
     });
     test("And it should show an options input with 8 options", () => {
-      const expectedLenght = 8;
+      const expectedLenght = 7;
       render(<EditGame game={mockProtoGame} />, { wrapper: Wrapper });
 
       const inputOptions = screen.getAllByRole("option");
@@ -61,36 +61,37 @@ describe("Given a EditGame component", () => {
     });
 
     test("And when the user write it should call the usestate", async () => {
-      const useState = jest.spyOn(React, "useState");
       const text = "MyGame";
+
       render(<EditGame game={mockProtoGame} />, { wrapper: Wrapper });
 
       const textInput = screen.getAllByRole("textbox");
       await UserEvent.type(textInput[0], text);
 
-      await waitFor(() => expect(useState).toHaveBeenCalled());
+      await waitFor(() => expect(textInput[0]).toHaveValue(text));
     });
 
     test("And when the user write  on textarea it should call the usestate", async () => {
-      const useState = jest.spyOn(React, "useState");
       const text = "MyGame";
+      const label = "Sinopsis";
+
       render(<EditGame game={mockProtoGame} />, { wrapper: Wrapper });
 
-      const textAreaInput = screen.getByRole("combobox");
+      const textAreaInput = screen.getByLabelText(label);
       await UserEvent.type(textAreaInput, text);
 
-      await waitFor(() => expect(useState).toHaveBeenCalled());
+      await waitFor(() => expect(textAreaInput).toHaveValue(text));
     });
 
     test("And when the user write on textarea it should call the usestate", async () => {
-      const useState = jest.spyOn(React, "useState");
-
+      const label = "Category";
+      const option = "Adventure";
       render(<EditGame game={mockProtoGame} />, { wrapper: Wrapper });
 
-      const optionInput = screen.getAllByRole("option");
-      await UserEvent.click(optionInput[0]);
+      const optionInput = screen.getByLabelText(label);
+      await UserEvent.selectOptions(optionInput, option);
 
-      await waitFor(() => expect(useState).toHaveBeenCalled());
+      await waitFor(() => expect(optionInput).toHaveValue(option));
     });
 
     test("And when the user upload a file it should call the usestate", async () => {
