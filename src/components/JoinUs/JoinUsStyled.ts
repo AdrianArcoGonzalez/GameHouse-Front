@@ -44,7 +44,7 @@ const JoinUsStyled = styled.section`
       width: 100px;
       height: 30px;
       border-radius: 20px;
-      background-color: #2f78ed;
+      background-color: #114db1;
       color: white;
       padding: 5px;
       margin-top: 10px;
