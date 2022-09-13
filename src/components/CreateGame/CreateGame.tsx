@@ -32,7 +32,6 @@ const CreateGame = (): JSX.Element => {
       | React.ChangeEvent<HTMLSelectElement>
       | React.ChangeEvent<HTMLTextAreaElement>
   ) => {
-    debugger;
     setCreateGame({
       ...gameCreate,
       [event.target.id]: event.target.value,

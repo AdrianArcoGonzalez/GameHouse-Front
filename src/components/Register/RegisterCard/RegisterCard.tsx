@@ -6,7 +6,7 @@ interface RegisterCardProps {
 }
 
 const RegisterCard = ({ user }: RegisterCardProps): JSX.Element => {
-  const { birthdate, email, location, name, username } = user;
+  const { birthdate, email, location, name, username, image } = user;
   return (
     <RegisterCardStyled data-testid="cardRegister">
       <div className="card">
@@ -20,8 +20,9 @@ const RegisterCard = ({ user }: RegisterCardProps): JSX.Element => {
           </ul>
           <div className="card__right-side">
             <img
+              placeholder="https://aui.atlassian.com/aui/latest/docs/images/avatar-person.svg"
               className="card__right-side--image"
-              src="https://aui.atlassian.com/aui/latest/docs/images/avatar-person.svg"
+              src={image}
               alt="avatar"
               height="100px"
               width="100px"

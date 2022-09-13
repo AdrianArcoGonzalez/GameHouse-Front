@@ -1,5 +1,6 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import UserEvent from "@testing-library/user-event";
+import React from "react";
 import { Wrapper } from "../../../utils/Wrapper";
 import RegisterForm from "./RegisterForm";
 
@@ -8,7 +9,7 @@ const mockState = {
   birthdate: "10/12/1995",
   email: "peter@gmail.es",
   location: "New York",
-  image: "",
+  image: "image.jpg",
   username: "peter123",
   password: "123456",
   repeatPassword: "123456",
@@ -53,6 +54,22 @@ describe("Given a registerForm component", () => {
       expect(fieldUsername).toBeInTheDocument();
       expect(fieldPassword).toBeInTheDocument();
       expect(fieldRepeatPassword).toBeInTheDocument();
+    });
+
+    test("And when the user place an image on the input it should take the value of the name", async () => {
+      jest.clearAllMocks();
+      const file = new File(["(⌐□_□)"], "chucknorris.png", {
+        type: "image/png",
+      });
+      render(<RegisterForm setUser={mockSetstate} userRegister={mockState} />, {
+        wrapper: Wrapper,
+      });
+      const inputFile = screen.getByTestId("inputFile");
+      await UserEvent.upload(inputFile, file);
+
+      await waitFor(() => {
+        expect(mockSetstate).toHaveBeenCalled();
+      });
     });
 
     test("And it should have a button with text content submit", () => {
@@ -125,7 +142,7 @@ describe("Given a registerForm component", () => {
         name: "Register",
       });
 
-      await userEvent.upload(fileInput, mockedFile);
+      await UserEvent.upload(fileInput, mockedFile);
       fireEvent.submit(button);
 
       await waitFor(() => {
@@ -156,7 +173,7 @@ describe("Given a registerForm component", () => {
         name: "Register",
       });
 
-      await userEvent.upload(fileInput, mockedFile);
+      await UserEvent.upload(fileInput, mockedFile);
       fireEvent.submit(button);
 
       await waitFor(() => {
@@ -185,7 +202,7 @@ describe("Given a registerForm component", () => {
         { wrapper: Wrapper }
       );
       const input = screen.getByLabelText(name);
-      userEvent.type(input, userWrite);
+      UserEvent.type(input, userWrite);
 
       await waitFor(() => {
         expect(mockSetstate).toHaveBeenCalled();

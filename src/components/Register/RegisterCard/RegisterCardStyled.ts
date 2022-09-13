@@ -62,7 +62,9 @@ const RegisterCardStyled = styled.div`
         }
       }
     }
-
+    .card__right-side--image {
+      border-radius: 50%;
+    }
     .left-side__info-element {
       padding: 5px;
     }
