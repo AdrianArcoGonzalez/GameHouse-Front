@@ -21,9 +21,21 @@ const RegisterForm = ({
     });
   };
 
-  const onChangeFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeFile = async (event: React.ChangeEvent<HTMLInputElement>) => {
     formData.append("image", event.target.files![0]);
-    setUser({ ...userRegister, image: event.target.value });
+
+    let file = event.target.files![0];
+    let reader = new FileReader();
+    await reader.readAsDataURL(file);
+
+    reader.onloadend = () => {
+      const previewImage = reader.result as string;
+
+      setUser({
+        ...userRegister,
+        image: previewImage,
+      });
+    };
   };
 
   const handleSubmit = async (event: SyntheticEvent) => {
@@ -102,10 +114,11 @@ const RegisterForm = ({
       </label>
       <input
         id="image"
+        data-testid="inputFile"
         onChange={onChangeFile}
         type="file"
-        value={userRegister.image}
         className="form__input-element"
+        name={userRegister.image}
       />
 
       <label htmlFor="username" className="form__input-container">

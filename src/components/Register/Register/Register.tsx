@@ -22,7 +22,7 @@ export const initialState: FormState = {
   username: "",
   password: "",
   repeatPassword: "",
-  image: "",
+  image: "https://aui.atlassian.com/aui/latest/docs/images/avatar-person.svg",
 };
 
 const Register = (): JSX.Element => {
