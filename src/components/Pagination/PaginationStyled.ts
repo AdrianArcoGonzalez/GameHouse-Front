@@ -15,7 +15,7 @@ const PaginationStyled = styled.section`
     color: white;
   }
   .button {
-    background-color: #2f78ed;
+    background-color: #114db1;
     border: 1px solid white;
     color: white;
     font-family: inherit;
