@@ -1,4 +1,4 @@
-import { SyntheticEvent, useState } from "react";
+import { SyntheticEvent, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import useGamesApi from "../../hooks/useGamesApi";
 import { ProtoGame } from "../../interfaces/interfaces";
@@ -7,16 +7,31 @@ import EditGameStyled from "./EditGameStyled";
 
 let formData = new FormData();
 
-interface EditGameProps {
-  game: ProtoGame;
-}
+const initialGame: ProtoGame = {
+  category: "",
+  company: "",
+  dislikes: 0,
+  image: "",
+  likes: 0,
+  owner: "",
+  sinopsis: "",
+  title: "",
+  reviews: [],
+};
 
-const EditGame = ({ game }: EditGameProps): JSX.Element => {
-  const { editGame } = useGamesApi();
-  const [gameEdit, setEditGame] = useState(game);
+const EditGame = (): JSX.Element => {
+  const { editGame, getOneGameById } = useGamesApi();
+  const [gameEdit, setEditGame] = useState(initialGame);
   const { username } = useAppSelector((state) => state.user);
   const { id } = useParams();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    (async () => {
+      const game = await getOneGameById(id!);
+      setEditGame(game);
+    })();
+  }, [getOneGameById, id]);
 
   const onChangeField = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEditGame({
@@ -47,7 +62,7 @@ const EditGame = ({ game }: EditGameProps): JSX.Element => {
     event.preventDefault();
     formData.append("game", JSON.stringify({ ...gameEdit, owner: username }));
     await editGame(formData, id!);
-    setEditGame(game);
+    setEditGame(initialGame);
     formData = new FormData();
     navigate("/my-collection");
   };
@@ -87,6 +102,7 @@ const EditGame = ({ game }: EditGameProps): JSX.Element => {
           Category
         </label>
         <select
+          value={gameEdit.category}
           id="category"
           onChange={onChangeSelect}
           className="form__input-element"
@@ -106,6 +122,7 @@ const EditGame = ({ game }: EditGameProps): JSX.Element => {
           Sinopsis
         </label>
         <textarea
+          value={gameEdit.sinopsis}
           rows={10}
           cols={20}
           placeholder="Add a new sinosis"
