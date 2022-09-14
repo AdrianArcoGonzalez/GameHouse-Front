@@ -105,9 +105,9 @@ describe("Given a CreateGame component", () => {
         dislikes: 0,
         image: "",
         owner: "",
-        sinopsis: "it's a game",
+        sinopsis: "",
         likes: 0,
-        title: "game",
+        title: "",
         reviews: [],
       };
       const mockUseGame = jest.fn();
