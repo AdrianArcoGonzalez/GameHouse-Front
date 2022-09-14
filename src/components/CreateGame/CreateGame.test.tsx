@@ -17,8 +17,8 @@ describe("Given a CreateGame component", () => {
   describe("When it's instantiated", () => {
     test("Then it should show a form", () => {
       const expectedLength = 3;
-      render(<CreateGame />, { wrapper: Wrapper });
 
+      render(<CreateGame />, { wrapper: Wrapper });
       const inputsText = screen.getAllByRole("textbox");
 
       expect(inputsText).toHaveLength(expectedLength);
@@ -33,8 +33,8 @@ describe("Given a CreateGame component", () => {
     });
     test("And it should show an options input with 8 options", () => {
       const expectedLenght = 7;
-      render(<CreateGame />, { wrapper: Wrapper });
 
+      render(<CreateGame />, { wrapper: Wrapper });
       const inputOptions = screen.getAllByRole("option");
 
       expect(inputOptions).toHaveLength(expectedLenght);
@@ -42,8 +42,8 @@ describe("Given a CreateGame component", () => {
 
     test("And when the user write it should call the usestate", async () => {
       const text = "MyGame";
-      render(<CreateGame />, { wrapper: Wrapper });
 
+      render(<CreateGame />, { wrapper: Wrapper });
       const textInput = screen.getAllByRole("textbox");
       await UserEvent.type(textInput[0], text);
 
@@ -67,8 +67,8 @@ describe("Given a CreateGame component", () => {
       const useState = jest.spyOn(React, "useState");
       const labelText = "Image";
       const file = new File([""], "");
-      render(<CreateGame />, { wrapper: Wrapper });
 
+      render(<CreateGame />, { wrapper: Wrapper });
       const fileInput = screen.getByLabelText(labelText);
       await UserEvent.upload(fileInput, file);
 
@@ -89,8 +89,8 @@ describe("Given a CreateGame component", () => {
     test("And when the user write on the textArea it should call useState", async () => {
       const text = "This is a game";
       const labelTextArea = "Sinopsis";
-      render(<CreateGame />, { wrapper: Wrapper });
 
+      render(<CreateGame />, { wrapper: Wrapper });
       const textArea = screen.getByLabelText(labelTextArea);
       UserEvent.type(textArea, text);
 
@@ -112,28 +112,29 @@ describe("Given a CreateGame component", () => {
       };
       const mockUseGame = jest.fn();
       mockUseState.mockImplementation(() => [mockState, mockUseGame]);
+
       render(
         <Provider store={store}>
           <CreateGame />
         </Provider>
       );
-
       const button = screen.getByRole("button");
+      await UserEvent.click(button);
 
+      expect(mockUseGame).not.toBeCalled();
       expect(button).toBeDisabled();
     });
 
     test("And if the user write on the title input it must change the value", async () => {
       const labelTitle = "Title";
       const text = "Assassins creed";
+
       render(
         <Provider store={store}>
           <CreateGame />
         </Provider>
       );
-
       const titleInput = screen.getByLabelText(labelTitle);
-
       await UserEvent.type(titleInput, text);
 
       expect(titleInput).toHaveValue(text);

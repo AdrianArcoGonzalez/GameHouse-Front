@@ -59,7 +59,7 @@ const EditGame = ({ game }: EditGameProps): JSX.Element => {
           Title
         </label>
         <input
-          value={EditGameStyled.title}
+          value={gameEdit.title}
           onChange={onChangeField}
           type="text"
           id="title"

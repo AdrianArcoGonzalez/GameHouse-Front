@@ -56,9 +56,7 @@ const CreateGame = (): JSX.Element => {
 
   const hasEmptyFields =
     gameCreate.category === initialGameState.category ||
-    gameCreate.title === initialGameState.title ||
-    gameCreate.sinopsis === initialGameState.sinopsis ||
-    gameCreate.company === initialGameState.company;
+    gameCreate.title === initialGameState.title;
 
   return (
     <CreateGameStyled noValidate autoComplete="off" onSubmit={handleSubmit}>
