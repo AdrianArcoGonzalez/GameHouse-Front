@@ -26,11 +26,8 @@ const EditGame = (): JSX.Element => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  debugger;
   useEffect(() => {
-    debugger;
     (async () => {
-      debugger;
       const game = await getOneGameById(id!);
       setEditGame(game);
     })();
