@@ -223,7 +223,7 @@ describe("Given a useGamesApi custom hook", () => {
       expect(toast.error).toHaveBeenCalled();
     });
 
-    test("And if it get an error getting all games it should call the error toast", async () => {
+    test("And if it return an empty array getting all games it should call the info toast", async () => {
       axios.get = jest.fn().mockResolvedValue({ data: { games: [] } });
       const {
         result: {
@@ -234,6 +234,18 @@ describe("Given a useGamesApi custom hook", () => {
 
       expect(mockDispatch).not.toBeCalled();
       expect(toast.info).toHaveBeenCalled();
+    });
+
+    test("And if the call return an error it should call the error modal", async () => {
+      axios.get = jest.fn().mockRejectedValue(new Error());
+      const {
+        result: {
+          current: { getAllGames },
+        },
+      } = renderHook(useGamesApi, { wrapper: Wrapper });
+      await getAllGames(1);
+
+      expect(toast.error).toHaveBeenCalled();
     });
   });
 });
