@@ -5,13 +5,28 @@ import { Wrapper } from "../../utils/Wrapper";
 import { Provider } from "react-redux";
 import { store } from "../../store/store";
 import EditGame from "./EditGame";
-import { mockGame as mockProtoGame } from "../../mocks/mockGame";
 import { BrowserRouter } from "react-router-dom";
 
-beforeEach(() => jest.restoreAllMocks());
+const mockProtoGame = {
+  category: "",
+  company: "",
+  dislikes: 0,
+  image: "",
+  likes: 0,
+  owner: "",
+  sinopsis: "",
+  title: "",
+  reviews: [],
+};
+
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useNavigate: () => jest.fn(),
+}));
 
 const mockUseGames = {
   editGame: jest.fn(),
+  getOneGameById: () => mockProtoGame,
 };
 jest.mock("../../hooks/useGamesApi", () => () => mockUseGames);
 
@@ -19,10 +34,11 @@ describe("Given a EditGame component", () => {
   describe("When it's instantiated", () => {
     test("Then it should show a form", () => {
       const expectedLength = 3;
+
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <EditGame game={mockProtoGame} />
+            <EditGame />
           </Provider>
         </BrowserRouter>
       );
@@ -32,7 +48,7 @@ describe("Given a EditGame component", () => {
       expect(inputsText).toHaveLength(expectedLength);
     });
     test("And it should show a text area input", () => {
-      render(<EditGame game={mockProtoGame} />, { wrapper: Wrapper });
+      render(<EditGame />, { wrapper: Wrapper });
 
       const textArea = screen.getByRole("combobox");
 
@@ -40,7 +56,7 @@ describe("Given a EditGame component", () => {
     });
     test("And it should show an options input with 8 options", () => {
       const expectedLenght = 7;
-      render(<EditGame game={mockProtoGame} />, { wrapper: Wrapper });
+      render(<EditGame />, { wrapper: Wrapper });
 
       const inputOptions = screen.getAllByRole("option");
 
@@ -50,8 +66,14 @@ describe("Given a EditGame component", () => {
     test("And when the user write it should call the usestate", async () => {
       const text = "My Games";
       const labelText = "Title";
-      render(<EditGame game={mockProtoGame} />, { wrapper: Wrapper });
 
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <EditGame />
+          </Provider>
+        </BrowserRouter>
+      );
       const textInput = screen.getByLabelText(labelText);
       await UserEvent.clear(textInput);
       await UserEvent.type(textInput, text);
@@ -63,8 +85,7 @@ describe("Given a EditGame component", () => {
       const text = "MyGame";
       const label = "Sinopsis";
 
-      render(<EditGame game={mockProtoGame} />, { wrapper: Wrapper });
-
+      render(<EditGame />, { wrapper: Wrapper });
       const textAreaInput = screen.getByLabelText(label);
       await UserEvent.type(textAreaInput, text);
 
@@ -74,8 +95,8 @@ describe("Given a EditGame component", () => {
     test("And when the user write on textarea it should call the usestate", async () => {
       const label = "Category";
       const option = "Adventure";
-      render(<EditGame game={mockProtoGame} />, { wrapper: Wrapper });
 
+      render(<EditGame />, { wrapper: Wrapper });
       const optionInput = screen.getByLabelText(label);
       await UserEvent.selectOptions(optionInput, option);
 
@@ -86,8 +107,8 @@ describe("Given a EditGame component", () => {
       const useState = jest.spyOn(React, "useState");
       const labelText = "Image";
       const file = new File(["file"], "");
-      render(<EditGame game={mockProtoGame} />, { wrapper: Wrapper });
 
+      render(<EditGame />, { wrapper: Wrapper });
       const fileInput = screen.getByLabelText(labelText);
       await UserEvent.upload(fileInput, file);
 
@@ -95,9 +116,10 @@ describe("Given a EditGame component", () => {
     });
 
     test("And when the user submit the form", async () => {
+      jest.restoreAllMocks();
       const useState = jest.spyOn(React, "useState");
 
-      render(<EditGame game={mockProtoGame} />, { wrapper: Wrapper });
+      render(<EditGame />, { wrapper: Wrapper });
 
       const buttonSubmit = screen.getByRole("button");
       fireEvent.submit(buttonSubmit);
@@ -106,20 +128,22 @@ describe("Given a EditGame component", () => {
     });
 
     test("And when the user write on the textArea it should call useState", async () => {
-      const useState = jest.spyOn(React, "useState");
+      jest.restoreAllMocks();
       const text = "This is a game";
-      render(<EditGame game={mockProtoGame} />, { wrapper: Wrapper });
+      const labelText = "Sinopsis";
 
-      const textArea = screen.getByRole("combobox");
-      UserEvent.type(textArea, text);
+      render(<EditGame />, { wrapper: Wrapper });
+      const textArea = screen.getByLabelText(labelText);
+      await UserEvent.type(textArea, text);
 
-      await waitFor(() => expect(useState).toHaveBeenCalled());
+      await waitFor(() => expect(textArea).toHaveValue(text));
     });
 
     test("And when the user write on the  it should call useState", async () => {
+      jest.restoreAllMocks();
       const useState = jest.spyOn(React, "useState");
 
-      render(<EditGame game={mockProtoGame} />, { wrapper: Wrapper });
+      render(<EditGame />, { wrapper: Wrapper });
 
       const options = screen.getAllByRole("option");
       await UserEvent.click(options[0]);
