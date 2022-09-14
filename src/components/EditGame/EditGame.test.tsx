@@ -48,14 +48,15 @@ describe("Given a EditGame component", () => {
     });
 
     test("And when the user write it should call the usestate", async () => {
-      const text = "MyGame";
-
+      const text = "My Games";
+      const labelText = "Title";
       render(<EditGame game={mockProtoGame} />, { wrapper: Wrapper });
 
-      const textInput = screen.getAllByRole("textbox");
-      await UserEvent.type(textInput[0], text);
+      const textInput = screen.getByLabelText(labelText);
+      await UserEvent.clear(textInput);
+      await UserEvent.type(textInput, text);
 
-      await waitFor(() => expect(textInput[0]).toHaveValue(text));
+      await waitFor(() => expect(textInput).toHaveValue(text));
     });
 
     test("And when the user write  on textarea it should call the usestate", async () => {
