@@ -46,6 +46,7 @@ describe("Given a useGamesApi custom hook", () => {
       await expect(toast.error).toHaveBeenCalled();
     });
   });
+
   describe("When it's invoked with getOneGameById with the correct id", () => {
     test("Then it should return a game with this id", async () => {
       const {
@@ -69,6 +70,7 @@ describe("Given a useGamesApi custom hook", () => {
       expect(toast.info).toHaveBeenCalled();
     });
   });
+
   describe("When it's invoked with createGame method", () => {
     const formData = new FormData();
     test("Then if the data is ok it should call the toast succes", async () => {
@@ -97,6 +99,7 @@ describe("Given a useGamesApi custom hook", () => {
       expect(toast.error).toHaveBeenCalled();
     });
   });
+
   describe("When it's invoked with getAllGames method", () => {
     test("Then it should dispatch all games received", async () => {
       const {
@@ -113,6 +116,7 @@ describe("Given a useGamesApi custom hook", () => {
         expect(mockDispatch).toHaveBeenCalled();
       });
     });
+
     describe("When it's invoked with method getByCategory", () => {
       test("Then it should call the dispatch if it got a filled array", async () => {
         const category = "Adventure";
@@ -154,6 +158,7 @@ describe("Given a useGamesApi custom hook", () => {
       });
     });
   });
+
   describe("When it's invoked with editGame", () => {
     test("Then it should call the toast succes", async () => {
       const formData = new FormData();
@@ -191,6 +196,7 @@ describe("Given a useGamesApi custom hook", () => {
       });
     });
   });
+
   describe("When it's invoked with getByOwner method", () => {
     test("Then if the data is ok it should call de dispatch", async () => {
       const {
@@ -216,6 +222,7 @@ describe("Given a useGamesApi custom hook", () => {
 
       expect(toast.error).toHaveBeenCalled();
     });
+
     test("And if it get an error getting all games it should call the error toast", async () => {
       axios.get = jest.fn().mockResolvedValue({ data: { games: [] } });
       const {
@@ -226,7 +233,7 @@ describe("Given a useGamesApi custom hook", () => {
       await getAllGames(1);
 
       expect(mockDispatch).not.toBeCalled();
-      expect(toast.error).toHaveBeenCalled();
+      expect(toast.info).toHaveBeenCalled();
     });
   });
 });

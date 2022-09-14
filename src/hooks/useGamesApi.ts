@@ -22,7 +22,8 @@ const useGamesApi = () => {
         } = await axios.get(`${backUrl}games/games/?page=${page}&limit=6`);
 
         if (games.length === 0) {
-          throw new Error();
+          infoModal("Haven't games to show");
+          return;
         }
 
         dispatch(getAllGamesActionCreator(games));
@@ -56,6 +57,7 @@ const useGamesApi = () => {
         headers: { Authorization: `Bearer ${user.token}` },
       });
 
+      succesModal("Game deleted");
       dispatch(deleteGameActionCreator(idToDelete));
     } catch (error) {
       errorModal("Can't delete this game now:(");

@@ -24,8 +24,8 @@ const Game = ({
           alt={title}
           loading="lazy"
           className="game__image"
-          height="280px"
-          width="200px"
+          height={280}
+          width={200}
         />
         <div className="game-info__container">
           <span className="game-info__element">{title}</span>
