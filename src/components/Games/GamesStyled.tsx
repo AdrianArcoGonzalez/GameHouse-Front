@@ -21,9 +21,6 @@ const GamesStyled = styled.section`
     justify-content: center;
     align-items: center;
     margin: 0;
-    @media (min-width: 850px) {
-      justify-content: flex-start;
-    }
   }
 
   .games-list__item {
