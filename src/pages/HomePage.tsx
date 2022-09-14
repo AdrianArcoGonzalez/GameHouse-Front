@@ -23,7 +23,11 @@ const HomePage = (): JSX.Element => {
 
   return (
     <HomePageStyled>
-      <HeroSection text={heroTexts.home} srcImage={"images/home.webp"} />
+      <HeroSection
+        text={heroTexts.home}
+        srcImage={"images/home.webp"}
+        srcSet={"images/home.webp 320w, images/headerHomeBig.webp 800w"}
+      />
       <h2 className="games-list__title">Comunity Games</h2>
       <Filter />
       <Games />

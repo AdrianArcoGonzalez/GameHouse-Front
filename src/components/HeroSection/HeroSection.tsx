@@ -13,6 +13,7 @@ const HeroSection = ({
   return (
     <HeroSectionStyled data-testid="section">
       <img
+        srcSet={srcSet}
         src={srcImage}
         alt="backgroundImage"
         className="hero__image"

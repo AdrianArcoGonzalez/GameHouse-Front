@@ -122,5 +122,21 @@ describe("Given a CreateGame component", () => {
 
       expect(button).toBeDisabled();
     });
+
+    test("And if the user write on the title input it must change the value", async () => {
+      const labelTitle = "Title";
+      const text = "Assassins creed";
+      render(
+        <Provider store={store}>
+          <CreateGame />
+        </Provider>
+      );
+
+      const titleInput = screen.getByLabelText(labelTitle);
+
+      await UserEvent.type(titleInput, text);
+
+      expect(titleInput).toHaveValue(text);
+    });
   });
 });

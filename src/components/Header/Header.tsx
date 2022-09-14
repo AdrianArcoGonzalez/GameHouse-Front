@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { logOutUserActionCreator } from "../../store/slice/usersSlice";
 import { RootState } from "../../store/store";
 import HeaderStyled from "./HeaderStyled";
+
 const Header = (): JSX.Element => {
   const { isLogged } = useAppSelector((state: RootState) => state.user);
   const dispatch = useAppDispatch();
@@ -33,6 +34,7 @@ const Header = (): JSX.Element => {
           className="burguer-menu__button"
           onClick={openCloseMenu}
           name="burguer-menu"
+          aria-label="menu"
         >
           <div className="burguer-menu" data-testid="burguer">
             <div className="burguer-menu__line"></div>
