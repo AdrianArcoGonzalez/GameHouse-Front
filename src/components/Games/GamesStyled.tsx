@@ -8,6 +8,7 @@ const GamesStyled = styled.section`
   width: 90%;
   margin: 0 auto;
   margin-bottom: 20px;
+
   .games-list {
     list-style: none;
     display: flex;
@@ -20,7 +21,11 @@ const GamesStyled = styled.section`
     justify-content: center;
     align-items: center;
     margin: 0;
+    @media (min-width: 850px) {
+      justify-content: flex-start;
+    }
   }
+
   .games-list__item {
     padding: 20px;
   }
