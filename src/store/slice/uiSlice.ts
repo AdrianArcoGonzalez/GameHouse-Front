@@ -11,7 +11,7 @@ export const UISlice = createSlice({
   name: "users",
   initialState: initialStateUI,
   reducers: {
-    isLoading: (state) => ({ ...state, isLoading: !initialStateUI.isLoading }),
+    isLoading: (state) => ({ ...state, isLoading: !state.isLoading }),
   },
 });
 

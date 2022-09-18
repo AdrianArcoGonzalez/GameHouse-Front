@@ -7,6 +7,7 @@ import {
   deleteGameActionCreator,
   getAllGamesActionCreator,
 } from "../store/slice/gamesSlice";
+import { isLoadingActionCreator } from "../store/slice/uiSlice";
 import { urlsBack } from "../utils/envDirections";
 
 const useGamesApi = () => {
@@ -17,6 +18,7 @@ const useGamesApi = () => {
   const getAllGames = useCallback(
     async (page: number) => {
       try {
+        dispatch(isLoadingActionCreator());
         const {
           data: { games },
         } = await axios.get(`${urlsBack.default}?page=${page}&limit=6`);
@@ -25,8 +27,8 @@ const useGamesApi = () => {
           infoModal("Haven't games to show");
           return;
         }
-
         dispatch(getAllGamesActionCreator(games));
+        dispatch(isLoadingActionCreator());
       } catch (error) {
         errorModal("Cannot get all games :(");
       }

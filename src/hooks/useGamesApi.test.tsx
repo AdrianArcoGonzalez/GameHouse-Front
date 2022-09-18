@@ -232,7 +232,7 @@ describe("Given a useGamesApi custom hook", () => {
       } = renderHook(useGamesApi, { wrapper: Wrapper });
       await getAllGames(1);
 
-      expect(mockDispatch).not.toBeCalled();
+      expect(mockDispatch).toBeCalled();
       expect(toast.info).toHaveBeenCalled();
     });
 
