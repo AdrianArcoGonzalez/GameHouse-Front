@@ -7,10 +7,11 @@ import {
   deleteGameActionCreator,
   getAllGamesActionCreator,
 } from "../store/slice/gamesSlice";
+import { urlsBack } from "../utils/envDirections";
+
 
 const useGamesApi = () => {
   const dispatch = useAppDispatch();
-  const backUrl = process.env.REACT_APP_URL_BACK;
   const user = useAppSelector((state) => state.user);
   const navigate = useNavigate();
 
@@ -19,7 +20,7 @@ const useGamesApi = () => {
       try {
         const {
           data: { games },
-        } = await axios.get(`${backUrl}games/games/?page=${page}&limit=6`);
+        } = await axios.get(`${urlsBack.default}?page=${page}&limit=6`);
 
         if (games.length === 0) {
           infoModal("Haven't games to show");
@@ -31,7 +32,7 @@ const useGamesApi = () => {
         errorModal("Cannot get all games :(");
       }
     },
-    [backUrl, dispatch]
+    [dispatch]
   );
 
   const getOneGameById = useCallback(
@@ -39,7 +40,7 @@ const useGamesApi = () => {
       try {
         const {
           data: { game },
-        } = await axios.get(`${backUrl}games/games/${id}`, {
+        } = await axios.get(urlsBack.default+id, {
           headers: { Authorization: `Bearer ${user.token}` },
         });
         return game;
@@ -47,12 +48,12 @@ const useGamesApi = () => {
         infoModal("You need to login to see details");
       }
     },
-    [backUrl, user.token]
+    [user.token]
   );
 
   const deleteGameById = async (idToDelete: string) => {
     try {
-      await axios.delete(`${backUrl}games/games/`, {
+      await axios.delete(urlsBack.default, {
         data: { id: idToDelete },
         headers: { Authorization: `Bearer ${user.token}` },
       });
@@ -69,7 +70,7 @@ const useGamesApi = () => {
       try {
         const {
           data: { games },
-        } = await axios.get(`${backUrl}games/games/my-collection/${owner}`, {
+        } = await axios.get(urlsBack.getByOwner+owner, {
           headers: { authorization: `Bearer ${user.token}` },
         });
 
@@ -78,12 +79,12 @@ const useGamesApi = () => {
         errorModal("Can't get your games now :(");
       }
     },
-    [backUrl, dispatch, user.token]
+    [dispatch, user.token]
   );
 
   const createGame = async (formData: FormData) => {
     try {
-      await axios.post(`${backUrl}games/games/`, formData, {
+      await axios.post(urlsBack.default, formData, {
         headers: { Authorization: `Bearer ${user.token}` },
       });
       succesModal("Game Created");
@@ -95,7 +96,7 @@ const useGamesApi = () => {
 
   const editGame = async (formData: FormData, id: string) => {
     try {
-      await axios.put(`${backUrl}games/games/${id}`, formData, {
+      await axios.put(urlsBack.default+id, formData, {
         headers: { Authorization: `Bearer ${user.token}` },
       });
 
@@ -109,7 +110,7 @@ const useGamesApi = () => {
     try {
       const {
         data: { games },
-      } = await axios.get(`${backUrl}games/games/category/${category}`);
+      } = await axios.get(urlsBack.getByCategory+category);
 
       if (games.length === 0) {
         infoModal("No games found on this category");
