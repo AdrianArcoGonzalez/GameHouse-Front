@@ -11,10 +11,12 @@ import CredentialsLogout from "../CredentialsLogout/CredentialsLogout";
 import MyCollectionPage from "../../pages/MyCollectionPage";
 import CreateGamePage from "../../pages/CreateGamePage";
 import EditGamePage from "../../pages/EditGamePage";
+import Loading from "../Loading/Loading";
 
 const App = (): JSX.Element => {
   return (
     <>
+    <Loading/>
       <Header />
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
