@@ -5,7 +5,7 @@ interface InitialStateUI {
   isLoading: boolean;
   
 }
-const initialStateUI: InitialStateUI = {
+export const initialStateUI: InitialStateUI = {
   isLoading: false,
 };
 
