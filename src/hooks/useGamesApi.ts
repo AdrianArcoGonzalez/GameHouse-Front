@@ -7,8 +7,8 @@ import {
   deleteGameActionCreator,
   getAllGamesActionCreator,
 } from "../store/slice/gamesSlice";
+import { isLoadingActionCreator } from "../store/slice/uiSlice";
 import { urlsBack } from "../utils/envDirections";
-
 
 const useGamesApi = () => {
   const dispatch = useAppDispatch();
@@ -18,6 +18,7 @@ const useGamesApi = () => {
   const getAllGames = useCallback(
     async (page: number) => {
       try {
+        dispatch(isLoadingActionCreator());
         const {
           data: { games },
         } = await axios.get(`${urlsBack.default}?page=${page}&limit=6`);
@@ -26,8 +27,8 @@ const useGamesApi = () => {
           infoModal("Haven't games to show");
           return;
         }
-
         dispatch(getAllGamesActionCreator(games));
+        dispatch(isLoadingActionCreator());
       } catch (error) {
         errorModal("Cannot get all games :(");
       }
@@ -40,7 +41,7 @@ const useGamesApi = () => {
       try {
         const {
           data: { game },
-        } = await axios.get(urlsBack.default+id, {
+        } = await axios.get(urlsBack.default + id, {
           headers: { Authorization: `Bearer ${user.token}` },
         });
         return game;
@@ -70,7 +71,7 @@ const useGamesApi = () => {
       try {
         const {
           data: { games },
-        } = await axios.get(urlsBack.getByOwner+owner, {
+        } = await axios.get(urlsBack.getByOwner + owner, {
           headers: { authorization: `Bearer ${user.token}` },
         });
 
@@ -96,7 +97,7 @@ const useGamesApi = () => {
 
   const editGame = async (formData: FormData, id: string) => {
     try {
-      await axios.put(urlsBack.default+id, formData, {
+      await axios.put(urlsBack.default + id, formData, {
         headers: { Authorization: `Bearer ${user.token}` },
       });
 
@@ -110,7 +111,7 @@ const useGamesApi = () => {
     try {
       const {
         data: { games },
-      } = await axios.get(urlsBack.getByCategory+category);
+      } = await axios.get(urlsBack.getByCategory + category);
 
       if (games.length === 0) {
         infoModal("No games found on this category");
