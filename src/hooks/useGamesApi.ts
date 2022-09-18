@@ -9,7 +9,6 @@ import {
 } from "../store/slice/gamesSlice";
 import { urlsBack } from "../utils/envDirections";
 
-
 const useGamesApi = () => {
   const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.user);
@@ -40,7 +39,7 @@ const useGamesApi = () => {
       try {
         const {
           data: { game },
-        } = await axios.get(urlsBack.default+id, {
+        } = await axios.get(urlsBack.default + id, {
           headers: { Authorization: `Bearer ${user.token}` },
         });
         return game;
@@ -70,7 +69,7 @@ const useGamesApi = () => {
       try {
         const {
           data: { games },
-        } = await axios.get(urlsBack.getByOwner+owner, {
+        } = await axios.get(urlsBack.getByOwner + owner, {
           headers: { authorization: `Bearer ${user.token}` },
         });
 
@@ -96,7 +95,7 @@ const useGamesApi = () => {
 
   const editGame = async (formData: FormData, id: string) => {
     try {
-      await axios.put(urlsBack.default+id, formData, {
+      await axios.put(urlsBack.default + id, formData, {
         headers: { Authorization: `Bearer ${user.token}` },
       });
 
@@ -110,7 +109,7 @@ const useGamesApi = () => {
     try {
       const {
         data: { games },
-      } = await axios.get(urlsBack.getByCategory+category);
+      } = await axios.get(urlsBack.getByCategory + category);
 
       if (games.length === 0) {
         infoModal("No games found on this category");

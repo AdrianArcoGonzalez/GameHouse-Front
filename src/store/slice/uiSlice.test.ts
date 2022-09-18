@@ -1,6 +1,5 @@
 import UIReducer, { initialStateUI, isLoadingActionCreator } from "./uiSlice";
 
-
 describe("Given a UIReducer function", () => {
   describe("When it's invoked with an unknown action and the wrong state", () => {
     test("Then it should return the previous state", () => {
@@ -19,7 +18,9 @@ describe("Given a UIReducer function", () => {
 
       const reducerReturn = UIReducer(initialStateUI, action);
 
-      expect(reducerReturn).toStrictEqual({isLoading: !initialStateUI.isLoading});
-    })
-  })
+      expect(reducerReturn).toStrictEqual({
+        isLoading: !initialStateUI.isLoading,
+      });
+    });
+  });
 });

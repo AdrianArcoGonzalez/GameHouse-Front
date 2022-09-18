@@ -11,7 +11,7 @@ const initialUserState = {
 
 const initialGameState: Game[] = mockGameArray;
 
-const initialUIState = {isLoading:true}
+const initialUIState = { isLoading: true };
 const userInitialState = { ...initialUserState, isLogged: true };
 const gameInitialState = { ...initialGameState, mockGameArray };
 
@@ -24,7 +24,6 @@ const mockGameReducer = createReducer<Game[]>(gameInitialState, (builder) => {
 const mockUIReducer = createReducer(initialUIState, (builder) => {
   builder.addDefaultCase((state) => state);
 });
-
 
 const mockStore = configureStore({
   reducer: {

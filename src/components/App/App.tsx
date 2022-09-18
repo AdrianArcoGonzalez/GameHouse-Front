@@ -16,7 +16,7 @@ import Loading from "../Loading/Loading";
 const App = (): JSX.Element => {
   return (
     <>
-    <Loading/>
+      <Loading />
       <Header />
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
