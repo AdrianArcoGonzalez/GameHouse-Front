@@ -28,7 +28,10 @@ const useGamesApi = () => {
           return;
         }
         dispatch(getAllGamesActionCreator(games));
-        dispatch(isLoadingActionCreator());
+
+        setTimeout(() => {
+          dispatch(isLoadingActionCreator());
+        }, 2000);
       } catch (error) {
         errorModal("Cannot get all games :(");
       }

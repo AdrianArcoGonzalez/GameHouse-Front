@@ -18,8 +18,7 @@ const LoadingStyled = styled.div`
     width: 90%;
 
     @media (min-width: 850px) {
-      object-fit: cover;
-      height: 100%;
+      object-fit: contain;
     }
   }
 `;
